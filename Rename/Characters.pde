@@ -1,4 +1,4 @@
-class Characters {
+abstract class Characters {
   //variables
   int XCoord;
   int YCoord;
@@ -12,40 +12,7 @@ class Characters {
   }
 
   //methods
-  void move(boolean u, boolean r, boolean d, boolean l) {
-    if (u && r) {
-      moveNorthEast();
-      direction = 1;
-    } else
-      if (u && l) {
-        moveNorthWest();
-        direction = 7;
-      } else
-        if (d && r) {
-          moveSouthEast();
-          direction = 3;
-        } else
-          if (d && l) {
-            moveSouthWest();
-            direction = 5;
-          } else 
-          if (r) {
-            moveEast();
-            direction = 2;
-          } else
-            if (l) {
-              moveWest();
-              direction = 6;
-            } else
-              if (u) {
-                moveNorth();
-                direction = 0;
-              } else
-                if (d) {
-                  moveSouth();
-                  direction = 4;
-                }
-  }
+  //abstract void move(boolean u, boolean r, boolean d, boolean l);
 
   //basic direction
   void moveNorth() {

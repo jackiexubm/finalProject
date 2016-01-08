@@ -1,11 +1,13 @@
-Characters test;
+Player test;
+Zombie zob;
 boolean[] keys;
 boolean pause;
 
 void setup() {
-  size(1000,1000);
+  size(1000,500);
   background(125, 142, 240);
-  test = new Characters(30, 30);
+  test = new Player(30, 30);
+  zob = new Zombie(20,20);
   keys = new boolean[4];
   pause = false;
 }
@@ -15,6 +17,8 @@ void draw() {
   }else{
   background(190, 190, 190);
   test.drawCharacters();
+  zob.drawCharacters();
+  zob.move(test);
   if(keyPressed == true){
     test.move(keys[0],keys[1],keys[2],keys[3]);
   }

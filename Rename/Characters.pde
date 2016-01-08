@@ -12,6 +12,40 @@ class Characters {
   }
 
   //methods
+  void move(boolean u, boolean r, boolean d, boolean l){
+    if(u){
+      moveNorth();
+      direction = 0;
+      if(r){
+       moveEast();
+       direction = 1;
+      }
+      if(l){
+       moveWest();
+       direction = 7;
+      }
+    }
+    if(d){
+      moveSouth();
+      direction = 3;
+      if(r){
+       moveEast();
+       direction = 2;
+      }
+      if(l){
+       moveWest();
+       direction = 4;
+      }
+    }
+    if(r){
+      moveEast();
+      direction = 2;
+    }
+    if(l){
+      moveWest();
+      direction = 6;
+    }
+  }
 
   //basic direction
   void moveNorth() {

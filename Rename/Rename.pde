@@ -1,20 +1,25 @@
 Characters test;
 boolean[] keys;
+boolean pause;
 
 void setup() {
   size(400, 500);
   background(125, 142, 240);
   test = new Characters(30, 30);
   keys = new boolean[4];
+  pause = false;
 }
 
 void draw() {
+  if(pause){
+  }else{
   background(190, 190, 190);
   test.drawCharacters();
   if(keyPressed == true){
     test.move(keys[0],keys[1],keys[2],keys[3]);
   }
  }
+}
  
 void keyPressed(){
     if(keyCode == UP){
@@ -28,6 +33,12 @@ void keyPressed(){
     }
     if(keyCode == LEFT){
        keys[3] = true;
+    }
+    if(key == 'p'){
+      pause = true;
+    }
+    if(key == 'r'){
+      pause = false;
     }
 }
 

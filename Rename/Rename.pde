@@ -3,7 +3,7 @@ boolean[] keys;
 boolean pause;
 
 void setup() {
-  size(400, 500);
+  size(1000,1000);
   background(125, 142, 240);
   test = new Characters(30, 30);
   keys = new boolean[4];
@@ -34,11 +34,11 @@ void keyPressed(){
     if(keyCode == LEFT){
        keys[3] = true;
     }
-    if(key == 'p'){
-      pause = true;
-    }
-    if(key == 'r'){
-      pause = false;
+    if(key == 'p'){          //changed pause to only tapping p
+      if(!pause){
+        pause = true;}
+        else{
+        pause = false;}
     }
 }
 

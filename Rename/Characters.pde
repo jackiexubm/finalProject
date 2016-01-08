@@ -12,39 +12,39 @@ class Characters {
   }
 
   //methods
-  void move(boolean u, boolean r, boolean d, boolean l){
-    if(u){
-      moveNorth();
-      direction = 0;
-      if(r){
-       moveEast();
-       direction = 1;
-      }
-      if(l){
-       moveWest();
-       direction = 7;
-      }
-    }
-    if(d){
-      moveSouth();
-      direction = 3;
-      if(r){
-       moveEast();
-       direction = 2;
-      }
-      if(l){
-       moveWest();
-       direction = 4;
-      }
-    }
-    if(r){
-      moveEast();
-      direction = 2;
-    }
-    if(l){
-      moveWest();
-      direction = 6;
-    }
+  void move(boolean u, boolean r, boolean d, boolean l) {
+    if (u && r) {
+      moveNorthEast();
+      direction = 1;
+    } else
+      if (u && l) {
+        moveNorthWest();
+        direction = 7;
+      } else
+        if (d && r) {
+          moveSouthEast();
+          direction = 3;
+        } else
+          if (d && l) {
+            moveSouthWest();
+            direction = 5;
+          } else 
+          if (r) {
+            moveEast();
+            direction = 2;
+          } else
+            if (l) {
+              moveWest();
+              direction = 6;
+            } else
+              if (u) {
+                moveNorth();
+                direction = 0;
+              } else
+                if (d) {
+                  moveSouth();
+                  direction = 4;
+                }
   }
 
   //basic direction
@@ -73,8 +73,8 @@ class Characters {
     XCoord += 5;
   };
   void moveSouthWest() {
-    YCoord -= 5;
-    XCoord += 5;
+    YCoord += 5;
+    XCoord -= 5;
   };
 
   void drawCharacters() {
@@ -82,22 +82,29 @@ class Characters {
     fill(256, 256, 256);
     if (direction == 0) {
       line(XCoord, YCoord, XCoord, YCoord - 30);
-    }if (direction == 1) {
+    }
+    if (direction == 1) {
       line(XCoord, YCoord, XCoord + 21, YCoord - 21);
-    }if (direction == 2) {
+    }
+    if (direction == 2) {
       line(XCoord, YCoord, XCoord + 30, YCoord);
-    }if (direction == 3) {
+    }
+    if (direction == 3) {
       line(XCoord, YCoord, XCoord + 21, YCoord + 21);
-    }if (direction == 4) {
+    }
+    if (direction == 4) {
       line(XCoord, YCoord, XCoord, YCoord + 30);
-    }if (direction == 5) {
+    }
+    if (direction == 5) {
       line(XCoord, YCoord, XCoord - 21, YCoord + 21);
-    }if (direction == 6) {
+    }
+    if (direction == 6) {
       line(XCoord, YCoord, XCoord - 30, YCoord);
-    }if (direction == 7) {
+    }
+    if (direction == 7) {
       line(XCoord, YCoord, XCoord - 21, YCoord - 21);
     }
-    
+
     //try {                          //slows down the animation
     //  Thread.sleep(1);                 
     //} 

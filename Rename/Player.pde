@@ -1,6 +1,7 @@
 class Player extends Characters{
 public Player(int X, int Y){
  super(X,Y) ;
+ speed = 4;
 }
 void move(boolean u, boolean r, boolean d, boolean l) {
     if(XCoord == 0){

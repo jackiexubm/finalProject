@@ -3,6 +3,7 @@ abstract class Characters {
   int XCoord;
   int YCoord;
   int direction;
+  int speed;
 
   //constructors
   Characters(int x, int y) {
@@ -16,32 +17,32 @@ abstract class Characters {
 
   //basic direction
   void moveNorth() {
-    YCoord -= 5;        //since number get larger going down, subtract when going up
+    YCoord -= speed;        //since number get larger going down, subtract when going up
   };
   void moveEast() {
-    XCoord += 5;
+    XCoord += speed;
   };
   void moveSouth() {
-    YCoord += 5;
+    YCoord += speed;
   };
   void moveWest() {
-    XCoord -= 5;
+    XCoord -= speed;
   };
   void moveNorthEast() {
-    YCoord -= 5;
-    XCoord += 5;
+    YCoord -= speed;
+    XCoord += speed;
   };
   void moveNorthWest() {
-    YCoord -= 5;
-    XCoord -= 5;
+    YCoord -= speed;
+    XCoord -= speed;
   };
   void moveSouthEast() {
-    YCoord += 5;
-    XCoord += 5;
+    YCoord += speed;
+    XCoord += speed;
   };
   void moveSouthWest() {
-    YCoord += 5;
-    XCoord -= 5;
+    YCoord += speed;
+    XCoord -= speed;
   };
 
   void drawCharacters() {

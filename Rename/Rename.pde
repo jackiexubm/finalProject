@@ -38,7 +38,7 @@ void keyPressed(){
     if(keyCode == LEFT){
        keys[3] = true;
     }
-    if(key == 'p'){          //changed pause to only tapping p
+    if(key == 'p'){         
       if(!pause){
         pause = true;}
         else{

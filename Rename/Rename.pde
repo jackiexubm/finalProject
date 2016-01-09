@@ -1,6 +1,5 @@
 Player test;
 Zombie zob;
-boolean[] keys;
 boolean pause;
 
 void setup() {
@@ -8,7 +7,6 @@ void setup() {
   background(125, 142, 240);
   test = new Player(30, 30);
   zob = new Zombie(20,20);
-  keys = new boolean[4];
   pause = false;
 }
 
@@ -17,27 +15,27 @@ void draw() {
   }else{
   background(190, 190, 190);
   test.drawCharacters();
+  test.move();
   zob.drawCharacters();
-  zob.move(test);
-  if(keyPressed == true){
-    test.move(keys[0],keys[1],keys[2],keys[3]);
-  }
+  zob.findDirection(test);
+  zob.move();
+  
  }
 }
  
 void keyPressed(){
     if(keyCode == UP){
-       keys[0] = true;
-    }
+       test.velY = -5;
+    }else
     if(keyCode == RIGHT){
-       keys[1] = true;
-    }
+       test.velX = 5;
+    }else
     if(keyCode == DOWN){
-       keys[2] = true;
-    }
+       test.velY = 5;
+    }else
     if(keyCode == LEFT){
-       keys[3] = true;
-    }
+       test.velX = -5;
+    }else
     if(key == 'p'){         
       if(!pause){
         pause = true;}
@@ -47,17 +45,17 @@ void keyPressed(){
 }
 
 void keyReleased(){
-    if(keyCode == UP){
-       keys[0] = false;
-    }
+       if(keyCode == UP){
+       test.velY = 0;
+    }else
     if(keyCode == RIGHT){
-       keys[1] = false;
-    }
+       test.velX = 0;
+    }else
     if(keyCode == DOWN){
-       keys[2] = false;
-    }
+       test.velY = 0;
+    }else
     if(keyCode == LEFT){
-       keys[3] = false;
+       test.velX = 0;
     }
 }
   

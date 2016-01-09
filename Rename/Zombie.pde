@@ -1,25 +1,25 @@
 class Zombie extends Characters{
   public Zombie(int x, int y){
     super(x,y);
-    speed = 2;
   }
-  void move(Player x){
-   if(x.XCoord - XCoord > 15) {  
-     moveEast();
+  void findDirection(Player x){
+   if(x.XCoord - XCoord >= 0) {  
+     velX = 2;
      direction = 2;
    }
-   if(XCoord - x.XCoord > 15){
-    moveWest();
+   if(XCoord - x.XCoord > 0){
+    velX = -2;
     direction = 6;
    }
-    if(YCoord - x.YCoord > 15){
-    moveNorth();
+    if(YCoord - x.YCoord > 0){
+    velY = -2;
     direction =0;
    }
-    if(x.YCoord - YCoord > 15){
-    moveSouth();
+    if(x.YCoord - YCoord >= 0){
+    velY = 2;
     direction = 4;
    }
    
   }
+  
 }

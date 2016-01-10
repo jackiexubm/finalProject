@@ -5,27 +5,45 @@ abstract class Characters {
   int direction;
   int velX;
   int velY;
+  int health;
+  int atk;
+  double originalHP;
 
   //constructors
-  Characters(int x, int y) {
+  Characters(int x, int y, int health, int atk) {
     XCoord = x;
     YCoord = y;
     direction = 0;
     velX = 0;
     velY = 0;
+    this.health = health;
+    this.atk = atk;
+    originalHP = health;
   }
 
   void move() {
     XCoord += velX;
     YCoord += velY;
+    if(XCoord < 0){
+      XCoord = 0;
+    }
+    if(XCoord > width){
+      XCoord = width;
+    }
+    if(YCoord < 0){
+     YCoord = 0; 
+    }
+    if(YCoord > height){
+     YCoord = height; 
+    }
   }
 
   //methods
-
-  void drawCharacters() {
-    ellipse(XCoord, YCoord, 30, 30);
-    fill(256, 256, 256);
+  
+  void takeDamage(int dmg){
+   health -= dmg; 
   }
+
   
   void changeDirection(){
     if(velX > 0 && velY > 0){

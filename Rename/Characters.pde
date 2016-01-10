@@ -7,7 +7,7 @@ abstract class Characters {
   int velY;
   int health;
   int atk;
-  double originalHP;
+  double maxHP;
 
   //constructors
   Characters(int x, int y, int health, int atk) {
@@ -18,7 +18,7 @@ abstract class Characters {
     velY = 0;
     this.health = health;
     this.atk = atk;
-    originalHP = health;
+    maxHP = health;
   }
 
   void move() {

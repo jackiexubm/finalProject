@@ -30,16 +30,16 @@ void draw() {
 
 void keyPressed() {
   if (keyCode == UP) {
-    test.velY = -5;
+    test.velY = -3;
   } else
     if (keyCode == RIGHT) {
-      test.velX = 5;
+      test.velX = 3;
     } else
       if (keyCode == DOWN) {
-        test.velY = 5;
+        test.velY = 3;
       } else
         if (keyCode == LEFT) {
-          test.velX = -5;
+          test.velX = -3;
         } else
           if (key == 'p') {         
             if (!pause) {

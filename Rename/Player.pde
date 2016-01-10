@@ -4,21 +4,21 @@ class Player extends Characters {
     
   }
   void drawCharacters() {
-    chooseColor(health, originalHP);
+    chooseColor(health, maxHP);
     ellipse(XCoord, YCoord, 30, 30);
   }
   
-  void chooseColor(int health, double originalHP){
-      if(health/originalHP <= 0.25){
+  void chooseColor(int health, double maxHP){
+      if(health/maxHP <= 0.25){
       fill(256, 0, 0);
     }
-    else if(health/originalHP <= 0.5){
+    else if(health/maxHP <= 0.5){
       fill(256, 128, 0);
     }
-    else if(health/originalHP <= 0.75){
+    else if(health/maxHP <= 0.75){
       fill(153, 256, 51);
     }
-    else if(health/originalHP <= 1){
+    else if(health/maxHP <= 1){
       fill(0, 256, 0);
     }
   }

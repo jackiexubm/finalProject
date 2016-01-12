@@ -37,17 +37,14 @@ class Zombie extends Characters {
    if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <=30 && !canAttack){
      nextAttack = millis() + 500;
      canAttack = true;
-     System.out.println(1);
    }
    if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <= 30 && canAttack && millis() >= nextAttack){
      x.takeDamage(atk);
       nextAttack = millis() + 500;
      System.out.println(x.health);
-     System.out.println(2);
    }
    else if(dist(x.XCoord,x.YCoord,XCoord,YCoord) > 30){
      canAttack = false;
-     System.out.println(3);
    }
 
   }

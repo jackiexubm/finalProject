@@ -18,7 +18,7 @@ class Player extends Characters {
   }
   
   void shoot(Characters x, boolean shooting){
-    if(shooting){
+    if(shooting && millis() >= nextShot){
       if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord <= YCoord){
         x.takeDamage(atk);
       }
@@ -31,6 +31,7 @@ class Player extends Characters {
       else if(direction == 6 && x.XCoord <= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
         x.takeDamage(atk);
       }
+      nextShot = millis() + 1000;
       System.out.println(x.health);
     }
   }

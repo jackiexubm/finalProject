@@ -46,13 +46,13 @@ abstract class Characters {
 
   
   void changeDirection(){
-    if(velX > 0 && velY > 0){
+    if(velX > 0 && velY < 0){
     direction = 1;
-    }else if(velX > 0 && velY < 0){
+    }else if(velX > 0 && velY > 0){
     direction = 3;
-    }else if(velX < 0 && velY < 0){
-    direction = 5;
     }else if(velX < 0 && velY > 0){
+    direction = 5;
+    }else if(velX < 0 && velY < 0){
     direction = 7;
     }else if(velY < 0){
     direction = 0;

@@ -59,6 +59,9 @@ void keyReleased() {
     } else
       if (keyCode == DOWN) {
         test.velY = 0;
+        if (keyPressed && keyCode== UP){
+        test.velY = -3;
+        }
       } else
         if (keyCode == LEFT) {
           test.velX = 0;

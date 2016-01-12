@@ -24,16 +24,16 @@ abstract class Characters {
   void move() {
     XCoord += velX;
     YCoord += velY;
-    if(XCoord < 0){
+    if(XCoord <= 0){
       XCoord = 0;
     }
-    if(XCoord > width){
+    if(XCoord >= width){
       XCoord = width;
     }
-    if(YCoord < 0){
+    if(YCoord <= 0){
      YCoord = 0; 
     }
-    if(YCoord > height){
+    if(YCoord >= height){
      YCoord = height; 
     }
   }

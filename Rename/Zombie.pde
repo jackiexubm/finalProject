@@ -7,35 +7,44 @@ class Zombie extends Characters {
     nextAttack = 0;
   }
   void findDirection(Player x) {
-    if (x.XCoord - XCoord >= 0) {  
-      velX = 2;
+     if (x.XCoord - XCoord < 20 && XCoord - x.XCoord < 20){
+      velX = 0;
     }
-    if (XCoord - x.XCoord >= 0) {
-      velX = -2;
+    if (x.YCoord - YCoord < 20 && YCoord - x.YCoord < 20){
+      velY = 0;
     }
-    if (YCoord - x.YCoord >= 0) {
-      velY = -2;
+    if (x.XCoord - XCoord >= 20) {  
+      velX = 1;
     }
-    if (x.YCoord - YCoord >= 0) {
-      velY = 2;
+    if (XCoord - x.XCoord >= 20) {
+      velX = -1;
     }
+    if (YCoord - x.YCoord >= 20) {
+      velY = -1;
+    }
+    if (x.YCoord - YCoord >= 20) {
+      velY = 1;
+    }
+   
   }
 
-  void attack(Characters x) {
-    if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 25  && !canAttack) {
-      nextAttack = millis() + 1000;
-      canAttack = true;
-      System.out.println(dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 25 );
-    }
-    if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 25  && canAttack && millis() >= nextAttack) {
-      x.takeDamage(atk);
-      nextAttack = millis() + 1000;
-      System.out.println(x.health);
-      System.out.println(2);
-    } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 25 ) {
-      canAttack = false;
-      System.out.println(3);
-    }
+  void attack(Characters x){
+   if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <=30 && !canAttack){
+     nextAttack = millis() + 50;
+     canAttack = true;
+     System.out.println(1);
+   }
+   if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <= 30 && canAttack && millis() >= nextAttack){
+     x.takeDamage(atk);
+      nextAttack = millis() + 500;
+     System.out.println(x.health);
+     System.out.println(2);
+   }
+   else if(dist(x.XCoord,x.YCoord,XCoord,YCoord) > 30){
+     canAttack = false;
+     System.out.println(3);
+   }
+
   }
 
   void drawCharacters() {

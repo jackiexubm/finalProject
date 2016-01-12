@@ -6,6 +6,11 @@ class Zombie extends Characters {
     canAttack = false;
     nextAttack = 0;
   }
+  void makeDead(){
+   if(health <= 0){
+    atk = 0; 
+   }
+  }
   void findDirection(Player x) {
      if (x.XCoord - XCoord < 20 && XCoord - x.XCoord < 20){
       velX = 0;
@@ -48,8 +53,9 @@ class Zombie extends Characters {
   }
 
   void drawCharacters() {
+    if(health >= 0){
     chooseColor(health, maxHP);
-    ellipse(XCoord, YCoord, 30, 30);
+    ellipse(XCoord, YCoord, 30, 30);}
   }
 
   void chooseColor(int health, double originalHP) {

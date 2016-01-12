@@ -27,6 +27,7 @@ void draw() {
     test.move();
     zob.drawCharacters();
     zob.findDirection(test);
+    test.changeDirection();
     //zob.move();
     zob.attack(test);
     test.giveWeapon(gun);

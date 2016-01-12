@@ -19,18 +19,19 @@ class Player extends Characters {
   
   void shoot(Characters x, boolean shooting){
     if(shooting){
-      if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord >= 0 && x.YCoord <= YCoord){
+      if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord <= YCoord){
         x.takeDamage(atk);
       }
-        else if(direction == 2 && x.XCoord <= width && x.XCoord >= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
+        else if(direction == 2 && x.XCoord >= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
         x.takeDamage(atk);
       }
-        else if(direction == 4 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord -30 && x.YCoord <= height && x.YCoord >= YCoord){
+        else if(direction == 4 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord -30 && x.YCoord >= YCoord){
         x.takeDamage(atk);
       }
-      else if(direction == 6 && x.XCoord <= XCoord && x.XCoord >= 0 && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
+      else if(direction == 6 && x.XCoord <= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
         x.takeDamage(atk);
       }
+      System.out.println(x.health);
     }
   }
   

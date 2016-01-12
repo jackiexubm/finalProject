@@ -1,15 +1,19 @@
 Player test;
 Zombie zob;
+Pistol gun;
 boolean pause;
 boolean game;
+boolean isShooting;
 
 void setup() {
   size(1000, 500);
   background(125, 142, 240);
-  test = new Player(30, 30, 100, 0);
+  test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
+  gun = new Pistol(5, 0);
   pause = false;
   game = true;
+  isShooting = false;
 }
 
 void draw() {
@@ -23,8 +27,10 @@ void draw() {
     test.move();
     zob.drawCharacters();
     zob.findDirection(test);
-    zob.move();
+    //zob.move();
     zob.attack(test);
+    test.giveWeapon(gun);
+    test.shoot(zob, isShooting);
   }
 }
 
@@ -48,6 +54,9 @@ void keyPressed() {
               pause = false;
             }
           }
+  if(key == 'r'){
+    isShooting = true;
+  }
 }
 
 void keyReleased() {
@@ -66,4 +75,7 @@ void keyReleased() {
         if (keyCode == LEFT) {
           test.velX = 0;
         }
+   if(key == 'r'){
+    isShooting = false;
+  }
 }

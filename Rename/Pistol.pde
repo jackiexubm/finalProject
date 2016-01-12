@@ -1,11 +1,10 @@
-//class Pistol extends Weapons{
+class Pistol extends Weapons{
   
-// Pistol(int dmg, int spd){
-//   super(dmg,spd);
-// }
+Pistol(int dmg, int spd){
+  super(dmg,spd);
+  name = "pistol";
+}
   
-// void shoot(Player x){
-//   if(x.XCoord - XCoord < 15 && XCoord - x.XCoord < 15){
-//   }
-// }
-//}
+
+
+}

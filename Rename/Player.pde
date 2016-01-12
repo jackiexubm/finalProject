@@ -1,11 +1,37 @@
 class Player extends Characters {
+  String weapon;
+  boolean canShoot;
+  int nextShot = 0;
   public Player(int X, int Y, int health, int atk) {
     super(X, Y, health, atk) ;
-    
+    canShoot = false;
+    nextShot = 0;
   }
   void drawCharacters() {
     chooseColor(health, maxHP);
     ellipse(XCoord, YCoord, 30, 30);
+  }
+  
+  void giveWeapon(Weapons x){
+    atk = x.dmg;
+    weapon = x.name;
+  }
+  
+  void shoot(Characters x, boolean shooting){
+    if(shooting){
+      if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord >= 0 && x.YCoord <= YCoord){
+        x.takeDamage(atk);
+      }
+        else if(direction == 2 && x.XCoord <= width && x.XCoord >= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
+        x.takeDamage(atk);
+      }
+        else if(direction == 4 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord -30 && x.YCoord <= height && x.YCoord >= YCoord){
+        x.takeDamage(atk);
+      }
+      else if(direction == 6 && x.XCoord <= XCoord && x.XCoord >= 0 && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
+        x.takeDamage(atk);
+      }
+    }
   }
   
   void chooseColor(int health, double maxHP){

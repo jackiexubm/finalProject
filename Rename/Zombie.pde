@@ -30,7 +30,7 @@ class Zombie extends Characters {
 
   void attack(Characters x){
    if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <=30 && !canAttack){
-     nextAttack = millis() + 50;
+     nextAttack = millis() + 500;
      canAttack = true;
      System.out.println(1);
    }

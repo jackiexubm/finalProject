@@ -10,6 +10,6 @@ abstract class Weapons{
     this.spd = spd;
   }
   
-  abstract void bullet(int X, int Y, int direction);
+  abstract void bullet(int X, int Y, int velX, int velY );
 
 }

@@ -5,7 +5,7 @@ Pistol(int dmg, int spd){
   name = "pistol";
 }
   
-  void shot(int X, int Y, int velX, int velY){
-    Bullet.createProj();
+  void bullet(int X, int Y, int velX, int velY){
+    Bullet.createProj(X, Y, velX, velY);
   }
 }

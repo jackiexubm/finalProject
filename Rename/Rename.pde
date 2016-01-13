@@ -31,8 +31,7 @@ void draw() {
     //zob.move();
     zob.makeDead();
     zob.attack(test);
-    test.giveWeapon(gun);
-    test.shoot(zob, isShooting);
+//    test.giveWeapon(gun);
   }
 }
 

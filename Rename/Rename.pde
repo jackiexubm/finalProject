@@ -5,7 +5,7 @@ boolean pause;
 boolean game;
 boolean isShooting;
 int level;
-ArrayList<Zombie> wave;
+Wave wave;
 
 void setup() {
   size(1000, 500);
@@ -17,7 +17,7 @@ void setup() {
   game = true;
   isShooting = false;
   level = 1;
-  wave = new ArrayList<Zombie>();
+  wave = new Wave();
   
 }
 void draw() {
@@ -27,21 +27,14 @@ void draw() {
       game = false;
       level = 1;
     }
-    if(wave.size() == 0){
-      for(int i = 5; i > 0; i--){
-        int x = i * 100;
-        Zombie z = new Zombie(x, 400, 100, 5);
-        wave.add(z);
-      }
+    if(wave.getSize() == 0){
+      wave.makeWave((level - 1) * 5 + 10);
     }
+    wave.action();
     background(190, 190, 190);
     test.drawCharacters();
     test.move();
-    for(int i = 0; i < wave.size();i++){
-     wave.get(i).drawCharacters();
-     wave.get(i).findDirection(test);
-     wave.get(i).move();
-    }
+
     
     
     test.changeDirection();

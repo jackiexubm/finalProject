@@ -17,6 +17,7 @@ void setup() {
   game = true;
   isShooting = false;
   level = 1;
+  wave = new ArrayList<Zombie>();
   
 }
 void draw() {

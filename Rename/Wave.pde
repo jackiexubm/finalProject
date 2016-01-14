@@ -12,9 +12,13 @@ class Wave{
  Zombie getZombie(int i){
    return wave.get(i);
  }
+ void remove(int i ){
+   wave.remove(i);
+ }
  void makeWave(int amount){
   for(int i = 0; i < amount; i++){
-        temp = new Zombie(800, 100, 100,5);
+       int x = 100 * i;
+        temp = new Zombie(x, 100, 100,5);
         wave.add(temp);
   }
   size = wave.size();
@@ -24,7 +28,7 @@ class Wave{
   for(int i = 0; i < size; i++){
      wave.get(i).drawCharacters();
      wave.get(i).findDirection(x);
-     wave.get(i).move();
+     //wave.get(i).move();
      wave.get(i).attack(x);
      //System.out.println(wave.get(i));
   }

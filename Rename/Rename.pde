@@ -1,6 +1,6 @@
 Player test;
 Zombie zob;
-//Pistol gun;
+Pistol gun;
 boolean pause;
 boolean game;
 boolean isShooting;
@@ -12,7 +12,7 @@ void setup() {
 
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
- //gun = new Pistol(5, 0);
+ gun = new Pistol(5, 0);
   pause = false;
   game = true;
   isShooting = false;
@@ -29,7 +29,7 @@ void draw() {
       level = 1;
     }
     if(wave.getSize() == 0){
-      wave.makeWave((level - 1) * 5 + 10);
+      wave.makeWave(5);
     }
     
       wave.move(test);
@@ -39,8 +39,14 @@ void draw() {
     test.drawCharacters();
     test.move();
     //wave.getZombie(1).drawCharacters();
-    
-    
+    test.giveWeapon(gun);
+ 
+    for(int i  = 0; i < wave.getSize(); i++){
+     test.shoot(wave.getZombie(i),isShooting); 
+     if(wave.getZombie(i).health <= 0){
+       wave.remove(i);
+     }
+    }
     test.changeDirection();
     
     

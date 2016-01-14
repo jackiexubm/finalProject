@@ -9,7 +9,7 @@ Wave wave;
 
 void setup() {
   size(1000, 500);
-  background(125, 142, 240);
+
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
  //gun = new Pistol(5, 0);
@@ -21,6 +21,7 @@ void setup() {
   
 }
 void draw() {
+  background(125, 142, 240);
   if (pause || !game) {
   } else {
     if(test.health <= 0){
@@ -30,11 +31,14 @@ void draw() {
     if(wave.getSize() == 0){
       wave.makeWave((level - 1) * 5 + 10);
     }
-    wave.action();
-    background(190, 190, 190);
+    
+      wave.move(test);
+      //System.out.println(wave.getSize());
+
+   
     test.drawCharacters();
     test.move();
-
+    //wave.getZombie(1).drawCharacters();
     
     
     test.changeDirection();

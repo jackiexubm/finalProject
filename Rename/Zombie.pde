@@ -50,9 +50,9 @@ class Zombie extends Characters {
   }
 
   void drawCharacters() {
-    if(health >= 0){
-    chooseColor(health, maxHP);
-    ellipse(XCoord, YCoord, 30, 30);}
+    chooseColor(health,maxHP);
+    ellipse(XCoord, YCoord, 30, 30);
+
   }
 
   void chooseColor(int health, double originalHP) {
@@ -63,7 +63,8 @@ class Zombie extends Characters {
     } else if (health/originalHP < 0.75) {
       fill(153, 256, 51);
     } else if (health/originalHP <= 1) {
-      fill(0, 0, 256);
+      fill(0, 256, 0);
     }
+   
   }
 }

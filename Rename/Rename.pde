@@ -12,46 +12,40 @@ void setup() {
 
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
- gun = new Pistol(20, 0);
+  gun = new Pistol(20, 0);
   pause = false;
   game = true;
   isShooting = false;
   level = 1;
   wave = new Wave();
-  
 }
 void draw() {
   background(125, 142, 240);
   if (pause || !game) {
   } else {
-    if(test.health <= 0){
+    if (test.health <= 0) {
       game = false;
       level = 1;
     }
-    if(wave.getSize() == 0){
+    if (wave.getSize() == 0) {
       wave.makeWave(5);
     }
-    wave.killZombies();
-    
-      wave.move(test);
-      //System.out.println(wave.getSize());
 
-   
+
+    wave.move(test);
+    //System.out.println(wave.getSize());
+
+
     test.drawCharacters();
     test.move();
     //wave.getZombie(1).drawCharacters();
     test.giveWeapon(gun);
- 
-    for(int i  = 0; i < wave.getSize(); i++){
-     test.shoot(wave.getZombie(i),isShooting); 
-     
+
+    for (int i  = 0; i < wave.getSize(); i++) {
+      test.shoot(wave.getZombie(i), isShooting);
     }
     test.changeDirection();
-    
-    
-    //zob.makeDead();
-    //zob.attack(test);
-   //test.giveWeapon(gun);
+
   }
 }
 
@@ -75,7 +69,7 @@ void keyPressed() {
               pause = false;
             }
           }
-  if(key == 'r'){
+  if (key == 'r') {
     isShooting = true;
   }
 }
@@ -89,14 +83,14 @@ void keyReleased() {
     } else
       if (keyCode == DOWN) {
         test.velY = 0;
-        if (keyPressed && keyCode== UP){
-        test.velY = -3;
+        if (keyPressed && keyCode== UP) {
+          test.velY = -3;
         }
       } else
         if (keyCode == LEFT) {
           test.velX = 0;
         }
-   if(key == 'r'){
+  if (key == 'r') {
     isShooting = false;
   }
 }

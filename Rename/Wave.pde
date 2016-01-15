@@ -26,11 +26,22 @@ class Wave{
  
  void move(Player x){
   for(int i = 0; i < size; i++){
+   
      wave.get(i).drawCharacters();
      wave.get(i).findDirection(x);
      //wave.get(i).move();
      wave.get(i).attack(x);
+    
      //System.out.println(wave.get(i));
+  }
+ }
+ 
+ void killZombies(){
+  for(int i = 0; i < size - 1; i++){
+   if(wave.get(i).health <= 0){
+    wave.remove(i);
+    i -= 1;
+   }
   }
  }
 }

@@ -12,7 +12,7 @@ void setup() {
 
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
- gun = new Pistol(5, 0);
+ gun = new Pistol(20, 0);
   pause = false;
   game = true;
   isShooting = false;
@@ -31,6 +31,7 @@ void draw() {
     if(wave.getSize() == 0){
       wave.makeWave(5);
     }
+    wave.killZombies();
     
       wave.move(test);
       //System.out.println(wave.getSize());
@@ -43,9 +44,7 @@ void draw() {
  
     for(int i  = 0; i < wave.getSize(); i++){
      test.shoot(wave.getZombie(i),isShooting); 
-     if(wave.getZombie(i).health <= 0){
-       wave.remove(i);
-     }
+     
     }
     test.changeDirection();
     

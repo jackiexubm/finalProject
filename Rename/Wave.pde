@@ -16,10 +16,20 @@ class Wave{
    wave.remove(i);
  }
  void makeWave(int amount){
-  for(int i = 0; i < amount; i++){
-       int x = 100 * i;
-        temp = new Zombie(x, 100, 100,5);
+   int i = 0;
+  
+   int nextSpawn = millis();
+  while(wave.size() < amount){
+        int y = height;
+        if(i%2 == 0){
+          y = 0;
+        }
+        System.out.println(1);
+        temp = new Zombie(100, y, 100,5);
         wave.add(temp);
+        nextSpawn += 50;
+        i++;
+       
   }
   size = wave.size();
  }
@@ -28,7 +38,7 @@ class Wave{
   for(int i = 0; i < size; i++){
     wave.get(i).drawCharacters();
     wave.get(i).findDirection(x);
-     //wave.get(i).move();
+     wave.get(i).move();
      wave.get(i).attack(x);
      if(wave.get(i).health <= 0){
       wave.remove(i);

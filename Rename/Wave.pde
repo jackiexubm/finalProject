@@ -20,9 +20,9 @@ class Wave {
     int i = 0;
     int nextSpawn = millis();
     while (i < amount) {
-      int y = height/2;
+      int y = height;
       if (i%2 == 0) {
-        y = 50;
+        y = 0;
       }
       System.out.println(1);
       temp = new Zombie(100, y, 100, 5);

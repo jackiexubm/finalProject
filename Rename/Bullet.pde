@@ -5,11 +5,12 @@ class Bullet {
   int velY;
   int dmg;
 
-  Bullet(int X, int Y, int velX, int velY) {
+  Bullet(int X, int Y, int velX, int velY, int dmg) {
     XCoord = X;
     YCoord = Y;
     this.velX = velX;
     this.velY = velY;
+    this.dmg = dmg;
   }
 
   void drawBullet() {

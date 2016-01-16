@@ -11,7 +11,7 @@ ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 
 void setup() {
-  size(1000, 500);
+  size(1000, 650);
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
   gun = new Pistol(30, 0);

@@ -4,13 +4,15 @@ class Bullet {
   int velX;
   int velY;
   int dmg;
+  int direction;
 
-  Bullet(int X, int Y, int velX, int velY, int dmg) {
+  Bullet(int X, int Y, int velX, int velY, int dmg, int dir) {
     XCoord = X;
     YCoord = Y;
     this.velX = velX;
     this.velY = velY;
     this.dmg = dmg;
+    direction = dir;
   }
 
   void drawBullet() {
@@ -29,17 +31,26 @@ class Bullet {
     return false;
   }
   void knockback(Zombie x, int units){
-    if (x.XCoord - XCoord >= 0) {
-      x.XCoord += units;
-    }
-    if (XCoord - x.XCoord >= 0) {
-      x.XCoord -= units;
-    }
-    if (YCoord - x.YCoord >= 0) {
+    if (direction == 0){
       x.YCoord -= units;
-    }
-    if (x.YCoord - YCoord >= 0) {
+    }else if (direction == 2){
+      x.XCoord += units;
+    }else if (direction == 4){
       x.YCoord += units;
+    }else if (direction == 6){
+      x.XCoord -= units;
+    }else if (direction == 1){
+      x.XCoord += units;
+      x.YCoord -= units;
+    }else if (direction == 3){
+      x.XCoord += units;
+      x.YCoord += units;
+    }else if (direction == 5){
+      x.XCoord += units;
+      x.YCoord += units;
+    }else if (direction == 7){
+      x.XCoord += units;
+      x.YCoord -= units;
     }
   }
  

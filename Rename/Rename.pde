@@ -21,6 +21,7 @@ void setup() {
   level = 1;
   wave = new Wave();
 }
+
 void draw() {
   background(125, 142, 240);
   if (pause || !game) {
@@ -30,26 +31,26 @@ void draw() {
       level = 1;
     }
     if (wave.getSize() == 0) {
-      wave.makeWave(10);
+      int waveSize = 5 + level * 5;
+      //going to add a short timer between levels
+      wave.makeWave(waveSize);
+      level ++;
     }
     wave.move(test);
     wave.checkOverlap();
-    //  System.out.println(wave.getSize());
     test.drawCharacters();
     test.move();
     test.drawGun();
     test.changeDirection();
-    
 
     if (isShooting && millis() >= nextShot) {
       bullets.add(test.shoot(isEquipped));
       nextShot = millis() + 300;
     }
-
     for (int i = 0; i < bullets.size(); i ++) {
       bullets.get(i).drawBullet();
       bullets.get(i).move();
-      if(bullets.get(i).damage(wave)){
+      if (bullets.get(i).damage(wave)) {
         bullets.remove(i);
       };
     }

@@ -1,16 +1,19 @@
 class Zombie extends Characters {
   boolean canAttack;
   int nextAttack;
+  
   public Zombie(int x, int y, int health, int attack) {
     super(x, y, health, attack);
     canAttack = false;
     nextAttack = 0;
   }
+  
   void makeDead() {
     if (health <= 0) {
       atk = 0;
     }
   }
+  
   void findDirection(Characters x) {
     if (x.XCoord - XCoord < 20 && XCoord - x.XCoord < 20) {
       velX = 0;

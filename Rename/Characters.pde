@@ -9,7 +9,6 @@ abstract class Characters {
   int atk;
   double maxHP;
 
-  //constructors
   Characters(int x, int y, int health, int atk) {
     XCoord = x;
     YCoord = y;
@@ -38,13 +37,10 @@ abstract class Characters {
     }
   }
 
-  //methods
-  
   void takeDamage(int dmg){
    health -= dmg; 
   }
 
-  
   void changeDirection(){
     if(velX > 0 && velY < 0){
     direction = 1;

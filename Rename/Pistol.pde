@@ -1,7 +1,7 @@
 class Pistol extends Weapons {
 
   Pistol(int dmg, int spd) {
-    super(100, spd);
+    super(30, spd);
     name = "pistol";
   }
 

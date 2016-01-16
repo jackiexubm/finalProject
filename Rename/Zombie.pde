@@ -54,18 +54,18 @@ class Zombie extends Characters {
     ellipse(XCoord, YCoord, 30, 30);
   }
 
-  void moveAwayFrom(Characters x) {
+  void moveAwayFrom(Characters x, int units) {
     if (x.XCoord - XCoord >= 0) {
-      XCoord -= 1;
+      XCoord -= units;
     }
     if (XCoord - x.XCoord >= 0) {
-      XCoord += 1;
+      XCoord += units;
     }
     if (YCoord - x.YCoord >= 0) {
-      YCoord += 1;
+      YCoord += units;
     }
     if (x.YCoord - YCoord >= 0) {
-      YCoord -= 1;
+      YCoord -= units;
     }
   }
 

@@ -37,9 +37,7 @@ class Wave {
   }
 
   void move(Player x) {
-
     for (int i = 0; i < size; i++) {
-
       wave.get(i).drawCharacters();
       wave.get(i).findDirection(x);
       wave.get(i).move();
@@ -58,7 +56,7 @@ class Wave {
       for (int i2 = i + 1; i2 < wave.size(); i2++) {
         if (dist(wave.get(i).XCoord, wave.get(i).YCoord, wave.get(i2).XCoord, wave.get(i2).YCoord) <= 30) {
           System.out.println("second" + i2);
-          wave.get(i).moveAwayFrom(wave.get(i2));
+          wave.get(i).moveAwayFrom(wave.get(i2),1);
         }
       }
     }

@@ -6,16 +6,16 @@ class Zombie extends Characters {
     canAttack = false;
     nextAttack = 0;
   }
-  void makeDead(){
-   if(health <= 0){
-    atk = 0; 
-   }
+  void makeDead() {
+    if (health <= 0) {
+      atk = 0;
+    }
   }
-  void findDirection(Player x) {
-     if (x.XCoord - XCoord < 20 && XCoord - x.XCoord < 20){
+  void findDirection(Characters x) {
+    if (x.XCoord - XCoord < 20 && XCoord - x.XCoord < 20) {
       velX = 0;
     }
-    if (x.YCoord - YCoord < 20 && YCoord - x.YCoord < 20){
+    if (x.YCoord - YCoord < 20 && YCoord - x.YCoord < 20) {
       velY = 0;
     }
     if (x.XCoord - XCoord >= 20) {  
@@ -30,29 +30,40 @@ class Zombie extends Characters {
     if (x.YCoord - YCoord >= 20) {
       velY = 1;
     }
-   
   }
 
-  void attack(Characters x){
-   if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <=30 && !canAttack){
-     nextAttack = millis() + 500;
-     canAttack = true;
-   }
-   if(dist(x.XCoord,x.YCoord,XCoord,YCoord) <= 30 && canAttack && millis() >= nextAttack){
-     x.takeDamage(atk);
+  void attack(Characters x) {
+    if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <=30 && !canAttack) {
       nextAttack = millis() + 500;
-     System.out.println(x.health);
-   }
-   else if(dist(x.XCoord,x.YCoord,XCoord,YCoord) > 30){
-     canAttack = false;
-   }
-
+      canAttack = true;
+    }
+    if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 30 && canAttack && millis() >= nextAttack) {
+      x.takeDamage(atk);
+      nextAttack = millis() + 500;
+      System.out.println(x.health);
+    } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 30) {
+      canAttack = false;
+    }
   }
 
   void drawCharacters() {
-    chooseColor(health,maxHP);
+    chooseColor(health, maxHP);
     ellipse(XCoord, YCoord, 30, 30);
+  }
 
+  void moveAwayFrom(Characters x) {
+    if (x.XCoord - XCoord >= 0) {
+      XCoord -= 1;
+    }
+    if (XCoord - x.XCoord >= 0) {
+      XCoord += 1;
+    }
+    if (YCoord - x.YCoord >= 0) {
+      YCoord += 1;
+    }
+    if (x.YCoord - YCoord >= 0) {
+      YCoord -= 1;
+    }
   }
 
   void chooseColor(int health, double originalHP) {
@@ -65,6 +76,5 @@ class Zombie extends Characters {
     } else if (health/originalHP <= 1) {
       fill(0, 256, 0);
     }
-   
   }
 }

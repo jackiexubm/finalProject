@@ -31,10 +31,10 @@ void draw() {
       level = 1;
     }
     if (wave.getSize() == 0) {
-      wave.makeWave(5);
+      wave.makeWave(10);
     }
     wave.move(test);
-    System.out.println(wave.getSize());
+  //  System.out.println(wave.getSize());
     test.drawCharacters();
     test.move();
     test.changeDirection();

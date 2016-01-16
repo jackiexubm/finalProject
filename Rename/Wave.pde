@@ -1,7 +1,7 @@
 class Wave {
   Zombie temp;
   int size;
-  ArrayList<Zombie> wave = new ArrayList<Zombie>();
+  ArrayList<Zombie> wave = new ArrayList<Zombie>(0);
   Wave() {
     size = 0;
   }
@@ -35,7 +35,7 @@ class Wave {
   }
 
   void move(Player x) {
-   
+
     for (int i = 0; i < size; i++) {
 
       wave.get(i).drawCharacters();
@@ -48,24 +48,18 @@ class Wave {
         size = wave.size();
       }
     }
-    
   }
 
-  //void checkOverlap() {
-  // for (int i = 0; i < wave.size() - 1; i++) {
-  //   System.out.println("first " + i);
-  //   for (int i2 = i + 1; i < wave.size(); i2++) {
+  void checkOverlap() {
+    for (int i = 0; i < size - 1; i++) {
+      System.out.println("first " + i);
+      for (int i2 = i + 1; i2 < size; i2++) {
+        if (dist(wave.get(i).XCoord,wave.get(i).YCoord,wave.get(i2).XCoord,wave.get(i2).YCoord) <= 30) {
+          System.out.println("second" + i2);
+          wave.get(i).moveAwayFrom(wave.get(i2));
+        }
+      }
+    }
+  }
 
-  //     if (true) {
-  //               System.out.println(wave.size());
-  //       wave.get(i).moveAwayFrom(wave.get(i2));
-  //       System.out.println("second" + i2);
-  //     }
-  //   }
-  // }
-  //}
-  
-  //boolean intersects(Zombie first, Zombie second){
-  //  return true;
-  //}
 }

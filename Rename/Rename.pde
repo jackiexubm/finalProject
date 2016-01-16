@@ -34,17 +34,16 @@ void draw() {
       wave.makeWave(10);
     }
     wave.move(test);
-  //  System.out.println(wave.getSize());
+    wave.checkOverlap();
+    //  System.out.println(wave.getSize());
     test.drawCharacters();
     test.move();
     test.changeDirection();
-
 
     if (isShooting && millis() >= nextShot) {
       bullets.add(test.shoot(isEquipped));
       nextShot = millis() + 300;
     }
-
 
     for (int i = 0; i < bullets.size(); i ++) {
       bullets.get(i).drawBullet();

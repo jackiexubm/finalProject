@@ -11,47 +11,45 @@ class Player extends Characters {
     chooseColor(health, maxHP);
     ellipse(XCoord, YCoord, 30, 30);
   }
-  
-  void giveWeapon(Weapons x){
+
+  void giveWeapon(Weapons x) {
     atk = x.dmg;
     weapon = x.name;
   }
-  Bullet shoot(Weapons x){
-  return x.createBullet(XCoord,YCoord,direction);
+
+  Bullet shoot(Weapons x) {
+    return x.createBullet(XCoord, YCoord, direction);
   }
   
-  //void shoot(Characters x, boolean shooting){
-  //if(shooting && millis() >= nextShot){
-  //  if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord <= YCoord){
-  //    x.takeDamage(atk);
-  //  }
-  //    else if(direction == 2 && x.XCoord >= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
-  //    x.takeDamage(atk);
-  //  }
-  //    else if(direction == 4 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord -30 && x.YCoord >= YCoord){
-  //    x.takeDamage(atk);
-  //  }
-  //  else if(direction == 6 && x.XCoord <= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
-  //    x.takeDamage(atk);
-  //  }
-  //  nextShot = millis() + 1000;
-  //  System.out.println(x.health);
-  //}
-  //}
-  
-  void chooseColor(int health, double maxHP){
-      if(health/maxHP <= 0.25){
+  void drawGun(){
+    if(direction == 0){
+      line(XCoord,YCoord, XCoord, YCoord - 25);
+    }else if(direction == 2){
+      line(XCoord,YCoord, XCoord + 25, YCoord);
+    }else if(direction == 4){
+      line(XCoord,YCoord, XCoord, YCoord + 25);
+    }else if(direction == 6){
+      line(XCoord,YCoord, XCoord - 25, YCoord);
+    }else if(direction == 1){
+      line(XCoord,YCoord, XCoord + 18, YCoord - 18);
+    }else if(direction == 3){
+      line(XCoord,YCoord, XCoord + 18, YCoord + 18);
+    }else if(direction == 5){
+      line(XCoord,YCoord, XCoord - 18, YCoord + 18);
+    }else if(direction == 7){
+      line(XCoord,YCoord, XCoord - 18, YCoord - 18);
+    }
+  }
+
+  void chooseColor(int health, double maxHP) {
+    if (health/maxHP <= 0.25) {
       fill(256, 0, 0);
-    }
-    else if(health/maxHP <= 0.5){
+    } else if (health/maxHP <= 0.5) {
       fill(256, 128, 0);
-    }
-    else if(health/maxHP <= 0.75){
+    } else if (health/maxHP <= 0.75) {
       fill(153, 256, 51);
-    }
-    else if(health/maxHP <= 1){
+    } else if (health/maxHP <= 1) {
       fill(0, 0, 256);
     }
   }
- 
 }

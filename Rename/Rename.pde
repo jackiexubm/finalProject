@@ -12,7 +12,6 @@ int nextShot = millis();
 
 void setup() {
   size(1000, 500);
-
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
   gun = new Pistol(30, 0);
@@ -38,7 +37,9 @@ void draw() {
     //  System.out.println(wave.getSize());
     test.drawCharacters();
     test.move();
+    test.drawGun();
     test.changeDirection();
+    
 
     if (isShooting && millis() >= nextShot) {
       bullets.add(test.shoot(isEquipped));

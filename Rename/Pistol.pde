@@ -1,11 +1,46 @@
-class Pistol extends Weapons{
-  
-Pistol(int dmg, int spd){
- super(dmg,spd);
- name = "pistol";
-}
-  
-//  void bullet(int X, int Y, int velX, int velY){
-//   // Bullet.createProj(X, Y, velX, velY);
-//  }
+class Pistol extends Weapons {
+
+  Pistol(int dmg, int spd) {
+    super(dmg, spd);
+    name = "pistol";
+  }
+
+  Bullet createBullet(int X, int Y, int direction) {
+      if (direction == 0) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, 0, -10); 
+        return temp;
+      } else if (direction == 2) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, 10, 0); 
+        return temp;
+      } else if (direction ==4) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, 0, 10); 
+        return temp;
+      } else if (direction ==6) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, -10, 0); 
+        return temp;
+      } else if (direction ==1) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, 10, -10); 
+        return temp;
+      } else if (direction ==3) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, 10, 10); 
+        return temp;
+      } else if (direction ==5) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, -10, 10); 
+        return temp;
+      } else if (direction ==7) {
+        nextShot = millis() + 300;
+        Bullet temp = new Bullet(X, Y, -10, -10); 
+        return temp;
+      } else{
+      Bullet temp = new Bullet(X, Y, -10, -10); 
+        return temp;
+      }
+  }
 }

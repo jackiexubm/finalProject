@@ -16,27 +16,27 @@ class Player extends Characters {
     atk = x.dmg;
     weapon = x.name;
   }
-  //void shoot(Weapons x){
-  //x.bullet(XCoord,YCoord,direction);
+  Bullet shoot(Weapons x){
+  return x.createBullet(XCoord,YCoord,direction);
+  }
+  //void shoot(Characters x, boolean shooting){
+  //if(shooting && millis() >= nextShot){
+  //  if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord <= YCoord){
+  //    x.takeDamage(atk);
+  //  }
+  //    else if(direction == 2 && x.XCoord >= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
+  //    x.takeDamage(atk);
+  //  }
+  //    else if(direction == 4 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord -30 && x.YCoord >= YCoord){
+  //    x.takeDamage(atk);
+  //  }
+  //  else if(direction == 6 && x.XCoord <= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
+  //    x.takeDamage(atk);
+  //  }
+  //  nextShot = millis() + 1000;
+  //  System.out.println(x.health);
   //}
-  void shoot(Characters x, boolean shooting){
-  if(shooting && millis() >= nextShot){
-    if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord <= YCoord){
-      x.takeDamage(atk);
-    }
-      else if(direction == 2 && x.XCoord >= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
-      x.takeDamage(atk);
-    }
-      else if(direction == 4 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord -30 && x.YCoord >= YCoord){
-      x.takeDamage(atk);
-    }
-    else if(direction == 6 && x.XCoord <= XCoord && x.YCoord >= YCoord - 30 && x.YCoord <= YCoord + 30){
-      x.takeDamage(atk);
-    }
-    nextShot = millis() + 1000;
-    System.out.println(x.health);
-  }
-  }
+  //}
   
   void chooseColor(int health, double maxHP){
       if(health/maxHP <= 0.25){

@@ -6,6 +6,9 @@ boolean game;
 boolean isShooting;
 int level;
 Wave wave;
+Weapons isEquipped = new Pistol(5, 2);
+ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+int nextShot = millis();
 
 void setup() {
   size(1000, 500);
@@ -30,22 +33,23 @@ void draw() {
     if (wave.getSize() == 0) {
       wave.makeWave(5);
     }
-
-
     wave.move(test);
-    //System.out.println(wave.getSize());
-
-
+    System.out.println(wave.getSize());
     test.drawCharacters();
     test.move();
-    //wave.getZombie(1).drawCharacters();
-    test.giveWeapon(gun);
-
-    for (int i  = 0; i < wave.getSize(); i++) {
-      test.shoot(wave.getZombie(i), isShooting);
-    }
     test.changeDirection();
 
+
+    if (isShooting && millis() >= nextShot) {
+      bullets.add(test.shoot(isEquipped));
+      nextShot = millis() + 300;
+    }
+
+
+    for (int i = 0; i < bullets.size(); i ++) {
+      bullets.get(i).drawBullet();
+      bullets.get(i).move();
+    }
   }
 }
 

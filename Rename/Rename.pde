@@ -15,7 +15,7 @@ void setup() {
 
   test = new Player(30, 30, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
-  gun = new Pistol(20, 0);
+  gun = new Pistol(30, 0);
   pause = false;
   game = true;
   isShooting = false;
@@ -48,6 +48,9 @@ void draw() {
     for (int i = 0; i < bullets.size(); i ++) {
       bullets.get(i).drawBullet();
       bullets.get(i).move();
+      if(bullets.get(i).damage(wave)){
+        bullets.remove(i);
+      };
     }
   }
 }

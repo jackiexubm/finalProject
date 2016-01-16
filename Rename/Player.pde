@@ -19,6 +19,7 @@ class Player extends Characters {
   Bullet shoot(Weapons x){
   return x.createBullet(XCoord,YCoord,direction);
   }
+  
   //void shoot(Characters x, boolean shooting){
   //if(shooting && millis() >= nextShot){
   //  if(direction == 0 && x.XCoord <= XCoord + 30 && x.XCoord >= XCoord - 30 && x.YCoord <= YCoord){

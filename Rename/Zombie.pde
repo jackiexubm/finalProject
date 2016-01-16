@@ -34,7 +34,7 @@ class Zombie extends Characters {
 
   void attack(Characters x) {
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <=30 && !canAttack) {
-      nextAttack = millis() + 500;
+      nextAttack = millis() + 0;
       canAttack = true;
     }
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 30 && canAttack && millis() >= nextAttack) {

@@ -51,9 +51,9 @@ class Wave {
   }
 
   void checkOverlap() {
-    for (int i = 0; i < size - 1; i++) {
+    for (int i = 0; i < wave.size() - 1; i++) {
       System.out.println("first " + i);
-      for (int i2 = i + 1; i2 < size; i2++) {
+      for (int i2 = i + 1; i2 < wave.size(); i2++) {
         if (dist(wave.get(i).XCoord,wave.get(i).YCoord,wave.get(i2).XCoord,wave.get(i2).YCoord) <= 30) {
           System.out.println("second" + i2);
           wave.get(i).moveAwayFrom(wave.get(i2));

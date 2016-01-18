@@ -34,6 +34,12 @@ void draw() {
       game = false;
       level = 1;
     }
+    if(waveSize > 0 && millis() >= nextSpawn){
+      waveSize--;
+      nextSpawn += 1000;
+      wave.spawn(waveSize%2);
+      System.out.println("hi");
+    }
     if (wave.getSize() == 0) {
        waveSize = 5 + level * 5;
       nextSpawn = millis() + 10;
@@ -63,12 +69,6 @@ void draw() {
       if (bullets.get(i).damage(wave)) {
         bullets.remove(i);
       }
-    }
-    if(waveSize > 0 && millis() >= nextSpawn){
-      waveSize--;
-      nextSpawn += 1000;
-      wave.spawn(waveSize%2);
-      System.out.println("hi");
     }
   }
 }

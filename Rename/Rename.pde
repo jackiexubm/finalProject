@@ -33,14 +33,16 @@ void draw() {
     if (test.health <= 0) {
       game = false;
       level = 1;
+      System.out.println("Game Over");
     }
     if(waveSize > 0 && millis() >= nextSpawn){
       waveSize--;
       nextSpawn += 1000;
       wave.spawn(waveSize%2);
-      System.out.println("hi");
     }
     if (wave.getSize() == 0) {
+      System.out.println("Current Level: " + level);
+      System.out.println("Current Score: " + myScore.score);
        waveSize = 5 + level * 5;
       nextSpawn = millis() + 10;
       //going to add a short timer between levels

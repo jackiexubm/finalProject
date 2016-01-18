@@ -37,7 +37,9 @@ void draw() {
       wave.makeWave(waveSize, test);
       level ++;
     }
-    
+    if(myScore.checkMilestone()){
+     System.out.println("good job"); 
+    }
       myScore.addScore(wave.move(test));
     System.out.println(myScore.score);
       wave.checkOverlap();

@@ -10,6 +10,9 @@ Weapons isEquipped = new Pistol(5, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 Score myScore = new Score();
+int nextSpawn =0;
+int waveSize = 0;
+
 
 void setup() {
   size(1000, 650);
@@ -32,17 +35,18 @@ void draw() {
       level = 1;
     }
     if (wave.getSize() == 0) {
-      int waveSize = 5 + level * 5;
+       waveSize = 5 + level * 5;
+      nextSpawn = millis() + 10;
       //going to add a short timer between levels
-      wave.makeWave(waveSize, test);
+      //wave.makeWave(waveSize, test);
       level ++;
     }
+    
     if(myScore.checkMilestone()){
      System.out.println("good job"); 
     }
-      myScore.addScore(wave.move(test));
-    System.out.println(myScore.score);
-      wave.checkOverlap();
+    myScore.addScore(wave.move(test));
+    wave.checkOverlap();
       
     test.drawCharacters();
     test.move();
@@ -58,7 +62,13 @@ void draw() {
       bullets.get(i).move();
       if (bullets.get(i).damage(wave)) {
         bullets.remove(i);
-      };
+      }
+    }
+    if(waveSize > 0 && millis() >= nextSpawn){
+      waveSize--;
+      nextSpawn += 1000;
+      wave.spawn(waveSize%2);
+      System.out.println("hi");
     }
   }
 }

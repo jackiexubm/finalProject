@@ -18,7 +18,7 @@ class Wave {
     wave.remove(i);
   }
 
-  void makeWave(int amount, Player x) {
+  void makeWave(int amount) {
     int i = 0;
     int nextSpawn = millis();
     while (i < amount) {
@@ -38,6 +38,17 @@ class Wave {
 //}
      // move(x);
     } 
+    
+  }
+  
+  void spawn(int yCoor){
+    int y = height;
+    if(yCoor == 0){
+     y = 0; 
+    }
+    temp = new Zombie(width/2, y, 100, 5);
+    wave.add(temp);
+    size = wave.size();
     
   }
   

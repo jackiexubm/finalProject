@@ -4,10 +4,10 @@ class Walls{
  int yStart;
  int yEnd;
  Walls(int thickness){
-  this.thickness = thickness; 
+  //this.thickness = thickness; 
  }
  void drawWalls(){
   fill(256,256,256);
-  rectangle
+  //rectangle
  }
 }

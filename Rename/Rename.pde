@@ -9,6 +9,7 @@ Wave wave;
 Weapons isEquipped = new Pistol(5, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
+Score myScore = new Score();
 
 void setup() {
   size(1000, 650);
@@ -36,9 +37,9 @@ void draw() {
       wave.makeWave(waveSize, test);
       level ++;
     }
-    else{
-      wave.move(test);
-    }
+    
+      myScore.addScore(wave.move(test));
+    System.out.println(myScore.score);
       wave.checkOverlap();
       
     test.drawCharacters();

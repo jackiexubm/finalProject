@@ -22,13 +22,14 @@ class Wave {
     int i = 0;
     int nextSpawn = millis();
     while (i < amount) {
-     // if(millis() >= nextSpawn){
+     //if(millis() >= nextSpawn){
         int y = height;
         if (i%2 == 0) {
           y = 0;
         }
         System.out.println(1);
         temp = new Zombie(width/2, y, 100, 5);
+        //temp.drawCharacters();
         wave.add(temp);
         nextSpawn += 1000;
         System.out.println(nextSpawn);
@@ -47,7 +48,8 @@ class Wave {
       z.attack(x);
   }
 
-  void move(Player x) {
+  int move(Player x) {
+    int death = 0;
     for (int i = 0; i < size; i++) {
       wave.get(i).drawCharacters();
       wave.get(i).findDirection(x);
@@ -57,8 +59,11 @@ class Wave {
         wave.remove(i);
         i--;
         size = wave.size();
+        death++;
+        
       }
     }
+    return death;
   }
 
   void checkOverlap() {

@@ -18,22 +18,33 @@ class Wave {
     wave.remove(i);
   }
 
-  void makeWave(int amount) {
+  void makeWave(int amount, Player x) {
     int i = 0;
     int nextSpawn = millis();
     while (i < amount) {
-      int y = height;
-      if (i%2 == 0) {
-        y = 0;
-      }
-      System.out.println(1);
-      temp = new Zombie(100, y, 100, 5);
-      wave.add(temp);
-      nextSpawn += 50;
-      System.out.println(nextSpawn);
-      i++;
-    }
-    size = wave.size();
+     // if(millis() >= nextSpawn){
+        int y = height;
+        if (i%2 == 0) {
+          y = 0;
+        }
+        System.out.println(1);
+        temp = new Zombie(width/2, y, 100, 5);
+        wave.add(temp);
+        nextSpawn += 1000;
+        System.out.println(nextSpawn);
+        i++;
+        size = wave.size();
+//}
+     // move(x);
+    } 
+    
+  }
+  
+  void tempMove(Player x, Zombie z){
+      z.drawCharacters();
+      z.findDirection(x);
+      z.move();
+      z.attack(x);
   }
 
   void move(Player x) {

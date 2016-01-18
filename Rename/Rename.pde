@@ -12,7 +12,7 @@ int nextShot = millis();
 
 void setup() {
   size(1000, 650);
-  test = new Player(30, 30, 100, 5);
+  test = new Player(width/2, height/2, 100, 5);
   zob = new Zombie(800, 400, 100, 5);
   gun = new Pistol(30, 0);
   pause = false;
@@ -33,11 +33,14 @@ void draw() {
     if (wave.getSize() == 0) {
       int waveSize = 5 + level * 5;
       //going to add a short timer between levels
-      wave.makeWave(waveSize);
+      wave.makeWave(waveSize, test);
       level ++;
     }
-    wave.move(test);
-    wave.checkOverlap();
+    else{
+      wave.move(test);
+    }
+      wave.checkOverlap();
+      
     test.drawCharacters();
     test.move();
     test.drawGun();

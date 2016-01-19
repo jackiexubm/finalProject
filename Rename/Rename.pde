@@ -28,8 +28,25 @@ void setup() {
 
 void draw() {
   background(125, 142, 240);
-  if (pause || !game) {
+  if(!game || pause){
+  if(pause){
+    fill(0);
+     textSize(100);
+    text("Game Paused", width/5,height/2);
+  }
+   if(!game) {
+    textSize(100);
+    fill(0);
+    text("Game Over", width/4,height/2);
+   }
   } else {
+    String health = "HP: " + test.health;
+    fill(0);
+    textSize(20);
+    text(health,0,height);
+    text("Wave " + (level-1),0,20);
+    text("Zombie " + wave.getSize(), width-100,20);
+    text("Score: " + myScore.score, width-100, height);
     if (test.health <= 0) {
       game = false;
       level = 1;

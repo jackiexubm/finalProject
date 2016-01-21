@@ -1,4 +1,4 @@
-class Devil extends Zombie{
+class Devil extends Zombie {
   boolean canAttack;
   int nextAttack;
   public Devil(int x, int y, int health, int attack) {
@@ -6,11 +6,13 @@ class Devil extends Zombie{
     canAttack = false;
     nextAttack = 0;
   }
-  
-    void attack(Characters x) {
+
+  void attack(Characters x) {
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <=200 && !canAttack) {
-      nextAttack = millis() + 00;
+      nextAttack = millis() + 500;
       canAttack = true;
+      velX = 0;
+      velY = 0;
     }
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 30 && canAttack && millis() >= nextAttack) {
       x.takeDamage(atk);

@@ -12,8 +12,7 @@ int nextShot = millis();
 Score myScore = new Score();
 int nextSpawn =0;
 int waveSize = 0;
-int nextHealthPack = 30000;
-HealthPack
+ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 
 void setup() {
   size(1000, 650);
@@ -71,6 +70,17 @@ void draw() {
     if(myScore.checkMilestone()){
      System.out.println("good job"); 
     }
+    if(healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))){
+     healthpacks.get(0).replenishHealth(test);
+     healthpacks.clear();
+    }
+    if(myScore.score % 20 == 0){
+     if(healthpacks.size() > 0){
+      healthpacks.clear(); 
+     }
+     HealthPack hp = new HealthPack(width/2, height/2, 20, 10, millis(), 5000); 
+     healthpacks.add(hp);
+    }
     myScore.addScore(wave.move(test));
     wave.checkOverlap();
       
@@ -79,9 +89,7 @@ void draw() {
     test.drawGun();
     test.changeDirection();
     
-    if(millis() >= nextHealthPack){
-      
-    }
+
 
     if (isShooting && millis() >= nextShot) {
       bullets.add(test.shoot(isEquipped));

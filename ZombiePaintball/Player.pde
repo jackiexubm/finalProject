@@ -36,6 +36,13 @@ class Player extends Characters {
       line(XCoord,YCoord, XCoord - 18, YCoord - 18);
     }
   }
+  
+  boolean checkHealthPack(HealthPack h){
+    if(dist(XCoord, YCoord, h.xC, h.yC) <= 50){
+      return true;
+    }
+    return false;
+  }
 
   void chooseColor(int health, double maxHP) {
     if (health/maxHP <= 0.25) {

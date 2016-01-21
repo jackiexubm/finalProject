@@ -51,13 +51,7 @@ class Wave {
     size = wave.size();
     
   }
-  
-  void tempMove(Player x, Zombie z){
-      z.drawCharacters();
-      z.findDirection(x);
-      z.move();
-      z.attack(x);
-  }
+
 
   int move(Player x) {
     int death = 0;

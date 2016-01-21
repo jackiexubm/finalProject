@@ -38,7 +38,7 @@ class Player extends Characters {
   }
   
   boolean checkHealthPack(HealthPack h){
-    if(dist(XCoord, YCoord, h.xC, h.yC) <= 50){
+    if(dist(XCoord, YCoord, h.xC, h.yC) <= 50 && health != maxHP){
       return true;
     }
     return false;

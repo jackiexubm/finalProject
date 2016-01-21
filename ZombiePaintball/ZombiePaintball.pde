@@ -71,7 +71,10 @@ void draw() {
     if(myScore.checkMilestone()){
      System.out.println("good job"); 
     }
-    if(healthpacks.size() > 0 && millis() >= healthpacks.get(0).timer){
+    if(healthpacks.size() > 0){
+     healthpacks.get(0).drawPack(); 
+    }
+    if(healthpacks.size() > 0 && millis() >= healthpacks.get(0).time){
      healthpacks.clear();
     }
     if(healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))){

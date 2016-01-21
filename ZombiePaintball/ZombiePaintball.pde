@@ -13,6 +13,7 @@ Score myScore = new Score();
 int nextSpawn =0;
 int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
+int lastHPPack = 0;
 
 void setup() {
   size(1000, 650);
@@ -70,16 +71,20 @@ void draw() {
     if(myScore.checkMilestone()){
      System.out.println("good job"); 
     }
-    if(healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))){
-     healthpacks.get(0).replenishHealth(test);
+    if(healthpacks.size() > 0 && millis() >= healthpacks.get(0).timer){
      healthpacks.clear();
     }
-    if(myScore.score % 20 == 0){
+    if(healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))){
+     healthpacks.get(0).replenishHealth(test);
+     healthpacks.remove(0);
+    }
+    if(myScore.score % 5 == 0 && myScore.score == lastHPPack + 5){
      if(healthpacks.size() > 0){
-      healthpacks.clear(); 
+      healthpacks.remove(0); 
      }
-     HealthPack hp = new HealthPack(width/2, height/2, 20, 10, millis(), 5000); 
+     HealthPack hp = new HealthPack(width/2, height/2, 20, 10, millis(), 10000); 
      healthpacks.add(hp);
+     lastHPPack += 5;
     }
     myScore.addScore(wave.move(test));
     wave.checkOverlap();

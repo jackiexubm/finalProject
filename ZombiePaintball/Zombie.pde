@@ -7,12 +7,7 @@ class Zombie extends Characters {
     canAttack = false;
     nextAttack = 0;
   }
-  
-  void makeDead() {
-    if (health <= 0) {
-      atk = 0;
-    }
-  }
+
   
   void findDirection(Characters x) {
     if (x.XCoord - XCoord < 20 && XCoord - x.XCoord < 20) {

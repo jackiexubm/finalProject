@@ -85,7 +85,7 @@ void draw() {
      if(healthpacks.size() > 0){
       healthpacks.remove(0); 
      }
-     HealthPack hp = new HealthPack(width/2, height/2, 20, 10, millis(), 10000); 
+     HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 10, millis(), 10000); 
      healthpacks.add(hp);
      lastHPPack += 5;
     }

@@ -36,6 +36,21 @@ abstract class Characters {
      YCoord = height; 
     }
   }
+  
+    void moveAwayFrom(Characters x, int units) {
+    if (x.XCoord - XCoord >= 0) {
+      XCoord -= units;
+    }
+    if (XCoord - x.XCoord >= 0) {
+      XCoord += units;
+    }
+    if (YCoord - x.YCoord >= 0) {
+      YCoord += units;
+    }
+    if (x.YCoord - YCoord >= 0) {
+      YCoord -= units;
+    }
+  }
 
   void takeDamage(int dmg){
    health -= dmg; 

@@ -44,6 +44,21 @@ class Player extends Characters {
     return false;
   }
 
+  void moveAwayFrom(Characters x, int units) {
+    if (x.XCoord - XCoord >= 0) {
+      XCoord -= units;
+    }
+    if (XCoord - x.XCoord >= 0) {
+      XCoord += units;
+    }
+    if (YCoord - x.YCoord >= 0) {
+      YCoord += units;
+    }
+    if (x.YCoord - YCoord >= 0) {
+      YCoord -= units;
+    }
+  }
+
   void chooseColor(int health, double maxHP) {
     if (health/maxHP <= 0.25) {
       fill(256, 0, 0);

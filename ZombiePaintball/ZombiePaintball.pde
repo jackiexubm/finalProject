@@ -29,31 +29,31 @@ void setup() {
 
 void draw() {
   background(125, 142, 240);
-  if(!game || pause){
-  if(pause){
-    fill(0);
-     textSize(100);
-    text("Game Paused", width/5,height/2);
-  }
-   if(!game) {
-    textSize(100);
-    fill(0);
-    text("Game Over", width/4,height/2);
-   }
+  if (!game || pause) {
+    if (pause) {
+      fill(0);
+      textSize(100);
+      text("Game Paused", width/5, height/2);
+    }
+    if (!game) {
+      textSize(100);
+      fill(0);
+      text("Game Over", width/4, height/2);
+    }
   } else {
     String health = "HP: " + test.health;
     fill(0);
     textSize(20);
-    text(health,0,height);
-    text("Wave " + (level-1),0,20);
-    text("Zombie " + wave.getSize(), width-100,20);
+    text(health, 0, height);
+    text("Wave " + (level-1), 0, 20);
+    text("Zombie " + wave.getSize(), width-100, 20);
     text("Score: " + myScore.score, width-100, height);
     if (test.health <= 0) {
       game = false;
       level = 1;
       System.out.println("Game Over");
     }
-    if(waveSize > 0 && millis() >= nextSpawn){
+    if (waveSize > 0 && millis() >= nextSpawn) {
       waveSize--;
       nextSpawn += 1000;
       wave.spawn(waveSize%2);
@@ -61,42 +61,42 @@ void draw() {
     if (wave.getSize() == 0) {
       System.out.println("Current Level: " + level);
       System.out.println("Current Score: " + myScore.score);
-       waveSize = 5 + level * 5;
+      waveSize = 5 + level * 5;
       nextSpawn = millis() + 10;
       //going to add a short timer between levels
       //wave.makeWave(waveSize, test);
       level ++;
     }
-    
-    if(myScore.checkMilestone()){
-     System.out.println("good job"); 
+
+    if (myScore.checkMilestone()) {
+      System.out.println("good job");
     }
-    if(healthpacks.size() > 0){
-     healthpacks.get(0).drawPack(); 
+    if (healthpacks.size() > 0) {
+      healthpacks.get(0).drawPack();
     }
-    if(healthpacks.size() > 0 && millis() >= healthpacks.get(0).time){
-     healthpacks.clear();
+    if (healthpacks.size() > 0 && millis() >= healthpacks.get(0).time) {
+      healthpacks.clear();
     }
-    if(healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))){
-     healthpacks.get(0).replenishHealth(test);
-     healthpacks.remove(0);
+    if (healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))) {
+      healthpacks.get(0).replenishHealth(test);
+      healthpacks.remove(0);
     }
-    if(myScore.score % 5 == 0 && myScore.score == lastHPPack + 5){
-     if(healthpacks.size() > 0){
-      healthpacks.remove(0); 
-     }
-     HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 10, millis(), 10000); 
-     healthpacks.add(hp);
-     lastHPPack += 5;
+    if (myScore.score % 5 == 0 && myScore.score == lastHPPack + 5) {
+      if (healthpacks.size() > 0) {
+        healthpacks.remove(0);
+      }
+      HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 10, millis(), 10000); 
+      healthpacks.add(hp);
+      lastHPPack += 5;
     }
     myScore.addScore(wave.move(test));
-    wave.checkOverlap();
-      
+    wave.checkOverlap(test);
+
     test.drawCharacters();
     test.move();
     test.drawGun();
     test.changeDirection();
-    
+
 
 
     if (isShooting && millis() >= nextShot) {
@@ -110,6 +110,8 @@ void draw() {
         bullets.remove(i);
       }
     }
+    
+    
   }
 }
 

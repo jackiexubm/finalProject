@@ -7,3 +7,5 @@ Issac (1/20/16)- Fix bug of removing, new bug with it deleting before timer ends
 Issac (1/20/16)- Fix bugs of health pack and change its interaction with player to only heal if injured
 Jackie (1/20/16)- Start working on Shotgun class
 Jackie (1/20/16)- Change healthpack draw to cross and spawn to random
+Jackie (1/21/16)- Fix checkoverlap bug where wasnt checking player against all zombies
+Jackie (1/21/16)- Fix bug where zombies would push player around even when standing still

@@ -72,17 +72,23 @@ class Wave {
     for (int i = 0; i < wave.size() - 1; i++) {
       for (int i2 = i + 1; i2 < wave.size(); i2++) {
         if (dist(wave.get(i).XCoord, wave.get(i).YCoord, wave.get(i2).XCoord, wave.get(i2).YCoord) <= 30) {
-          wave.get(i).moveAwayFrom(wave.get(i2), 1);    
+          wave.get(i).moveAwayFrom(wave.get(i2), 1);
         }
-  }
-      if(dist(wave.get(i).XCoord, wave.get(i).YCoord, x.XCoord, x.YCoord) <= 30) {
-          x.moveAwayFrom(wave.get(i),2);
+      }
+      if (dist(wave.get(i).XCoord, wave.get(i).YCoord, x.XCoord, x.YCoord) <= 30) {
+        if (x.velX == 0 && x.velY == 0) {
+        } else {
+          x.moveAwayFrom(wave.get(i), 2);
         }
+      }
     }
-    if(wave.size() > 0){
-    if(dist(wave.get(wave.size() - 1).XCoord, wave.get(wave.size() - 1).YCoord, x.XCoord, x.YCoord) <= 30) {
-          x.moveAwayFrom(wave.get(wave.size()-1),2);
+    if (wave.size() > 0) {
+      if (dist(wave.get(wave.size() - 1).XCoord, wave.get(wave.size() - 1).YCoord, x.XCoord, x.YCoord) <= 30) {
+        if (x.velX == 0 && x.velY == 0) {
+        } else {
+          x.moveAwayFrom(wave.get(wave.size() - 1), 2);
         }
+      }
     }
   }
 }

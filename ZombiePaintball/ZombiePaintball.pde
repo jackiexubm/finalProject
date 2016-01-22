@@ -15,6 +15,7 @@ int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
 
+
 void setup() {
   size(1000, 650);
   test = new Player(width/2, height/2, 100, 5);
@@ -47,7 +48,7 @@ void draw() {
     text(health, 0, height);
     text("Wave " + (level-1), 0, 20);
     text("Zombie " + wave.getSize(), width-100, 20);
-    text("Score: " + myScore.score, width-100, height);
+    text("Score: " + myScore.score, width-100, height);    
     if (test.health <= 0) {
       game = false;
       level = 1;

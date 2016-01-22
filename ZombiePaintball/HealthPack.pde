@@ -19,7 +19,6 @@ class HealthPack{
   void drawPack(){
    rectMode(CENTER);
     fill(256,0,0);
-    noStroke();
     rect(xC, yC, 10 , 30);
     rect(xC, yC, 30 , 10);
   }

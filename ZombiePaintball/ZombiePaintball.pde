@@ -26,6 +26,7 @@ void setup() {
   isShooting = false;
   level = 1;
   wave = new Wave();
+  noStroke();
 }
 
 void draw() {

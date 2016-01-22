@@ -36,6 +36,7 @@ abstract class Characters {
      YCoord = height; 
     }
   }
+
   
     void moveAwayFrom(Characters x, int units) {
     if (x.XCoord - XCoord >= 0) {

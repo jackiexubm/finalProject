@@ -103,11 +103,11 @@ void draw() {
     if (isShooting && millis() >= nextShot) {
       bullets.addAll(test.shoot(isEquipped));
       if (isEquipped instanceof Pistol) {
-        nextShot = millis() + 400;
+        nextShot = millis() + 500;
       } else if (isEquipped instanceof Shotgun) {
         nextShot = millis() + 900;
       } else if (isEquipped instanceof Rifle) {
-        nextShot = millis() + 100;
+        nextShot = millis() + 80;
       }
     }
 
@@ -143,6 +143,13 @@ void keyPressed() {
           }
   if (key == 'r') {
     isShooting = true;
+  }
+  if (key == '1') {
+    isEquipped = new Pistol(21,0);
+  }if (key == '2') {
+    isEquipped = new Shotgun(10,0);
+  }if (key == '3') {
+    isEquipped = new Rifle(8,0);
   }
 }
 

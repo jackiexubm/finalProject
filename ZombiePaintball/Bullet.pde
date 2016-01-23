@@ -23,7 +23,7 @@ class Bullet {
   boolean damage(Wave enemy){
     for(int i = 0; i < enemy.size; i++){
       if(dist(enemy.wave.get(i).XCoord,enemy.wave.get(i).YCoord,XCoord,YCoord) <= 15){
-        knockback(enemy.wave.get(i),10);
+        knockback(enemy.wave.get(i),8);
         enemy.wave.get(i).takeDamage((int)dmg);   
         return true;
       }

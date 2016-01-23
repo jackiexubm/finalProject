@@ -6,7 +6,7 @@ boolean game;
 boolean isShooting;
 int level;
 Wave wave;
-Weapons isEquipped = new Shotgun(13, 2);
+Weapons isEquipped = new Rifle(13, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 Score myScore = new Score();
@@ -56,7 +56,7 @@ void draw() {
     }
     if (waveSize > 0 && millis() >= nextSpawn) {
       waveSize--;
-      nextSpawn += 1000;
+      nextSpawn += 900;
       wave.spawn(waveSize%2);
     }
     if (wave.getSize() == 0) {
@@ -102,13 +102,15 @@ void draw() {
 
     if (isShooting && millis() >= nextShot) {
       bullets.addAll(test.shoot(isEquipped));
-      if(isEquipped instanceof Pistol){
-      nextShot = millis() + 400;
-    }else if(isEquipped instanceof Shotgun){
-      nextShot = millis() + 900;
+      if (isEquipped instanceof Pistol) {
+        nextShot = millis() + 400;
+      } else if (isEquipped instanceof Shotgun) {
+        nextShot = millis() + 900;
+      } else if (isEquipped instanceof Rifle) {
+        nextShot = millis() + 100;
+      }
     }
-    }
-    
+
     for (int i = 0; i < bullets.size(); i ++) {
       bullets.get(i).drawBullet();
       bullets.get(i).move();
@@ -116,8 +118,6 @@ void draw() {
         bullets.remove(i);
       }
     }
-    
-    
   }
 }
 

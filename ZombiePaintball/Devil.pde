@@ -24,7 +24,7 @@
 //     canAttack = false;
 //   }
 //  }
-  
+
 //  int findDirection(Characters x){
 //   if (x.XCoord - XCoord >= 20) {  
 //     velX = 1;
@@ -38,7 +38,7 @@
 //   if (x.YCoord - YCoord >= 20) {
 //     velY = 1;
 //   }
-      
+
 //  }
 //  Bullet fireProjectile(int X, int Y, int direction) {
 //   if (direction == 0) {

@@ -6,7 +6,7 @@ boolean game;
 boolean isShooting;
 int level;
 Wave wave;
-Weapons isEquipped = new Rifle(13, 2);
+Weapons isEquipped = new Pistol(27, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 Score myScore = new Score();
@@ -14,7 +14,6 @@ int nextSpawn =0;
 int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
-
 
 void setup() {
   size(1000, 650);
@@ -145,11 +144,13 @@ void keyPressed() {
     isShooting = true;
   }
   if (key == '1') {
-    isEquipped = new Pistol(21,0);
-  }if (key == '2') {
-    isEquipped = new Shotgun(10,0);
-  }if (key == '3') {
-    isEquipped = new Rifle(8,0);
+    isEquipped = new Pistol(27, 0);
+  }
+  if (key == '2') {
+    isEquipped = new Shotgun(11, 0);
+  }
+  if (key == '3') {
+    isEquipped = new Rifle(8, 0);
   }
 }
 

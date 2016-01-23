@@ -1,12 +1,12 @@
 class Shotgun extends Weapons {
   ArrayList<Bullet> ret = new ArrayList<Bullet>();
- Shotgun(int dmg, int spd) {
-   super(dmg, spd);
-   name = "shotgun";
- }
+  Shotgun(int dmg, int spd) {
+    super(dmg, spd);
+    name = "shotgun";
+  }
 
   ArrayList<Bullet> createBullet(int X, int Y, int direction) {
-    for(int i = ret.size() - 1; i > 0; i--){
+    for (int i = ret.size() - 1; i > 0; i--) {
       ret.remove(i);
     }
     if (direction == 0) {

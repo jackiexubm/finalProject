@@ -29,7 +29,7 @@ class Rifle extends Weapons {
       return ret;
     } else if (direction ==1) {
       float shift = (float)Math.random() * 2.8 - 1.9;
-      Bullet temp = new Bullet(X, Y, 7 + shift, -7 , dmg, direction); 
+      Bullet temp = new Bullet(X, Y, 7 + shift, -7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==3) {

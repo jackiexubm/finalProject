@@ -102,7 +102,7 @@ void draw() {
 
 
     if (isShooting && millis() >= nextShot) {
-      bullets.add(test.shoot(isEquipped));
+      bullets.addAll(test.shoot(isEquipped));
       nextShot = millis() + 300;
     }
     for (int i = 0; i < bullets.size(); i ++) {

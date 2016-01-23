@@ -13,7 +13,7 @@ class Player extends Characters {
     chooseColor(health, maxHP);
     ellipse(XCoord, YCoord, 30, 30);
   }
-  Bullet shoot(Weapons x) {
+  ArrayList<Bullet> shoot(Weapons x) {
     return x.createBullet(XCoord, YCoord, direction);
   }
   

@@ -10,5 +10,5 @@ abstract class Weapons {
     this.spd = spd;
   }
 
-  abstract Bullet createBullet(int X, int Y, int direction);
+  abstract ArrayList<Bullet> createBullet(int X, int Y, int direction);
 }

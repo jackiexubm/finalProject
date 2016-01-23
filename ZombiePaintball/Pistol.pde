@@ -31,26 +31,26 @@ class Pistol extends Weapons {
       return ret;
     } else if (direction ==1) {
       nextShot = millis() + 300;
-      Bullet temp = new Bullet(X, Y, 10, -10, dmg, direction); 
+      Bullet temp = new Bullet(X, Y, 7, -7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==3) {
       nextShot = millis() + 300;
-      Bullet temp = new Bullet(X, Y, 10, 10, dmg, direction); 
+      Bullet temp = new Bullet(X, Y, 7, 7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==5) {
       nextShot = millis() + 300;
-      Bullet temp = new Bullet(X, Y, -10, 10, dmg, direction); 
+      Bullet temp = new Bullet(X, Y, -7, 7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==7) {
       nextShot = millis() + 300;
-      Bullet temp = new Bullet(X, Y, -10, -10, dmg, direction); 
+      Bullet temp = new Bullet(X, Y, -7, -7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else {
-      Bullet temp = new Bullet(X, Y, -10, -10, dmg, direction); 
+      Bullet temp = new Bullet(X, Y, -7, -7, dmg, direction); 
       ret.add(temp);
       return ret;
     }

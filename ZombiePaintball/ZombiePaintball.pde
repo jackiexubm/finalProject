@@ -18,8 +18,6 @@ int lastHPPack = 0;
 void setup() {
   size(1000, 650);
   test = new Player(width/2, height/2, 100, 5);
-  zob = new Zombie(800, 400, 100, 5);
-  gun = new Pistol(30, 0);
   pause = false;
   game = true;
   isShooting = false;

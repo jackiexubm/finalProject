@@ -10,7 +10,10 @@ class Player extends Characters {
   }
 
   void drawCharacters() {
-    chooseColor(health, maxHP);
+    if(direction == 0){
+      PImage img1 = loadImage("player0.png");
+      image(img1,XCoord - 20,YCoord - 25,40,50);
+    }
     ellipse(XCoord, YCoord, 30, 30);
   }
   ArrayList<Bullet> shoot(Weapons x) {
@@ -59,15 +62,15 @@ class Player extends Characters {
     }
   }
 
-  void chooseColor(int health, double maxHP) {
-    if (health/maxHP <= 0.25) {
-      fill(256, 0, 0);
-    } else if (health/maxHP <= 0.5) {
-      fill(256, 128, 0);
-    } else if (health/maxHP <= 0.75) {
-      fill(153, 256, 51);
-    } else if (health/maxHP <= 1) {
-      fill(0, 0, 256);
-    }
-  }
+  //void chooseColor(int health, double maxHP) {
+  //  if (health/maxHP <= 0.25) {
+  //    fill(256, 0, 0);
+  //  } else if (health/maxHP <= 0.5) {
+  //    fill(256, 128, 0);
+  //  } else if (health/maxHP <= 0.75) {
+  //    fill(153, 256, 51);
+  //  } else if (health/maxHP <= 1) {
+  //    fill(0, 0, 256);
+  //  }
+  //}
 }

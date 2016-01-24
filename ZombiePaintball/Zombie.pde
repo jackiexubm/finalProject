@@ -108,7 +108,7 @@ PImage z7;
       return 0;
     }
     Zombie other = (Zombie)that; 
-    if(other.YCoord >= YCoord){
+    if(other.YCoord <= YCoord){
     return 1;
     }else{
     return -1;

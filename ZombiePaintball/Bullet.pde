@@ -7,6 +7,7 @@ class Bullet {
   float direction;
   int type;
   PImage explosion;
+  boolean disp = false;
 
   Bullet(float X, float Y, float velX, float velY, float dmg, float dir, int type) {
     XCoord = X;
@@ -26,6 +27,8 @@ class Bullet {
     } else if (type == 1) {
       fill(256, 200, 0);
       ellipse(XCoord, YCoord, 15, 15);
+    } if (disp) {
+      image(explosion,XCoord - 50,YCoord - 50, 100,100);
     }
   }
 
@@ -40,10 +43,10 @@ class Bullet {
       }
     } else if (type == 1) {
       for (int i = 0; i < enemy.size; i++) {
-        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 30) {
-          
+        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 20) {
+          disp = true;
           for(int i2 = 0; i2 < enemy.size; i2++){
-            if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 20) {
+            if (dist(enemy.wave.get(i2).XCoord, enemy.wave.get(i2).YCoord, XCoord, YCoord) <= 100) {
              enemy.wave.get(i2).takeDamage((int)dmg);
              
             }

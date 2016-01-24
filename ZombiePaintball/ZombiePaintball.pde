@@ -167,7 +167,7 @@ void keyPressed() {
     isEquipped = new Rifle(7, 0);
   }
   if (key == '4') {
-    isEquipped = new Rocket(100,0);
+    isEquipped = new Rocket(76,0);
   }
 }
 

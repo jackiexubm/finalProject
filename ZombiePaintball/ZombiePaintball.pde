@@ -47,7 +47,7 @@ void draw() {
       text("Game Paused", width/5, height/2);
       text("Restart", width/3, 3*height/4);
       if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
-        gameFunctions.restart(myScore, wave);
+        gameFunctions.restart(myScore, wave, test);
         level = 1;
         pause = false;
       }
@@ -56,6 +56,13 @@ void draw() {
       textSize(100);
       fill(0);
       text("Game Over", width/4, height/2);
+       text("Restart", width/3, 3*height/4);
+      if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
+        gameFunctions.restart(myScore, wave, test);
+        level = 1;
+        pause = false;
+        game = true;
+      }
     }
   } else {
     String health = "HP: " + test.health;
@@ -67,8 +74,6 @@ void draw() {
     text("Score: " + myScore.score, width-150, height - 10);    
     if (test.health <= 0) {
       game = false;
-      level = 1;
-      System.out.println("Game Over");
     }
     if (waveSize > 0 && millis() >= nextSpawn) {
       waveSize--;

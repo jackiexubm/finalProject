@@ -2,6 +2,8 @@ abstract class Characters {
   //variables
   int XCoord;
   int YCoord;
+  int oriXCoord;
+  int oriYCoord;
   int direction;
   int velX;
   int velY;
@@ -12,12 +14,23 @@ abstract class Characters {
   Characters(int x, int y, int health, int atk) {
     XCoord = x;
     YCoord = y;
+    oriXCoord = x;
+    oriYCoord = y;
     direction = 0;
     velX = 0;
     velY = 0;
     this.health = health;
     this.atk = atk;
     maxHP = health;
+  }
+  
+  void reset(){
+    health = (int)maxHP;
+    XCoord = oriXCoord;
+    YCoord = oriYCoord;
+    direction = 0;
+    velX = 0;
+    velY = 0;
   }
 
   void move() {

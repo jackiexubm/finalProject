@@ -6,9 +6,7 @@ class Pistol extends Weapons {
   }
 
   ArrayList<Bullet> createBullet(int X, int Y, int direction) {
-    for (int i = ret.size() - 1; i > 0; i--) {
-      ret.remove(i);
-    }
+    ret.removeAll(ret);
     if (direction == 0) {
       Bullet temp = new Bullet(X + 13, Y - 15, 0, -10, dmg, direction); 
       ret.add(temp);

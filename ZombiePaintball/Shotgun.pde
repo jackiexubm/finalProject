@@ -6,9 +6,7 @@ class Shotgun extends Weapons {
   }
 
   ArrayList<Bullet> createBullet(int X, int Y, int direction) {
-    for (int i = ret.size() - 1; i > 0; i--) {
-      ret.remove(i);
-    }
+    ret.removeAll(ret);
     if (direction == 0) {
       Bullet temp1 = new Bullet(X + 13, Y - 15, -3, -9.5, dmg, direction); 
       Bullet temp2 = new Bullet(X + 13, Y - 15, -2, -9.8, dmg, direction); 

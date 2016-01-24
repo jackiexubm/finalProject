@@ -22,6 +22,14 @@ PImage p4;
 PImage p5;
 PImage p6;
 PImage p7;
+PImage z0;
+PImage z1;
+PImage z2;
+PImage z3;
+PImage z4;
+PImage z5;
+PImage z6;
+PImage z7;
 
 
 void setup() {
@@ -32,14 +40,22 @@ void setup() {
   isShooting = false;
   level = 1;
   wave = new Wave();
- p0 = loadImage("player0.png");
- p1 = loadImage("player1.png");
- p2 = loadImage("player2.png");
- p3 = loadImage("player3.png");
- p4 = loadImage("player4.png");
- p5 = loadImage("player5.png");
- p6 = loadImage("player6.png");
- p7 = loadImage("player7.png");
+  p0 = loadImage("player0.png");
+  p1 = loadImage("player1.png");
+  p2 = loadImage("player2.png");
+  p3 = loadImage("player3.png");
+  p4 = loadImage("player4.png");
+  p5 = loadImage("player5.png");
+  p6 = loadImage("player6.png");
+  p7 = loadImage("player7.png");
+  z0 = loadImage("zombie0.png");
+  z1 = loadImage("zombie1.png");
+  z2 = loadImage("zombie2.png");
+  z3 = loadImage("zombie3.png");
+  z4 = loadImage("zombie4.png");
+  z5 = loadImage("zombie5.png");
+  z6 = loadImage("zombie6.png");
+  z7 = loadImage("zombie7.png");
 }
 
 void draw() {
@@ -59,10 +75,10 @@ void draw() {
     String health = "HP: " + test.health;
     fill(0);
     textSize(20);
-    text(health, 0, height);
-    text("Wave " + (level-1), 0, 20);
-    text("Zombie " + wave.getSize(), width-100, 20);
-    text("Score: " + myScore.score, width-100, height);    
+    text(health, 10, height - 10);
+    text("Wave " + (level-1), 10, 25);
+    text("Zombie " + wave.getSize(), width-150, 25);
+    text("Score: " + myScore.score, width-150, height - 10);    
     if (test.health <= 0) {
       game = false;
       level = 1;
@@ -107,22 +123,22 @@ void draw() {
     myScore.addScore(wave.move(test));
     wave.checkOverlap(test);
 
-    if(test.direction == 0){
-      image(p0,test.XCoord - 20,test.YCoord - 25,40,50);
-    }else if(test.direction == 2){
-      image(p2,test.XCoord - 20,test.YCoord - 25,45,50);
-    }else if(test.direction == 4){
-      image( p4,test.XCoord - 20,test.YCoord - 25,40,50);
-    }else if(test.direction == 6){
-      image( p6,test.XCoord - 20,test.YCoord - 25,40,50);
-    }else if(test.direction == 1){
-      image( p1,test.XCoord - 20,test.YCoord - 25,47,50);
-    }else if(test.direction == 3){
-      image( p3,test.XCoord - 20,test.YCoord - 25,30,50);
-    }else if(test.direction == 5){
-      image( p5,test.XCoord - 20,test.YCoord - 25,45,50);
-    }else if(test.direction == 7){
-      image( p7,test.XCoord - 20,test.YCoord - 25,30,50);
+    if (test.direction == 0) {
+      image(p0, test.XCoord - 20, test.YCoord - 25, 40, 50);
+    } else if (test.direction == 2) {
+      image(p2, test.XCoord - 20, test.YCoord - 25, 45, 50);
+    } else if (test.direction == 4) {
+      image( p4, test.XCoord - 20, test.YCoord - 25, 40, 50);
+    } else if (test.direction == 6) {
+      image( p6, test.XCoord - 20, test.YCoord - 25, 40, 50);
+    } else if (test.direction == 1) {
+      image( p1, test.XCoord - 20, test.YCoord - 25, 47, 50);
+    } else if (test.direction == 3) {
+      image( p3, test.XCoord - 20, test.YCoord - 25, 30, 50);
+    } else if (test.direction == 5) {
+      image( p5, test.XCoord - 20, test.YCoord - 25, 45, 50);
+    } else if (test.direction == 7) {
+      image( p7, test.XCoord - 20, test.YCoord - 25, 30, 50);
     }
     test.move();
     test.changeDirection();
@@ -147,7 +163,6 @@ void draw() {
         bullets.remove(i);
       }
     }
-    
   }
 }
 

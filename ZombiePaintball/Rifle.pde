@@ -29,22 +29,22 @@ class Rifle extends Weapons {
       return ret;
     } else if (direction ==1) {
       float shift = (float)Math.random() * 2.8 - 1.9;
-      Bullet temp = new Bullet(X, Y, 7 + shift, -7, dmg, direction); 
+      Bullet temp = new Bullet(X + 8, Y + 3, 7 + shift, -7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==3) {
       float shift = (float)Math.random() * 2.8 - 1.9;
-      Bullet temp = new Bullet(X, Y, 7 + shift, 7, dmg, direction); 
+      Bullet temp = new Bullet(X - 3, Y + 5, 7 + shift, 7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==5) {
       float shift = (float)Math.random() * 2.8 - 1.9;
-      Bullet temp = new Bullet(X, Y, -7 + shift, 7, dmg, direction); 
+      Bullet temp = new Bullet(X - 5, Y + 5, -7 + shift, 7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==7) {
       float shift = (float)Math.random() * 2.8 - 1.9;
-      Bullet temp = new Bullet(X, Y, -7 + shift, -7, dmg, direction); 
+      Bullet temp = new Bullet(X, Y - 3, -7 + shift, -7, dmg, direction); 
       ret.add(temp);
       return ret;
     } else {

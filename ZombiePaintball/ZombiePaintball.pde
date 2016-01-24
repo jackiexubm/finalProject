@@ -116,7 +116,7 @@ void draw() {
     }else if(test.direction == 6){
       image( p6,test.XCoord - 20,test.YCoord - 25,40,50);
     }else if(test.direction == 1){
-      image( p1,test.XCoord - 20,test.YCoord - 25,50,50);
+      image( p1,test.XCoord - 20,test.YCoord - 25,47,50);
     }else if(test.direction == 3){
       image( p3,test.XCoord - 20,test.YCoord - 25,30,50);
     }else if(test.direction == 5){

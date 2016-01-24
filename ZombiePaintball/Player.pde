@@ -9,36 +9,29 @@ class Player extends Characters {
     nextShot = 0;
   }
 
-  void drawCharacters() {
-    if(direction == 0){
-      PImage img1 = loadImage("player0.png");
-      image(img1,XCoord - 20,YCoord - 25,40,50);
-    }
-    ellipse(XCoord, YCoord, 30, 30);
-  }
   ArrayList<Bullet> shoot(Weapons x) {
     return x.createBullet(XCoord, YCoord, direction);
   }
 
-  void drawGun() {
-    if (direction == 0) {
-      line(XCoord, YCoord, XCoord, YCoord - 25);
-    } else if (direction == 2) {
-      line(XCoord, YCoord, XCoord + 25, YCoord);
-    } else if (direction == 4) {
-      line(XCoord, YCoord, XCoord, YCoord + 25);
-    } else if (direction == 6) {
-      line(XCoord, YCoord, XCoord - 25, YCoord);
-    } else if (direction == 1) {
-      line(XCoord, YCoord, XCoord + 18, YCoord - 18);
-    } else if (direction == 3) {
-      line(XCoord, YCoord, XCoord + 18, YCoord + 18);
-    } else if (direction == 5) {
-      line(XCoord, YCoord, XCoord - 18, YCoord + 18);
-    } else if (direction == 7) {
-      line(XCoord, YCoord, XCoord - 18, YCoord - 18);
-    }
-  }
+  //void drawGun() {
+  //  if (direction == 0) {
+  //    line(XCoord, YCoord, XCoord, YCoord - 25);
+  //  } else if (direction == 2) {
+  //    line(XCoord, YCoord, XCoord + 25, YCoord);
+  //  } else if (direction == 4) {
+  //    line(XCoord, YCoord, XCoord, YCoord + 25);
+  //  } else if (direction == 6) {
+  //    line(XCoord, YCoord, XCoord - 25, YCoord);
+  //  } else if (direction == 1) {
+  //    line(XCoord, YCoord, XCoord + 18, YCoord - 18);
+  //  } else if (direction == 3) {
+  //    line(XCoord, YCoord, XCoord + 18, YCoord + 18);
+  //  } else if (direction == 5) {
+  //    line(XCoord, YCoord, XCoord - 18, YCoord + 18);
+  //  } else if (direction == 7) {
+  //    line(XCoord, YCoord, XCoord - 18, YCoord - 18);
+  //  }
+  //}
 
   boolean checkHealthPack(HealthPack h) {
     if (dist(XCoord, YCoord, h.xC, h.yC) <= 50 && health != maxHP) {

@@ -110,22 +110,21 @@ void draw() {
     if(test.direction == 0){
       image(p0,test.XCoord - 20,test.YCoord - 25,40,50);
     }else if(test.direction == 2){
-      image(p2,test.XCoord - 20,test.YCoord - 25,40,50);
+      image(p2,test.XCoord - 20,test.YCoord - 25,45,50);
     }else if(test.direction == 4){
       image( p4,test.XCoord - 20,test.YCoord - 25,40,50);
     }else if(test.direction == 6){
       image( p6,test.XCoord - 20,test.YCoord - 25,40,50);
     }else if(test.direction == 1){
-      image( p1,test.XCoord - 20,test.YCoord - 25,40,50);
+      image( p1,test.XCoord - 20,test.YCoord - 25,50,50);
     }else if(test.direction == 3){
-      image( p3,test.XCoord - 20,test.YCoord - 25,40,50);
+      image( p3,test.XCoord - 20,test.YCoord - 25,30,50);
     }else if(test.direction == 5){
-      image( p5,test.XCoord - 20,test.YCoord - 25,40,50);
+      image( p5,test.XCoord - 20,test.YCoord - 25,45,50);
     }else if(test.direction == 7){
-      image( p7,test.XCoord - 20,test.YCoord - 25,40,50);
+      image( p7,test.XCoord - 20,test.YCoord - 25,30,50);
     }
     test.move();
-    test.drawGun();
     test.changeDirection();
 
 

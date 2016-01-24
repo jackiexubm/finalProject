@@ -14,7 +14,7 @@ int nextSpawn =0;
 int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
-
+Game gameFunctions;
 
 
 
@@ -26,6 +26,7 @@ void setup() {
   isShooting = false;
   level = 1;
   wave = new Wave();
+  gameFunctions = new Game();
 
 }
 
@@ -33,9 +34,19 @@ void draw() {
   background(235, 220, 197);
   if (!game || pause) {
     if (pause) {
+       rectMode(CENTER);
+      fill(100);
+      rect(width/2, 3*height/4 - 25,400,100);
       fill(0);
       textSize(100);
       text("Game Paused", width/5, height/2);
+      text("Restart", width/3, 3*height/4);
+      if(mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
+        gameFunctions.restart(myScore, wave);
+        level = 1;
+        pause = false;
+      }
+     
     }
     if (!game) {
       textSize(100);

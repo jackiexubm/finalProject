@@ -21,7 +21,11 @@ Jackie (1/23/16) - Add image loading for zombies
 Jackie (1/23/16) - Implement sprite movement for zombies
 Jackie (1/23/16) - Implement colorchanging for zombies with sprite
 *bug* - level sometimes starts at level 2
-
+*bug* - healthpacks stops spawning after a while
+Jackie (1/24/16) - Implement comparable for zombie class to sort YCoords so zombies are drawn non overlapping
+Jackie (1/24/16) - Add rocket
+Jackie (1/24/16) - Add fading expolosion sprites to rocket attacks
+Jackie (1/24/16) - Add milestone feature to unlocking weapons
 
 NextSteps:
 -direction of projectile based on differences of x and y coords between player/ devil and trig funcs

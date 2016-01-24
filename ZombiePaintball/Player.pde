@@ -2,30 +2,30 @@ class Player extends Characters {
   String weapon;
   boolean canShoot;
   int nextShot = 0;
-PImage p0;
-PImage p1;
-PImage p2;
-PImage p3;
-PImage p4;
-PImage p5;
-PImage p6;
-PImage p7;
+  PImage p0;
+  PImage p1;
+  PImage p2;
+  PImage p3;
+  PImage p4;
+  PImage p5;
+  PImage p6;
+  PImage p7;
 
   public Player(int X, int Y, int health, int atk) {
     super(X, Y, health, atk) ;
     canShoot = false;
     nextShot = 0;
     p0 = loadImage("player0.png");
-  p1 = loadImage("player1.png");
-  p2 = loadImage("player2.png");
-  p3 = loadImage("player3.png");
-  p4 = loadImage("player4.png");
-  p5 = loadImage("player5.png");
-  p6 = loadImage("player6.png");
-  p7 = loadImage("player7.png");
+    p1 = loadImage("player1.png");
+    p2 = loadImage("player2.png");
+    p3 = loadImage("player3.png");
+    p4 = loadImage("player4.png");
+    p5 = loadImage("player5.png");
+    p6 = loadImage("player6.png");
+    p7 = loadImage("player7.png");
   }
-  
-  void drawCharacters(){
+
+  void drawCharacters() {
     noTint();
     if (test.direction == 0) {
       image(p0, test.XCoord - 20, test.YCoord - 25, 40, 50);

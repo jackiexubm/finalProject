@@ -18,10 +18,10 @@ class Wave {
   void remove(int i) {
     wave.remove(i);
   }
-  
-  void clear(){
-   wave.clear(); 
-   size = wave.size();
+
+  void clear() {
+    wave.clear(); 
+    size = wave.size();
   }
 
   void makeWave(int amount) {

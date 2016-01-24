@@ -14,6 +14,15 @@ int nextSpawn =0;
 int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
+PImage p0;
+PImage p1;
+PImage p2;
+PImage p3;
+PImage p4;
+PImage p5;
+PImage p6;
+PImage p7;
+
 
 void setup() {
   size(1000, 650);
@@ -23,10 +32,18 @@ void setup() {
   isShooting = false;
   level = 1;
   wave = new Wave();
+ p0 = loadImage("player0.png");
+ p1 = loadImage("player1.png");
+ p2 = loadImage("player2.png");
+ p3 = loadImage("player3.png");
+ p4 = loadImage("player4.png");
+ p5 = loadImage("player5.png");
+ p6 = loadImage("player6.png");
+ p7 = loadImage("player7.png");
 }
 
 void draw() {
-  background(125, 142, 240);
+  background(235, 220, 197);
   if (!game || pause) {
     if (pause) {
       fill(0);
@@ -90,7 +107,23 @@ void draw() {
     myScore.addScore(wave.move(test));
     wave.checkOverlap(test);
 
-    test.drawCharacters();
+    if(test.direction == 0){
+      image(p0,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 2){
+      image(p2,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 4){
+      image( p4,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 6){
+      image( p6,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 1){
+      image( p1,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 3){
+      image( p3,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 5){
+      image( p5,test.XCoord - 20,test.YCoord - 25,40,50);
+    }else if(test.direction == 7){
+      image( p7,test.XCoord - 20,test.YCoord - 25,40,50);
+    }
     test.move();
     test.drawGun();
     test.changeDirection();
@@ -115,6 +148,7 @@ void draw() {
         bullets.remove(i);
       }
     }
+    
   }
 }
 
@@ -145,7 +179,7 @@ void keyPressed() {
     isEquipped = new Pistol(27, 0);
   }
   if (key == '2') {
-    isEquipped = new Shotgun(11, 0);
+    isEquipped = new Shotgun(13, 0);
   }
   if (key == '3') {
     isEquipped = new Rifle(8, 0);

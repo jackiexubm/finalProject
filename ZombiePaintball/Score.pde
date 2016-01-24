@@ -11,7 +11,7 @@ class Score {
     score += points;
   }
   void calcNextMilestone() {
-    nextMilestone = lastMilestone + 10;
+    nextMilestone = lastMilestone + 20;
   }
   boolean checkMilestone() {
     if (score >= nextMilestone) {

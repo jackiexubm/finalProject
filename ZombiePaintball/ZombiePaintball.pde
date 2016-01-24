@@ -88,6 +88,12 @@ void draw() {
     if (myScore.checkMilestone()) {
       milestone ++;
       System.out.println("good job");
+      if (healthpacks.size() > 0) {
+        healthpacks.remove(0);
+      }
+      HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 25, millis(), 10000); 
+      healthpacks.add(hp);
+      lastHPPack += 20;
     }
     if (healthpacks.size() > 0) {
       healthpacks.get(0).drawPack();
@@ -99,14 +105,7 @@ void draw() {
       healthpacks.get(0).replenishHealth(test);
       healthpacks.remove(0);
     }
-    if (myScore.score % 5 == 0 && myScore.score == lastHPPack + 5) {
-      if (healthpacks.size() > 0) {
-        healthpacks.remove(0);
-      }
-      HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 10, millis(), 10000); 
-      healthpacks.add(hp);
-      lastHPPack += 5;
-    }
+    
     myScore.addScore(wave.move(test));
     wave.checkOverlap(test);
 

@@ -2,11 +2,47 @@ class Player extends Characters {
   String weapon;
   boolean canShoot;
   int nextShot = 0;
+PImage p0;
+PImage p1;
+PImage p2;
+PImage p3;
+PImage p4;
+PImage p5;
+PImage p6;
+PImage p7;
 
   public Player(int X, int Y, int health, int atk) {
     super(X, Y, health, atk) ;
     canShoot = false;
     nextShot = 0;
+    p0 = loadImage("player0.png");
+  p1 = loadImage("player1.png");
+  p2 = loadImage("player2.png");
+  p3 = loadImage("player3.png");
+  p4 = loadImage("player4.png");
+  p5 = loadImage("player5.png");
+  p6 = loadImage("player6.png");
+  p7 = loadImage("player7.png");
+  }
+  
+  void drawCharacter(){
+    if (test.direction == 0) {
+      image(p0, test.XCoord - 20, test.YCoord - 25, 40, 50);
+    } else if (test.direction == 2) {
+      image(p2, test.XCoord - 20, test.YCoord - 25, 45, 50);
+    } else if (test.direction == 4) {
+      image( p4, test.XCoord - 20, test.YCoord - 25, 40, 50);
+    } else if (test.direction == 6) {
+      image( p6, test.XCoord - 20, test.YCoord - 25, 40, 50);
+    } else if (test.direction == 1) {
+      image( p1, test.XCoord - 20, test.YCoord - 25, 47, 50);
+    } else if (test.direction == 3) {
+      image( p3, test.XCoord - 20, test.YCoord - 25, 30, 50);
+    } else if (test.direction == 5) {
+      image( p5, test.XCoord - 20, test.YCoord - 25, 45, 50);
+    } else if (test.direction == 7) {
+      image( p7, test.XCoord - 20, test.YCoord - 25, 30, 50);
+    }
   }
 
   ArrayList<Bullet> shoot(Weapons x) {

@@ -14,14 +14,7 @@ int nextSpawn =0;
 int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
-PImage p0;
-PImage p1;
-PImage p2;
-PImage p3;
-PImage p4;
-PImage p5;
-PImage p6;
-PImage p7;
+
 PImage z0;
 PImage z1;
 PImage z2;
@@ -40,14 +33,7 @@ void setup() {
   isShooting = false;
   level = 1;
   wave = new Wave();
-  p0 = loadImage("player0.png");
-  p1 = loadImage("player1.png");
-  p2 = loadImage("player2.png");
-  p3 = loadImage("player3.png");
-  p4 = loadImage("player4.png");
-  p5 = loadImage("player5.png");
-  p6 = loadImage("player6.png");
-  p7 = loadImage("player7.png");
+  
   z0 = loadImage("zombie0.png");
   z1 = loadImage("zombie1.png");
   z2 = loadImage("zombie2.png");
@@ -123,23 +109,7 @@ void draw() {
     myScore.addScore(wave.move(test));
     wave.checkOverlap(test);
 
-    if (test.direction == 0) {
-      image(p0, test.XCoord - 20, test.YCoord - 25, 40, 50);
-    } else if (test.direction == 2) {
-      image(p2, test.XCoord - 20, test.YCoord - 25, 45, 50);
-    } else if (test.direction == 4) {
-      image( p4, test.XCoord - 20, test.YCoord - 25, 40, 50);
-    } else if (test.direction == 6) {
-      image( p6, test.XCoord - 20, test.YCoord - 25, 40, 50);
-    } else if (test.direction == 1) {
-      image( p1, test.XCoord - 20, test.YCoord - 25, 47, 50);
-    } else if (test.direction == 3) {
-      image( p3, test.XCoord - 20, test.YCoord - 25, 30, 50);
-    } else if (test.direction == 5) {
-      image( p5, test.XCoord - 20, test.YCoord - 25, 45, 50);
-    } else if (test.direction == 7) {
-      image( p7, test.XCoord - 20, test.YCoord - 25, 30, 50);
-    }
+  test.drawCharacter();
     test.move();
     test.changeDirection();
 

@@ -5,27 +5,51 @@ class Bullet {
   float velY;
   float dmg;
   float direction;
+  int type;
+  PImage explosion;
 
-  Bullet(float X, float Y, float velX, float velY, float dmg, float dir) {
+  Bullet(float X, float Y, float velX, float velY, float dmg, float dir, int type) {
     XCoord = X;
     YCoord = Y;
     this.velX = velX;
     this.velY = velY;
     this.dmg = dmg;
     direction = dir;
+    this.type = type;
+    explosion = loadImage("explosion.png");
   }
 
   void drawBullet() {
-    fill(0);
-    ellipse(XCoord, YCoord, 5, 5);
+    if (type == 0) {
+      fill(0);
+      ellipse(XCoord, YCoord, 5, 5);
+    } else if (type == 1) {
+      fill(256, 200, 0);
+      ellipse(XCoord, YCoord, 15, 15);
+    }
   }
 
   boolean damage(Wave enemy) {
-    for (int i = 0; i < enemy.size; i++) {
-      if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
-        knockback(enemy.wave.get(i), 8);
-        enemy.wave.get(i).takeDamage((int)dmg);   
-        return true;
+    if (type == 0) {
+      for (int i = 0; i < enemy.size; i++) {
+        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
+          knockback(enemy.wave.get(i), 8);
+          enemy.wave.get(i).takeDamage((int)dmg);   
+          return true;
+        }
+      }
+    } else if (type == 1) {
+      for (int i = 0; i < enemy.size; i++) {
+        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 30) {
+          
+          for(int i2 = 0; i2 < enemy.size; i2++){
+            if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 20) {
+             enemy.wave.get(i2).takeDamage((int)dmg);
+             
+            }
+          }
+          return true;
+        }
       }
     }
     return false;

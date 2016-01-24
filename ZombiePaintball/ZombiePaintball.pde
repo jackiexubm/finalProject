@@ -119,6 +119,8 @@ void draw() {
         nextShot = millis() + 900;
       } else if (isEquipped instanceof Rifle) {
         nextShot = millis() + 80;
+      } else if (isEquipped instanceof Rocket) {
+        nextShot = millis() + 1500;
       }
     }
 
@@ -163,6 +165,9 @@ void keyPressed() {
   }
   if (key == '3') {
     isEquipped = new Rifle(7, 0);
+  }
+  if (key == '4') {
+    isEquipped = new Rocket(100,0);
   }
 }
 

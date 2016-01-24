@@ -118,13 +118,13 @@ PImage z7;
 
   void chooseColor(int health, double originalHP) {
     if (health/maxHP < 0.25) {
-      tint(256, 0, 0);
+      tint(256, 0, 30);
     } else if (health/maxHP < 0.5) {
-      tint(256, 156, 0);
+      tint(256, 120, 0);
     } else if (health/originalHP < 0.75) {
       tint(256, 204, 0);
     } else if (health/originalHP <= 1) {
-      tint(0, 256, 0);
+      tint(0, 256, 50);
     }
   }
 }

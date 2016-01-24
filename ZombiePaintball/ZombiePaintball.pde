@@ -15,6 +15,10 @@ int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
 Game gameFunctions;
+int explo;
+PImage boom;
+float boomX;
+float boomY;
 
 
 
@@ -27,26 +31,25 @@ void setup() {
   level = 1;
   wave = new Wave();
   gameFunctions = new Game();
-
+  boom = loadImage("explosion.png");
 }
 
 void draw() {
   background(235, 220, 197);
   if (!game || pause) {
     if (pause) {
-       rectMode(CENTER);
+      rectMode(CENTER);
       fill(100);
-      rect(width/2, 3*height/4 - 25,400,100);
+      rect(width/2, 3*height/4 - 25, 400, 100);
       fill(0);
       textSize(100);
       text("Game Paused", width/5, height/2);
       text("Restart", width/3, 3*height/4);
-      if(mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
+      if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
         gameFunctions.restart(myScore, wave);
         level = 1;
         pause = false;
       }
-     
     }
     if (!game) {
       textSize(100);
@@ -105,7 +108,7 @@ void draw() {
     myScore.addScore(wave.move(test));
     wave.checkOverlap(test);
 
-  test.drawCharacters();
+    test.drawCharacters();
     test.move();
     test.changeDirection();
 
@@ -120,17 +123,30 @@ void draw() {
       } else if (isEquipped instanceof Rifle) {
         nextShot = millis() + 80;
       } else if (isEquipped instanceof Rocket) {
-        nextShot = millis() + 1500;
+        nextShot = millis() + 2500;
       }
     }
 
     for (int i = 0; i < bullets.size(); i ++) {
       bullets.get(i).drawBullet();
       bullets.get(i).move();
-      if (bullets.get(i).damage(wave)) {
+      if (bullets.get(i).type == 1 && bullets.get(i).damage(wave)){
+        boomX = bullets.get(i).XCoord;
+        boomY = bullets.get(i).YCoord;
+        explo = 2560;
+        bullets.remove(i);
+      }else if(bullets.get(i).damage(wave)){
         bullets.remove(i);
       }
     }
+    
+    if(explo > 0){
+      System.out.println(explo);
+      tint(255,explo/10);
+      image(boom,boomX - 90,boomY - 30,180,100);
+      explo -= 32;
+    }
+    
   }
 }
 
@@ -161,13 +177,14 @@ void keyPressed() {
     isEquipped = new Pistol(27, 0);
   }
   if (key == '2') {
+    
     isEquipped = new Shotgun(13, 0);
   }
   if (key == '3') {
     isEquipped = new Rifle(7, 0);
   }
   if (key == '4') {
-    isEquipped = new Rocket(76,0);
+    isEquipped = new Rocket(76, 0);
   }
 }
 

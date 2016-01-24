@@ -6,7 +6,6 @@ class Bullet {
   float dmg;
   float direction;
   int type;
-  boolean disp = false;
 
   Bullet(float X, float Y, float velX, float velY, float dmg, float dir, int type) {
     XCoord = X;
@@ -39,8 +38,7 @@ class Bullet {
       }
     } else if (type == 1) {
       for (int i = 0; i < enemy.size; i++) {
-        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 20) {
-          disp = true;
+        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 20) {          
           for(int i2 = 0; i2 < enemy.size; i2++){
             if (dist(enemy.wave.get(i2).XCoord, enemy.wave.get(i2).YCoord, XCoord, YCoord) <= 100) {
              enemy.wave.get(i2).takeDamage((int)dmg);

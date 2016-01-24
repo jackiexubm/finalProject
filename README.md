@@ -10,6 +10,18 @@ Jackie (1/20/16)- Change healthpack draw to cross and spawn to random
 Jackie (1/21/16)- Fix checkoverlap bug where wasnt checking player against all zombies
 Jackie (1/21/16)- Fix bug where zombies would push player around even when standing still
 Issac&Jackie(1/22/16)- Discuss how projectile enemy should work and start programming it
+Jackie (1/23/16) - Change all weapon return types to Arraylist of bullets
+Jackie (1/23/16) - Finish coding shotgun
+Jackie (1/23/16) - Finish coding rifle
+Jackie (1/23/16) - Add weapon selection feature
+Jackie (1/23/16) - Add image loading for player
+Jackie (1/23/16) - Implement sprites for all directions and adjust size
+Jackie (1/23/16) - Adjust bullet creation point to fit sprites
+Jackie (1/23/16) - Add image loading for zombies
+Jackie (1/23/16) - Implement sprite movement for zombies
+Jackie (1/23/16) - Implement colorchanging for zombies with sprite
+*bug* - level sometimes starts at level 2
+
 
 NextSteps:
 -direction of projectile based on differences of x and y coords between player/ devil and trig funcs

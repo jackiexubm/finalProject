@@ -27,7 +27,7 @@ class Bullet {
     }
   }
 
-  boolean damage(Wave enemy) {
+  boolean damage(Wave enemy, Player me) {
     if (type == 0) {
       for (int i = 0; i < enemy.size; i++) {
         if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
@@ -38,11 +38,14 @@ class Bullet {
       }
     } else if (type == 1) {
       for (int i = 0; i < enemy.size; i++) {
-        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 20) {          
-          for(int i2 = 0; i2 < enemy.size; i2++){
+        if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 22.5) {          
+          for (int i2 = 0; i2 < enemy.size; i2++) {
             if (dist(enemy.wave.get(i2).XCoord, enemy.wave.get(i2).YCoord, XCoord, YCoord) <= 100) {
-             enemy.wave.get(i2).takeDamage((int)dmg);
+              enemy.wave.get(i2).takeDamage((int)dmg);
             }
+          }
+          if (dist(me.XCoord, me.YCoord, XCoord, YCoord) <= 100) {
+            me.takeDamage((int)dmg);
           }
           return true;
         }

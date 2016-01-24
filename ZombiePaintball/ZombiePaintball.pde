@@ -117,36 +117,35 @@ void draw() {
     if (isShooting && millis() >= nextShot) {
       bullets.addAll(test.shoot(isEquipped));
       if (isEquipped instanceof Pistol) {
-        nextShot = millis() + 500;
+        nextShot = millis() + 450;
       } else if (isEquipped instanceof Shotgun) {
-        nextShot = millis() + 900;
+        nextShot = millis() + 800;
       } else if (isEquipped instanceof Rifle) {
         nextShot = millis() + 80;
       } else if (isEquipped instanceof Rocket) {
-        nextShot = millis() + 2500;
+        nextShot = millis() + 2000;
       }
     }
 
     for (int i = 0; i < bullets.size(); i ++) {
       bullets.get(i).drawBullet();
       bullets.get(i).move();
-      if (bullets.get(i).type == 1 && bullets.get(i).damage(wave)){
+      if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test)) {
         boomX = bullets.get(i).XCoord;
         boomY = bullets.get(i).YCoord;
         explo = 2560;
         bullets.remove(i);
-      }else if(bullets.get(i).damage(wave)){
+      } else if (bullets.get(i).damage(wave, test)) {
         bullets.remove(i);
       }
     }
-    
-    if(explo > 0){
+
+    if (explo > 0) {
       System.out.println(explo);
-      tint(255,explo/10);
-      image(boom,boomX - 90,boomY - 30,180,100);
+      tint(255, explo/10);
+      image(boom, boomX - 90, boomY - 30, 180, 100);
       explo -= 32;
     }
-    
   }
 }
 
@@ -174,31 +173,31 @@ void keyPressed() {
     isShooting = true;
   }
   if (key == '1') {
-    if(isEquipped instanceof Pistol){
-    }else{
-    nextShot = millis() + 200;
-    isEquipped = new Pistol(27, 0);
+    if (isEquipped instanceof Pistol) {
+    } else {
+      nextShot = millis() + 200;
+      isEquipped = new Pistol(27, 0);
     }
   }
   if (key == '2') {
-    if(isEquipped instanceof Shotgun){
-    }else{
-    nextShot = millis() + 200;
-    isEquipped = new Shotgun(13, 0);
+    if (isEquipped instanceof Shotgun) {
+    } else {
+      nextShot = millis() + 300;
+      isEquipped = new Shotgun(13, 0);
     }
   }
   if (key == '3') {
-    if(isEquipped instanceof Rifle){
-    }else{
-    nextShot = millis() + 200;
-    isEquipped = new Rifle(7, 0);
+    if (isEquipped instanceof Rifle) {
+    } else {
+      nextShot = millis() + 200;
+      isEquipped = new Rifle(7, 0);
     }
   }
   if (key == '4') {
-    if(isEquipped instanceof Rocket){
-    }else{
-    nextShot = millis() + 200;
-    isEquipped = new Rocket(76, 0);
+    if (isEquipped instanceof Rocket) {
+    } else {
+      nextShot = millis() + 500;
+      isEquipped = new Rocket(34, 0);
     }
   }
 }

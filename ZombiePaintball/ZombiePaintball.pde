@@ -174,17 +174,32 @@ void keyPressed() {
     isShooting = true;
   }
   if (key == '1') {
+    if(isEquipped instanceof Pistol){
+    }else{
+    nextShot = millis() + 200;
     isEquipped = new Pistol(27, 0);
+    }
   }
   if (key == '2') {
-    
+    if(isEquipped instanceof Shotgun){
+    }else{
+    nextShot = millis() + 200;
     isEquipped = new Shotgun(13, 0);
+    }
   }
   if (key == '3') {
+    if(isEquipped instanceof Rifle){
+    }else{
+    nextShot = millis() + 200;
     isEquipped = new Rifle(7, 0);
+    }
   }
   if (key == '4') {
+    if(isEquipped instanceof Rocket){
+    }else{
+    nextShot = millis() + 200;
     isEquipped = new Rocket(76, 0);
+    }
   }
 }
 

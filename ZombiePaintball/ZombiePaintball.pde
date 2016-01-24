@@ -19,6 +19,7 @@ int explo;
 PImage boom;
 float boomX;
 float boomY;
+int milestone = 0;
 
 
 
@@ -85,6 +86,7 @@ void draw() {
     }
 
     if (myScore.checkMilestone()) {
+      milestone ++;
       System.out.println("good job");
     }
     if (healthpacks.size() > 0) {
@@ -179,21 +181,21 @@ void keyPressed() {
       isEquipped = new Pistol(27, 0);
     }
   }
-  if (key == '2') {
+  if (key == '2' && milestone >0) {
     if (isEquipped instanceof Shotgun) {
     } else {
       nextShot = millis() + 300;
       isEquipped = new Shotgun(13, 0);
     }
   }
-  if (key == '3') {
+  if (key == '3' && milestone >1) {
     if (isEquipped instanceof Rifle) {
     } else {
       nextShot = millis() + 200;
       isEquipped = new Rifle(7, 0);
     }
   }
-  if (key == '4') {
+  if (key == '4' && milestone >2) {
     if (isEquipped instanceof Rocket) {
     } else {
       nextShot = millis() + 500;

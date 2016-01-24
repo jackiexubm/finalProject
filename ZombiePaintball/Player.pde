@@ -25,7 +25,7 @@ PImage p7;
   p7 = loadImage("player7.png");
   }
   
-  void drawCharacter(){
+  void drawCharacters(){
     if (test.direction == 0) {
       image(p0, test.XCoord - 20, test.YCoord - 25, 40, 50);
     } else if (test.direction == 2) {

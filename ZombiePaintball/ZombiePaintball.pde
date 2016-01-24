@@ -15,14 +15,7 @@ int waveSize = 0;
 ArrayList<HealthPack> healthpacks = new ArrayList<HealthPack>();
 int lastHPPack = 0;
 
-PImage z0;
-PImage z1;
-PImage z2;
-PImage z3;
-PImage z4;
-PImage z5;
-PImage z6;
-PImage z7;
+
 
 
 void setup() {
@@ -33,15 +26,7 @@ void setup() {
   isShooting = false;
   level = 1;
   wave = new Wave();
-  
-  z0 = loadImage("zombie0.png");
-  z1 = loadImage("zombie1.png");
-  z2 = loadImage("zombie2.png");
-  z3 = loadImage("zombie3.png");
-  z4 = loadImage("zombie4.png");
-  z5 = loadImage("zombie5.png");
-  z6 = loadImage("zombie6.png");
-  z7 = loadImage("zombie7.png");
+
 }
 
 void draw() {
@@ -109,7 +94,7 @@ void draw() {
     myScore.addScore(wave.move(test));
     wave.checkOverlap(test);
 
-  test.drawCharacter();
+  test.drawCharacters();
     test.move();
     test.changeDirection();
 

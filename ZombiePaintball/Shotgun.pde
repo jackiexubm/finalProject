@@ -10,13 +10,13 @@ class Shotgun extends Weapons {
       ret.remove(i);
     }
     if (direction == 0) {
-      Bullet temp1 = new Bullet(X, Y, -3, -9.5, dmg, direction); 
-      Bullet temp2 = new Bullet(X, Y, -2, -9.8, dmg, direction); 
-      Bullet temp3 = new Bullet(X, Y, -1, -9.95, dmg, direction); 
-      Bullet temp4 = new Bullet(X, Y, 0, -10, dmg, direction); 
-      Bullet temp5 = new Bullet(X, Y, 1, -9.95, dmg, direction); 
-      Bullet temp6 = new Bullet(X, Y, 2, -9.8, dmg, direction); 
-      Bullet temp7 = new Bullet(X, Y, 3, -9.5, dmg, direction); 
+      Bullet temp1 = new Bullet(X + 13, Y - 15, -3, -9.5, dmg, direction); 
+      Bullet temp2 = new Bullet(X + 13, Y - 15, -2, -9.8, dmg, direction); 
+      Bullet temp3 = new Bullet(X + 13, Y - 15, -1, -9.95, dmg, direction); 
+      Bullet temp4 = new Bullet(X + 13, Y - 15, 0, -10, dmg, direction); 
+      Bullet temp5 = new Bullet(X + 13, Y - 15, 1, -9.95, dmg, direction); 
+      Bullet temp6 = new Bullet(X + 13, Y - 15, 2, -9.8, dmg, direction); 
+      Bullet temp7 = new Bullet(X + 13, Y - 15, 3, -9.5, dmg, direction); 
       ret.add(temp1);
       ret.add(temp2);
       ret.add(temp3);
@@ -26,13 +26,13 @@ class Shotgun extends Weapons {
       ret.add(temp7);
       return ret;
     } else if (direction == 2) {
-      Bullet temp1 = new Bullet(X, Y, 9.5, 3, dmg, direction); 
-      Bullet temp2 = new Bullet(X, Y, 9.8, 2, dmg, direction); 
-      Bullet temp3 = new Bullet(X, Y, 9.95, 1, dmg, direction); 
-      Bullet temp4 = new Bullet(X, Y, 10, 0, dmg, direction); 
-      Bullet temp5 = new Bullet(X, Y, 9.95, -1, dmg, direction); 
-      Bullet temp6 = new Bullet(X, Y, 9.8, -2, dmg, direction); 
-      Bullet temp7 = new Bullet(X, Y, 9.5, -3, dmg, direction); 
+      Bullet temp1 = new Bullet(X + 17, Y + 3, 9.5, 3, dmg, direction); 
+      Bullet temp2 = new Bullet(X + 17, Y + 3, 9.8, 2, dmg, direction); 
+      Bullet temp3 = new Bullet(X + 17, Y + 3, 9.95, 1, dmg, direction); 
+      Bullet temp4 = new Bullet(X + 17, Y + 3, 10, 0, dmg, direction); 
+      Bullet temp5 = new Bullet(X + 17, Y + 3, 9.95, -1, dmg, direction); 
+      Bullet temp6 = new Bullet(X + 17, Y + 3, 9.8, -2, dmg, direction); 
+      Bullet temp7 = new Bullet(X + 17, Y + 3, 9.5, -3, dmg, direction); 
       ret.add(temp1);
       ret.add(temp2);
       ret.add(temp3);
@@ -42,13 +42,13 @@ class Shotgun extends Weapons {
       ret.add(temp7);
       return ret;
     } else if (direction ==4) {
-      Bullet temp1 = new Bullet(X, Y, -3, 9.5, dmg, direction); 
-      Bullet temp2 = new Bullet(X, Y, -2, 9.8, dmg, direction); 
-      Bullet temp3 = new Bullet(X, Y, -1, 9.95, dmg, direction); 
-      Bullet temp4 = new Bullet(X, Y, 0, 10, dmg, direction); 
-      Bullet temp5 = new Bullet(X, Y, 1, 9.95, dmg, direction); 
-      Bullet temp6 = new Bullet(X, Y, 2, 9.8, dmg, direction); 
-      Bullet temp7 = new Bullet(X, Y, 3, 9.5, dmg, direction); 
+      Bullet temp1 = new Bullet(X - 10, Y + 10, -3, 9.5, dmg, direction); 
+      Bullet temp2 = new Bullet(X - 10, Y + 10, -2, 9.8, dmg, direction); 
+      Bullet temp3 = new Bullet(X - 10, Y + 10, -1, 9.95, dmg, direction); 
+      Bullet temp4 = new Bullet(X - 10, Y + 10, 0, 10, dmg, direction); 
+      Bullet temp5 = new Bullet(X - 10, Y + 10, 1, 9.95, dmg, direction); 
+      Bullet temp6 = new Bullet(X - 10, Y + 10, 2, 9.8, dmg, direction); 
+      Bullet temp7 = new Bullet(X - 10, Y + 10, 3, 9.5, dmg, direction); 
       ret.add(temp1);
       ret.add(temp2);
       ret.add(temp3);
@@ -58,13 +58,13 @@ class Shotgun extends Weapons {
       ret.add(temp7);
       return ret;
     } else if (direction ==6) {
-      Bullet temp1 = new Bullet(X, Y, -9.5, 3, dmg, direction); 
-      Bullet temp2 = new Bullet(X, Y, -9.8, 2, dmg, direction); 
-      Bullet temp3 = new Bullet(X, Y, -9.95, 1, dmg, direction); 
-      Bullet temp4 = new Bullet(X, Y, -10, 0, dmg, direction); 
-      Bullet temp5 = new Bullet(X, Y, -9.95, -1, dmg, direction); 
-      Bullet temp6 = new Bullet(X, Y, -9.8, -2, dmg, direction); 
-      Bullet temp7 = new Bullet(X, Y, -9.5, -3, dmg, direction);  
+      Bullet temp1 = new Bullet(X - 8, Y - 10, -9.5, 3, dmg, direction); 
+      Bullet temp2 = new Bullet(X - 8, Y - 10, -9.8, 2, dmg, direction); 
+      Bullet temp3 = new Bullet(X - 8, Y - 10, -9.95, 1, dmg, direction); 
+      Bullet temp4 = new Bullet(X - 8, Y - 10, -10, 0, dmg, direction); 
+      Bullet temp5 = new Bullet(X - 8, Y - 10, -9.95, -1, dmg, direction); 
+      Bullet temp6 = new Bullet(X - 8, Y - 10, -9.8, -2, dmg, direction); 
+      Bullet temp7 = new Bullet(X - 8, Y - 10, -9.5, -3, dmg, direction);  
       ret.add(temp1);
       ret.add(temp2);
       ret.add(temp3);

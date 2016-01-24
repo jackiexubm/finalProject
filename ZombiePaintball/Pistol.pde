@@ -18,7 +18,7 @@ class Pistol extends Weapons {
       ret.add(temp);
       return ret;
     } else if (direction ==4) {
-      Bullet temp = new Bullet(X - 10, Y + 2, 0, 10, dmg, direction); 
+      Bullet temp = new Bullet(X - 10, Y + 10, 0, 10, dmg, direction); 
       ret.add(temp);
       return ret;
     } else if (direction ==6) {

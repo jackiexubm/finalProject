@@ -151,7 +151,7 @@ void keyPressed() {
     isEquipped = new Shotgun(13, 0);
   }
   if (key == '3') {
-    isEquipped = new Rifle(8, 0);
+    isEquipped = new Rifle(7, 0);
   }
 }
 

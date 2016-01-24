@@ -26,6 +26,7 @@ PImage p7;
   }
   
   void drawCharacters(){
+    noTint();
     if (test.direction == 0) {
       image(p0, test.XCoord - 20, test.YCoord - 25, 40, 50);
     } else if (test.direction == 2) {

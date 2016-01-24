@@ -66,6 +66,7 @@ PImage z7;
   //}
   
     void drawCharacters(){
+      chooseColor(health,maxHP);
     if (direction == 0) {
       image(z0,XCoord - 20, YCoord - 25, 40, 50);
     } else if (direction == 2) {
@@ -104,13 +105,13 @@ PImage z7;
 
   void chooseColor(int health, double originalHP) {
     if (health/maxHP < 0.25) {
-      fill(256, 0, 0);
+      tint(256, 0, 0);
     } else if (health/maxHP < 0.5) {
-      fill(256, 128, 0);
+      tint(256, 156, 0);
     } else if (health/originalHP < 0.75) {
-      fill(153, 256, 51);
+      tint(256, 204, 0);
     } else if (health/originalHP <= 1) {
-      fill(0, 256, 0);
+      tint(0, 256, 0);
     }
   }
 }

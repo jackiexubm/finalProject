@@ -74,7 +74,9 @@ void drawBullets(Wave enemy, Player x){
   for(int i = 0; i < Projectiles.size(); i++){
    Projectiles.get(i).drawBullet();
    Projectiles.get(i).move();
-   Projectiles.get(i).damage(enemy, x);
+   if(Projectiles.get(i).damage(enemy, x)){
+    Projectiles.remove(Projectiles.get(i)); 
+   }
   }
 }
 }

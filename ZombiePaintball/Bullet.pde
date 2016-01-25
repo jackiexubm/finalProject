@@ -59,6 +59,7 @@ class Bullet {
       if(dist(me.XCoord, me.YCoord, XCoord, YCoord) <= 15){
         me.takeDamage((int)dmg);
         me.knockBack(this,20);
+        return true;
       }
     }
     return false;

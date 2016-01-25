@@ -87,12 +87,11 @@ void draw() {
         level ++;
         System.out.println("Current Level: " + level);
         System.out.println("Current Score: " + myScore.score);
-        waveSize = 5 + level * 5;
+        waveSize = level * 5;
         devilAmount = (level + 1)/3 ;
         dWave.spawnDevils(devilAmount);
         System.out.println(dWave.size);
-      
-
+        nextSpawn = millis();
       }
       if (waveSize > 0 && millis() >= nextSpawn) {
         waveSize--;
@@ -116,7 +115,7 @@ void draw() {
         if (healthpacks.size() > 0) {
           healthpacks.remove(0);
         }
-        HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 25, millis(), 10000); 
+        HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 25, millis(), 12000); 
         healthpacks.add(hp);
         lastHPPack += 20;
       }
@@ -206,21 +205,21 @@ void keyPressed() {
       isEquipped = new Pistol(27, 0);
     }
   }
-  if (key == '2' && milestone >0) {
+  if (key == '2' && level > 1) {
     if (isEquipped instanceof Shotgun) {
     } else {
       nextShot = millis() + 300;
-      isEquipped = new Shotgun(13, 0);
+      isEquipped = new Shotgun(14, 0);
     }
   }
-  if (key == '3' && milestone >1) {
+  if (key == '3' && level > 2) {
     if (isEquipped instanceof Rifle) {
     } else {
       nextShot = millis() + 200;
-      isEquipped = new Rifle(7, 0);
+      isEquipped = new Rifle(8, 0);
     }
   }
-  if (key == '4' && milestone >2) {
+  if (key == '4' && level > 3) {
     if (isEquipped instanceof Rocket) {
     } else {
       nextShot = millis() + 500;

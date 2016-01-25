@@ -54,7 +54,7 @@ void draw() {
         text("Game Paused", width/5, height/2);
         text("Restart", width/3, 3*height/4);
         if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
-          gameFunctions.restart(myScore, wave, test);
+          gameFunctions.restart(myScore, wave, test, dWave);
           level = 0;
           pause = false;
         }
@@ -65,7 +65,7 @@ void draw() {
         text("Game Over", width/4, height/2);
         text("Restart", width/3, 3*height/4);
         if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
-          gameFunctions.restart(myScore, wave, test);
+          gameFunctions.restart(myScore, wave, test, dWave);
           level = 0;
           pause = false;
           game = true;
@@ -82,29 +82,33 @@ void draw() {
       if (test.health <= 0) {
         game = false;
       }
-      if (waveSize > 0 && millis() >= nextSpawn) {
-        waveSize--;
-        nextSpawn += 900;
-        wave.spawn(waveSize%2);
-      }
+
       if (wave.getSize() == 0 && dWave.size == 0) {
         level ++;
         System.out.println("Current Level: " + level);
         System.out.println("Current Score: " + myScore.score);
         waveSize = 5 + level * 5;
-        devilAmount = (int)(level/5 + 1);
+        devilAmount = (level + 1)/3 ;
         dWave.spawnDevils(devilAmount);
         System.out.println(dWave.size);
-        nextSpawn = millis() + 10;
+      
+
+      }
+      if (waveSize > 0 && millis() >= nextSpawn) {
+        waveSize--;
+        nextSpawn += 900;
+        wave.spawn(waveSize%2);
       }
       dWave.move(test, wave);
       if (myScore.checkMilestone()) {
         milestone ++;
-        if (milestone == 1){
+        if (milestone == 1) {
           System.out.println("Shotgun obtained! Press 2 to equip");
-        }if (milestone == 2){
+        }
+        if (milestone == 2) {
           System.out.println("Rifle obtained! Press 3 to equip");
-        }if (milestone == 3){
+        }
+        if (milestone == 3) {
           System.out.println("Rocket obtained! Press 4 to equip");
         }
 

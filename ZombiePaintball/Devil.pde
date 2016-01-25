@@ -3,6 +3,7 @@ boolean canAttack;
 int nextAttack;
 int dmg;
 int bVel;
+ArrayList<Bullet> Projectiles;
 
 public Devil(int x, int y, int health, int attack) {
   super(x, y, health, attack);
@@ -10,22 +11,23 @@ public Devil(int x, int y, int health, int attack) {
   nextAttack = 0;
   dmg = attack;
   bVel = 2;
+  Projectiles = new ArrayList<Bullet>();
 
 }
 
-void drawDevil(){
+void drawDevils(){
   fill(256,0,0);
   ellipse(XCoord, YCoord, 40,40);
 }
 
-void drawProjectiles(ArrayList<Bullet> arr){
- for(int i = 0; i < arr.size(); i++){
-  arr.get(i).drawBullet();
-  arr.get(i).move();
+void drawProjectiles(){
+ for(int i = 0; i < Projectiles.size(); i++){
+  Projectiles.get(i).drawBullet();
+  Projectiles.get(i).move();
  }
 }
 
-void attack(Characters x, ArrayList<Bullet> arr) {
+void attack(Characters x) {
  if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 200 && !canAttack) {
    nextAttack = millis() + 1000;
    canAttack = true;
@@ -33,7 +35,7 @@ void attack(Characters x, ArrayList<Bullet> arr) {
    velY = 0;
  }
  if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 200 && canAttack && millis() >= nextAttack) {
-   arr.add(fireProjectile(x));
+   Projectiles.add(fireProjectile(x));
    nextAttack = millis() + 300;
    System.out.println(x.health);
    System.out.println(1);
@@ -66,5 +68,13 @@ Bullet fireProjectile(Characters X) {
  float theta = atan2((X.YCoord - YCoord) ,(X.XCoord - XCoord));
  Bullet temp = new Bullet(XCoord + 0., YCoord + 0., bVel * cos(theta), bVel * sin(theta), 10., 0., 2);
  return temp;
+}
+
+void drawBullets(Wave enemy, Player x){
+  for(int i = 0; i < Projectiles.size(); i++){
+   Projectiles.get(i).drawBullet();
+   Projectiles.get(i).move();
+   Projectiles.get(i).damage(enemy, x);
+  }
 }
 }

@@ -21,14 +21,14 @@ float boomX;
 float boomY;
 int milestone = 0;
 boolean main;
-Devil dev;
 ArrayList<Bullet> devilProjectiles = new ArrayList<Bullet>();
+int devilAmount = 0;
+DevilWave DWave = new DevilWave();
 
 
 void setup() {
   size(1000, 650);
   test = new Player(width/2, height/2, 100, 5);
-  dev = new Devil(0,height/2, 500, 10);
   pause = false;
   game = true;
   isShooting = false;
@@ -88,14 +88,17 @@ void draw() {
         nextSpawn += 900;
         wave.spawn(waveSize%2);
       }
-      //if (wave.getSize() == 0) {
-      //  level ++;
-      //  System.out.println("Current Level: " + level);
-      //  System.out.println("Current Score: " + myScore.score);
-      //  waveSize = 5 + level * 5;
-      //  nextSpawn = millis() + 10;
-      //}
-  
+      if (wave.getSize() == 0 && DWave.size == 0) {
+       level ++;
+       System.out.println("Current Level: " + level);
+       System.out.println("Current Score: " + myScore.score);
+       waveSize = 5 + level * 5;
+       devilAmount = (int)(level/5 + 1);
+       DWave.spawnDevils(devilAmount);
+       System.out.println(DWave.size);
+       nextSpawn = millis() + 10;
+      }
+      DWave.move(test, wave);
       if (myScore.checkMilestone()) {
         milestone ++;
         System.out.println("good job");
@@ -124,11 +127,7 @@ void draw() {
       test.move();
       test.changeDirection();
   
-      dev.drawDevil();
-      dev.findDirection(test);
-      dev.move();
-      dev.attack(test, devilProjectiles);
-      dev.drawProjectiles(devilProjectiles);
+
   
       if (isShooting && millis() >= nextShot) {
         bullets.addAll(test.shoot(isEquipped));

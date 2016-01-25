@@ -1,7 +1,6 @@
 import java.util.Collections;
 class Wave {
   Zombie temp;
-  Devil dev;
   int size;
   ArrayList<Zombie> wave = new ArrayList<Zombie>(0);
   Wave() {
@@ -12,44 +11,18 @@ class Wave {
     return size;
   }
 
-  Zombie getZombie(int i) {
-    return wave.get(i);
-  }
 
   void remove(int i) {
     wave.remove(i);
   }
-  
-  //void addDevil(){
-  //  dev = new Devil(
-  //}
+
 
   void clear() {
     wave.clear(); 
     size = wave.size();
   }
 
-  void makeWave(int amount) {
-    int i = 0;
-    int nextSpawn = millis();
-    while (i < amount) {
-      //if(millis() >= nextSpawn){
-      int y = height;
-      if (i%2 == 0) {
-        y = 0;
-      }
-      System.out.println(1);
-      temp = new Zombie(width/2, y, 100, 5);
-      //temp.drawCharacters();
-      wave.add(temp);
-      nextSpawn += 1000;
-      System.out.println(nextSpawn);
-      i++;
-      size = wave.size();
-      //}
-      // move(x);
-    }
-  }
+
 
   void spawn(int yCoor) {
     int y = height;
@@ -77,6 +50,7 @@ class Wave {
         size = wave.size();
         death++;
       }
+      
     }
     return death;
   }

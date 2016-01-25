@@ -6,7 +6,7 @@ boolean game;
 boolean isShooting;
 int level;
 Wave wave;
-Weapons isEquipped = new Pistol(27, 2);
+Weapons isEquipped = new Rocket(27, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 Score myScore = new Score();
@@ -40,10 +40,8 @@ void setup() {
 }
 
 void draw() {
-  if(!main){
-    
-  }
-  else{
+  if (!main) {
+  } else {
     background(235, 220, 197);
     if (!game || pause) {
       if (pause) {
@@ -64,7 +62,7 @@ void draw() {
         textSize(100);
         fill(0);
         text("Game Over", width/4, height/2);
-         text("Restart", width/3, 3*height/4);
+        text("Restart", width/3, 3*height/4);
         if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
           gameFunctions.restart(myScore, wave, test);
           level = 0;
@@ -89,14 +87,14 @@ void draw() {
         wave.spawn(waveSize%2);
       }
       if (wave.getSize() == 0 && dWave.size == 0) {
-       level ++;
-       System.out.println("Current Level: " + level);
-       System.out.println("Current Score: " + myScore.score);
-       waveSize = 5 + level * 5;
-       devilAmount = (int)(level/5 + 1);
-       dWave.spawnDevils(devilAmount);
-       System.out.println(dWave.size);
-       nextSpawn = millis() + 10;
+        level ++;
+        System.out.println("Current Level: " + level);
+        System.out.println("Current Score: " + myScore.score);
+        waveSize = 5 + level * 5;
+        devilAmount = (int)(level/5 + 1);
+        dWave.spawnDevils(devilAmount);
+        System.out.println(dWave.size);
+        nextSpawn = millis() + 10;
       }
       dWave.move(test, wave);
       if (myScore.checkMilestone()) {
@@ -119,16 +117,16 @@ void draw() {
         healthpacks.get(0).replenishHealth(test);
         healthpacks.remove(0);
       }
-      
+
       myScore.addScore(wave.move(test));
       wave.checkOverlap(test);
-  
+
       test.drawCharacters();
       test.move();
       test.changeDirection();
-  
 
-  
+
+
       if (isShooting && millis() >= nextShot) {
         bullets.addAll(test.shoot(isEquipped));
         if (isEquipped instanceof Pistol) {
@@ -141,20 +139,20 @@ void draw() {
           nextShot = millis() + 2000;
         }
       }
-  
+
       for (int i = 0; i < bullets.size(); i ++) {
         bullets.get(i).drawBullet();
         bullets.get(i).move();
-        if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test,dWave)) {
+        if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test, dWave)) {
           boomX = bullets.get(i).XCoord;
           boomY = bullets.get(i).YCoord;
           explo = 2560;
           bullets.remove(i);
-        } else if (bullets.get(i).damage(wave, test,dWave)) {
+        } else if (bullets.get(i).damage(wave, test, dWave)) {
           bullets.remove(i);
         }
       }
-  
+
       if (explo > 0) {
         System.out.println(explo);
         tint(255, explo/10);

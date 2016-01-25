@@ -39,14 +39,14 @@ class Bullet {
           return true;
         }
       }
-      for (int i = 0; i < dWave.size; i ++){
-      if (dist(dWave.wave.get(i).XCoord, dWave.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
+      for (int i = 0; i < dWave.size; i ++) {
+        if (dist(dWave.wave.get(i).XCoord, dWave.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
           knockback(dWave.wave.get(i), 8);
           dWave.wave.get(i).takeDamage((int)dmg);   
           return true;
+        }
       }
-    }
-  } else if (type == 1) {
+    } else if (type == 1) {
       for (int i = 0; i < enemy.size; i++) {
         if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 22.5) {          
           for (int i2 = 0; i2 < enemy.size; i2++) {
@@ -58,6 +58,21 @@ class Bullet {
             me.takeDamage((int)dmg);
           }
           return true;
+        }
+      }
+      for (int i = 0; i < dWave.size; i ++) {
+        if (dist(dWave.wave.get(i).XCoord, dWave.wave.get(i).YCoord, XCoord, YCoord) <= 22.5) {
+          for (int i2 = 0; i2 < enemy.size; i2++) {
+            if (dist(enemy.wave.get(i2).XCoord, enemy.wave.get(i2).YCoord, XCoord, YCoord) <= 100) {
+              enemy.wave.get(i2).takeDamage((int)dmg);
+            }
+          }
+          for (int i3 = 0; i3 < dWave.size; i3++) {
+            if (dist(dWave.wave.get(i3).XCoord, dWave.wave.get(i3).YCoord, XCoord, YCoord) <= 100) {
+              dWave.wave.get(i3).takeDamage((int)dmg);
+            }
+            return true;
+          }
         }
       }
     } else if (type == 2) {

@@ -93,12 +93,14 @@ void draw() {
         System.out.println(dWave.size);
         nextSpawn = millis();
       }
+      
       if (waveSize > 0 && millis() >= nextSpawn) {
         waveSize--;
         nextSpawn += 900;
         wave.spawn(waveSize%2);
       }
       dWave.move(test, wave);
+      dWave.checkOverlap(test,wave.wave);
       if (myScore.checkMilestone()) {
         milestone ++;
         if (milestone == 1) {

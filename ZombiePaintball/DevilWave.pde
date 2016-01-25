@@ -1,5 +1,5 @@
-class DevilWave{
- Devil temp;
+class DevilWave {
+  Devil temp;
   int size;
   ArrayList<Devil> wave = new ArrayList<Devil>();
   DevilWave() {
@@ -21,18 +21,16 @@ class DevilWave{
     size = wave.size();
   }
 
-
-
   void spawnDevils(int amount) {
-    for(int i = 0; i < amount; i++){
-    int x = width;
-    if (i%2 == 0) {
-      x = 0;
+    for (int i = 0; i < amount; i++) {
+      int x = width;
+      if (i%2 == 0) {
+        x = 0;
+      }
+      temp = new Devil(x, height/2, 500, 5);
+      wave.add(temp);
+      size = wave.size();
     }
-    temp = new Devil(x, height/2, 500, 5);
-    wave.add(temp);
-    size = wave.size();
-  }
   }
 
 
@@ -52,32 +50,20 @@ class DevilWave{
         size = wave.size();
         death++;
       }
-      
     }
     return death;
   }
 
-  void checkOverlap(Characters x) {
-    for (int i = 0; i < wave.size() - 1; i++) {
-      for (int i2 = i + 1; i2 < wave.size(); i2++) {
-        if (dist(wave.get(i).XCoord, wave.get(i).YCoord, wave.get(i2).XCoord, wave.get(i2).YCoord) <= 30) {
-          wave.get(i).moveAwayFrom(wave.get(i2), 1);
+  void checkOverlap(Player x, ArrayList<Zombie> wave2) {
+    for (int i = 0; i < wave2.size(); i++) {
+      for (int i2 = 0; i2 < wave.size(); i2++) {
+        if (dist(wave2.get(i).XCoord, wave2.get(i).YCoord, wave.get(i2).XCoord, wave.get(i2).YCoord) <= 30) {
+          wave2.get(i).moveAwayFrom(wave.get(i2), 1);
         }
       }
       if (dist(wave.get(i).XCoord, wave.get(i).YCoord, x.XCoord, x.YCoord) <= 30) {
-        if (x.velX == 0 && x.velY == 0) {
-        } else {
-          x.moveAwayFrom(wave.get(i), 2);
-        }
+        wave.get(i).moveAwayFrom(x, 1);
       }
     }
-    if (wave.size() > 0) {
-      if (dist(wave.get(wave.size() - 1).XCoord, wave.get(wave.size() - 1).YCoord, x.XCoord, x.YCoord) <= 30) {
-        if (x.velX == 0 && x.velY == 0) {
-        } else {
-          x.moveAwayFrom(wave.get(wave.size() - 1), 2);
-        }
-      }
-    }
-  } 
+  }
 }

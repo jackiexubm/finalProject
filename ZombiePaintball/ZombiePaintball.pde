@@ -20,137 +20,148 @@ PImage boom;
 float boomX;
 float boomY;
 int milestone = 0;
-
+boolean main;
+Devil dev;
+ArrayList<Bullet> devilProjectiles = new ArrayList<Bullet>();
 
 
 void setup() {
   size(1000, 650);
   test = new Player(width/2, height/2, 100, 5);
+  dev = new Devil(0,height/2, 500, 10);
   pause = false;
   game = true;
   isShooting = false;
-  level = 1;
+  level = 0;
   wave = new Wave();
   gameFunctions = new Game();
   boom = loadImage("explosion.png");
+  main = true;
 }
 
 void draw() {
-  background(235, 220, 197);
-  if (!game || pause) {
-    if (pause) {
-      rectMode(CENTER);
-      fill(100);
-      rect(width/2, 3*height/4 - 25, 400, 100);
-      fill(0);
-      textSize(100);
-      text("Game Paused", width/5, height/2);
-      text("Restart", width/3, 3*height/4);
-      if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
-        gameFunctions.restart(myScore, wave, test);
-        level = 1;
-        pause = false;
+  if(!main){
+    
+  }
+  else{
+    background(235, 220, 197);
+    if (!game || pause) {
+      if (pause) {
+        rectMode(CENTER);
+        fill(100);
+        rect(width/2, 3*height/4 - 25, 400, 100);
+        fill(0);
+        textSize(100);
+        text("Game Paused", width/5, height/2);
+        text("Restart", width/3, 3*height/4);
+        if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
+          gameFunctions.restart(myScore, wave, test);
+          level = 0;
+          pause = false;
+        }
       }
-    }
-    if (!game) {
-      textSize(100);
-      fill(0);
-      text("Game Over", width/4, height/2);
-       text("Restart", width/3, 3*height/4);
-      if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
-        gameFunctions.restart(myScore, wave, test);
-        level = 1;
-        pause = false;
-        game = true;
+      if (!game) {
+        textSize(100);
+        fill(0);
+        text("Game Over", width/4, height/2);
+         text("Restart", width/3, 3*height/4);
+        if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
+          gameFunctions.restart(myScore, wave, test);
+          level = 0;
+          pause = false;
+          game = true;
+        }
       }
-    }
-  } else {
-    String health = "HP: " + test.health;
-    fill(0);
-    textSize(20);
-    text(health, 10, height - 10);
-    text("Wave " + (level-1), 10, 25);
-    text("Zombie " + wave.getSize(), width-150, 25);
-    text("Score: " + myScore.score, width-150, height - 10);    
-    if (test.health <= 0) {
-      game = false;
-    }
-    if (waveSize > 0 && millis() >= nextSpawn) {
-      waveSize--;
-      nextSpawn += 900;
-      wave.spawn(waveSize%2);
-    }
-    if (wave.getSize() == 0) {
-      System.out.println("Current Level: " + level);
-      System.out.println("Current Score: " + myScore.score);
-      waveSize = 5 + level * 5;
-      nextSpawn = millis() + 10;
-      //going to add a short timer between levels
-      //wave.makeWave(waveSize, test);
-      level ++;
-    }
-
-    if (myScore.checkMilestone()) {
-      milestone ++;
-      System.out.println("good job");
+    } else {
+      String health = "HP: " + test.health;
+      fill(0);
+      textSize(20);
+      text(health, 10, height - 10);
+      text("Wave " + level, 10, 25);
+      text("Zombie " + wave.getSize(), width-150, 25);
+      text("Score: " + myScore.score, width-150, height - 10);    
+      if (test.health <= 0) {
+        game = false;
+      }
+      if (waveSize > 0 && millis() >= nextSpawn) {
+        waveSize--;
+        nextSpawn += 900;
+        wave.spawn(waveSize%2);
+      }
+      //if (wave.getSize() == 0) {
+      //  level ++;
+      //  System.out.println("Current Level: " + level);
+      //  System.out.println("Current Score: " + myScore.score);
+      //  waveSize = 5 + level * 5;
+      //  nextSpawn = millis() + 10;
+      //}
+  
+      if (myScore.checkMilestone()) {
+        milestone ++;
+        System.out.println("good job");
+        if (healthpacks.size() > 0) {
+          healthpacks.remove(0);
+        }
+        HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 25, millis(), 10000); 
+        healthpacks.add(hp);
+        lastHPPack += 20;
+      }
       if (healthpacks.size() > 0) {
+        healthpacks.get(0).drawPack();
+      }
+      if (healthpacks.size() > 0 && millis() >= healthpacks.get(0).time) {
+        healthpacks.clear();
+      }
+      if (healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))) {
+        healthpacks.get(0).replenishHealth(test);
         healthpacks.remove(0);
       }
-      HealthPack hp = new HealthPack((int)(Math.random() * width), (int)(Math.random() * height), 20, 25, millis(), 10000); 
-      healthpacks.add(hp);
-      lastHPPack += 20;
-    }
-    if (healthpacks.size() > 0) {
-      healthpacks.get(0).drawPack();
-    }
-    if (healthpacks.size() > 0 && millis() >= healthpacks.get(0).time) {
-      healthpacks.clear();
-    }
-    if (healthpacks.size() > 0 && test.checkHealthPack(healthpacks.get(0))) {
-      healthpacks.get(0).replenishHealth(test);
-      healthpacks.remove(0);
-    }
-    
-    myScore.addScore(wave.move(test));
-    wave.checkOverlap(test);
-
-    test.drawCharacters();
-    test.move();
-    test.changeDirection();
-
-
-
-    if (isShooting && millis() >= nextShot) {
-      bullets.addAll(test.shoot(isEquipped));
-      if (isEquipped instanceof Pistol) {
-        nextShot = millis() + 450;
-      } else if (isEquipped instanceof Shotgun) {
-        nextShot = millis() + 800;
-      } else if (isEquipped instanceof Rifle) {
-        nextShot = millis() + 80;
-      } else if (isEquipped instanceof Rocket) {
-        nextShot = millis() + 2000;
+      
+      myScore.addScore(wave.move(test));
+      wave.checkOverlap(test);
+  
+      test.drawCharacters();
+      test.move();
+      test.changeDirection();
+  
+      dev.drawDevil();
+      dev.findDirection(test);
+      dev.move();
+      dev.attack(test, devilProjectiles);
+      dev.drawProjectiles(devilProjectiles);
+  
+      if (isShooting && millis() >= nextShot) {
+        bullets.addAll(test.shoot(isEquipped));
+        if (isEquipped instanceof Pistol) {
+          nextShot = millis() + 450;
+        } else if (isEquipped instanceof Shotgun) {
+          nextShot = millis() + 800;
+        } else if (isEquipped instanceof Rifle) {
+          nextShot = millis() + 80;
+        } else if (isEquipped instanceof Rocket) {
+          nextShot = millis() + 2000;
+        }
       }
-    }
-
-    for (int i = 0; i < bullets.size(); i ++) {
-      bullets.get(i).drawBullet();
-      bullets.get(i).move();
-      if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test)) {
-        boomX = bullets.get(i).XCoord;
-        boomY = bullets.get(i).YCoord;
-        explo = 2560;
-        bullets.remove(i);
-      } else if (bullets.get(i).damage(wave, test)) {
-        bullets.remove(i);
+  
+      for (int i = 0; i < bullets.size(); i ++) {
+        bullets.get(i).drawBullet();
+        bullets.get(i).move();
+        if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test)) {
+          boomX = bullets.get(i).XCoord;
+          boomY = bullets.get(i).YCoord;
+          explo = 2560;
+          bullets.remove(i);
+        } else if (bullets.get(i).damage(wave, test)) {
+          bullets.remove(i);
+        }
       }
-    }
-
-    if (explo > 0) {
-      System.out.println(explo);
-      tint(255, explo/10);
-      image(boom, boomX - 90, boomY - 30, 180, 100);
-      explo -= 32;
+  
+      if (explo > 0) {
+        System.out.println(explo);
+        tint(255, explo/10);
+        image(boom, boomX - 90, boomY - 30, 180, 100);
+        explo -= 32;
+      }
     }
   }
 }

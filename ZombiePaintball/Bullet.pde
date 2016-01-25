@@ -25,6 +25,10 @@ class Bullet {
       fill(256, 200, 0);
       ellipse(XCoord, YCoord, 15, 15);
     }
+    else if (type == 2){
+     fill(139,0,0);
+     ellipse(XCoord, YCoord, 15, 15);
+    }
   }
 
   boolean damage(Wave enemy, Player me) {
@@ -49,6 +53,12 @@ class Bullet {
           }
           return true;
         }
+      }
+    }
+    else if (type == 2){
+      if(dist(me.XCoord, me.YCoord, XCoord, YCoord) <= 15){
+        me.takeDamage((int)dmg);
+        me.knockBack(this,20);
       }
     }
     return false;

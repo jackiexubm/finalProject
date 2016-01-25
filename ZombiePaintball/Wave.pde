@@ -1,6 +1,7 @@
 import java.util.Collections;
 class Wave {
   Zombie temp;
+  Devil dev;
   int size;
   ArrayList<Zombie> wave = new ArrayList<Zombie>(0);
   Wave() {
@@ -18,6 +19,10 @@ class Wave {
   void remove(int i) {
     wave.remove(i);
   }
+  
+  //void addDevil(){
+  //  dev = new Devil(
+  //}
 
   void clear() {
     wave.clear(); 

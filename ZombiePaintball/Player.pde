@@ -91,6 +91,21 @@ class Player extends Characters {
       YCoord -= units;
     }
   }
+  
+  void knockBack(Bullet b, int units){
+        if (b.XCoord - XCoord >= 0) {
+      XCoord -= units;
+    }
+    if (XCoord - b.XCoord >= 0) {
+      XCoord += units;
+    }
+    if (YCoord - b.YCoord >= 0) {
+      YCoord += units;
+    }
+    if (b.YCoord - YCoord >= 0) {
+      YCoord -= units;
+    }
+  }
 
   //void chooseColor(int health, double maxHP) {
   //  if (health/maxHP <= 0.25) {

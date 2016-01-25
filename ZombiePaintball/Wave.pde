@@ -50,12 +50,11 @@ class Wave {
         size = wave.size();
         death++;
       }
-      
     }
     return death;
   }
 
-  void checkOverlap(Characters x) {
+  void checkOverlap(Characters x, ArrayList<Devil> dWave) {
     for (int i = 0; i < wave.size() - 1; i++) {
       for (int i2 = i + 1; i2 < wave.size(); i2++) {
         if (dist(wave.get(i).XCoord, wave.get(i).YCoord, wave.get(i2).XCoord, wave.get(i2).YCoord) <= 30) {
@@ -66,6 +65,11 @@ class Wave {
         if (x.velX == 0 && x.velY == 0) {
         } else {
           x.moveAwayFrom(wave.get(i), 2);
+        }
+      }
+      for (int i3 = 0; i3 < dWave.size(); i3++) {
+        if (dist(wave.get(i).XCoord, wave.get(i).YCoord, dWave.get(i3).XCoord, dWave.get(i3).YCoord) <= 35) {
+          wave.get(i).moveAwayFrom(dWave.get(i3), 1);
         }
       }
     }

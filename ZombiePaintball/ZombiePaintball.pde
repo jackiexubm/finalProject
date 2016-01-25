@@ -6,7 +6,7 @@ boolean game;
 boolean isShooting;
 int level;
 Wave wave;
-Weapons isEquipped = new Pistol(27, 2);
+Weapons isEquipped = new Pistol(26, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 Score myScore = new Score();
@@ -100,7 +100,6 @@ void draw() {
         wave.spawn(waveSize%2);
       }
       dWave.move(test, wave);
-      dWave.checkOverlap(test,wave.wave);
       if (myScore.checkMilestone()) {
         milestone ++;
         if (milestone == 1) {
@@ -133,7 +132,7 @@ void draw() {
       }
 
       myScore.addScore(wave.move(test));
-      wave.checkOverlap(test);
+      wave.checkOverlap(test,dWave.wave);
 
       test.drawCharacters();
       test.move();

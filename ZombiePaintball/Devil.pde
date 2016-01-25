@@ -49,66 +49,115 @@ class Devil extends Zombie {
       image(d5, XCoord - 27, YCoord - 30, 55, 60);
     } else if (direction == 7) {
       image(d7, XCoord - 27, YCoord - 32, 55, 65);
-  } 
-}
-
-void drawProjectiles() {
-  for (int i = 0; i < Projectiles.size(); i++) {
-    Projectiles.get(i).drawBullet();
-    Projectiles.get(i).move();
-  }
-}
-
-void attack(Characters x) {
-  if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && !canAttack) {
-    nextAttack = millis() + 500;
-    canAttack = true;
-    velX = 0;
-    velY = 0;
-  }
-  if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && canAttack && millis() >= nextAttack) {
-    Projectiles.add(fireProjectile(x));
-    nextAttack = millis() + 300;
-    System.out.println(x.health);
-    System.out.println(1);
-  } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 200) {
-    canAttack = false;
-  }
-}
-
-void findDirection(Characters x) {
-  if (x.XCoord - XCoord <= 200 && XCoord - x.XCoord < 20) {
-    velX = 0;
-  }
-  if (x.YCoord - YCoord <= 200 && YCoord - x.YCoord < 20) {
-    velY = 0;
-  }
-  if (x.XCoord - XCoord > 200) {  
-    velX = 1;
-  }
-  if (XCoord - x.XCoord > 200) {
-    velX = -1;
-  }
-  if (YCoord - x.YCoord > 200) {
-    velY = -1;
-  }
-  if (x.YCoord - YCoord > 200) {
-    velY = 1;
-  }
-}
-Bullet fireProjectile(Characters X) {
-  float theta = atan2((X.YCoord - YCoord), (X.XCoord - XCoord));
-  Bullet temp = new Bullet(XCoord + 0., YCoord + 0., bVel * cos(theta), bVel * sin(theta), 20., 0., 2);
-  return temp;
-}
-
-void drawBullets(Wave enemy, Player x, DevilWave dWave) {
-  for (int i = 0; i < Projectiles.size(); i++) {
-    Projectiles.get(i).drawBullet();
-    Projectiles.get(i).move();
-    if (Projectiles.get(i).damage(enemy, x, dWave)) {
-      Projectiles.remove(Projectiles.get(i));
     }
   }
-}
+
+  void drawProjectiles() {
+    for (int i = 0; i < Projectiles.size(); i++) {
+      Projectiles.get(i).drawBullet();
+      Projectiles.get(i).move();
+    }
+  }
+
+  void attack(Characters x) {
+    if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && !canAttack) {
+      nextAttack = millis() + 500;
+      canAttack = true;
+      velX = 0;
+      velY = 0;
+    }
+    if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && canAttack && millis() >= nextAttack) {
+      Projectiles.add(fireProjectile(x));
+      nextAttack = millis() + 300;
+      System.out.println(x.health);
+      System.out.println(1);
+    } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 200) {
+      canAttack = false;
+    }
+  }
+
+  void findDirection(Characters x) {
+    if (x.XCoord - XCoord <= 200 && XCoord - x.XCoord < 20) {
+      velX = 0;
+    }
+    if (x.YCoord - YCoord <= 200 && YCoord - x.YCoord < 20) {
+      velY = 0;
+    }
+    if (x.XCoord - XCoord > 200) {  
+      velX = 1;
+    }
+    if (XCoord - x.XCoord > 200) {
+      velX = -1;
+    }
+    if (YCoord - x.YCoord > 200) {
+      velY = -1;
+    }
+    if (x.YCoord - YCoord > 200) {
+      velY = 1;
+    }
+  }
+
+  void faceDirection(Characters x) {
+    boolean faceUp = false;
+    boolean faceDown= false;
+    boolean faceLeft = false;
+    boolean faceRight = false;
+    if (x.XCoord - XCoord <= 200 && XCoord - x.XCoord < 20) {
+      faceRight = false;
+      faceLeft = false;
+    }
+    if (x.YCoord - YCoord <= 200 && YCoord - x.YCoord < 20) {
+      faceUp = false;
+      faceDown = false;
+    }
+    if (x.XCoord - XCoord > 200) {  
+      faceRight = true;
+      faceLeft = false;
+    }
+    if (XCoord - x.XCoord > 200) {
+      faceLeft = true;
+      faceRight = false;
+    }
+    if (YCoord - x.YCoord > 200) {
+      faceUp = true;
+      faceDown = false;
+    }
+    if (x.YCoord - YCoord > 200) {
+      faceDown = true;
+      faceUp = false;
+    }
+    if (faceUp && faceRight) {
+      direction = 1;
+    } else if (faceDown && faceRight) {
+      direction = 3;
+    } else if (faceDown && faceLeft) {
+      direction = 5;
+    } else if (faceUp && faceLeft) {
+      direction = 7;
+    } else if (faceUp) {
+      direction = 0;
+    } else if (faceRight) {
+      direction = 2;
+    } else if (faceDown) {
+      direction = 4;
+    } else if (faceLeft) {
+      direction = 6;
+    }
+  }
+
+  Bullet fireProjectile(Characters X) {
+    float theta = atan2((X.YCoord - YCoord), (X.XCoord - XCoord));
+    Bullet temp = new Bullet(XCoord + 0., YCoord + 0., bVel * cos(theta), bVel * sin(theta), 20., 0., 2);
+    return temp;
+  }
+
+  void drawBullets(Wave enemy, Player x, DevilWave dWave) {
+    for (int i = 0; i < Projectiles.size(); i++) {
+      Projectiles.get(i).drawBullet();
+      Projectiles.get(i).move();
+      if (Projectiles.get(i).damage(enemy, x, dWave)) {
+        Projectiles.remove(Projectiles.get(i));
+      }
+    }
+  }
 }

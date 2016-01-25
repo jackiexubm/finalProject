@@ -40,7 +40,7 @@ class DevilWave{
     int death = 0;
     Collections.sort(wave);
     for (int i = 0; i < size; i++) {
-      wave.get(i).changeDirection();
+      wave.get(i).faceDirection(x);
       wave.get(i).drawDevils();
       wave.get(i).findDirection(x);
       wave.get(i).move();

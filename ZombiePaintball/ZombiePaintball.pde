@@ -6,7 +6,7 @@ boolean game;
 boolean isShooting;
 int level;
 Wave wave;
-Weapons isEquipped = new Rocket(27, 2);
+Weapons isEquipped = new Pistol(27, 2);
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 int nextShot = millis();
 Score myScore = new Score();

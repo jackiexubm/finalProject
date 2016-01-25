@@ -102,27 +102,27 @@ class Devil extends Zombie {
     boolean faceDown= false;
     boolean faceLeft = false;
     boolean faceRight = false;
-    if (x.XCoord - XCoord <= 200 && XCoord - x.XCoord < 20) {
+    if (x.XCoord - XCoord <= 20 && XCoord - x.XCoord < 20) {
       faceRight = false;
       faceLeft = false;
     }
-    if (x.YCoord - YCoord <= 200 && YCoord - x.YCoord < 20) {
+    if (x.YCoord - YCoord <= 20 && YCoord - x.YCoord < 20) {
       faceUp = false;
       faceDown = false;
     }
-    if (x.XCoord - XCoord > 200) {  
+    if (x.XCoord - XCoord > 20) {  
       faceRight = true;
       faceLeft = false;
     }
-    if (XCoord - x.XCoord > 200) {
+    if (XCoord - x.XCoord > 20) {
       faceLeft = true;
       faceRight = false;
     }
-    if (YCoord - x.YCoord > 200) {
+    if (YCoord - x.YCoord > 20) {
       faceUp = true;
       faceDown = false;
     }
-    if (x.YCoord - YCoord > 200) {
+    if (x.YCoord - YCoord > 20) {
       faceDown = true;
       faceUp = false;
     }

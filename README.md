@@ -1,31 +1,36 @@
 # finalProject
+1. Project Description
+- Zombie Paintball is a game based on Boxheads. It is a game where the player starts off with a pistol and as the player continues, they obtain better weapons.
+The player must used the weapons to kill off waves of zombies and devils. The zombies are the basic enemy and will follow the player and attack within melee range.
+The devil is a stronger enemy that will attack from far away. It will shoot projectiles rapidly once the player comes in range. The advanced weapons will include 
+the shotgun (shoots multiple bullets in a spray with long reload), the rifle (shoots really fast, with low damage, and a small randomness in its spray, and the rocket
+launcher (shoots really slowly, with explosive bullets that will damage zombies and players in the radius of explosion).
 
-Log
+2. Directions
+- It is in processing, so open ZombiePaintball directory and run the ZombiePaintball.pde file. No extra libraries are necesary.
+
+3. Directions to use
+- Any menu, pause, game end screens use mouse clicks
+- The game itself used arrow buttons to move around
+If two directions are pressed (i.e UP and RIGHT- movement will be northeast)
+- Press "P" to pause/unpause
+- Press "R" to shoot
+- Press "1-4" to rotate weapons
+
+4. Log
 Issac&Jackie (1/20/16)- Start discussing ideas on health packs
-Issac (1/20/16)- Make HealthPack that spawns every 20 kills, bug with removing it
-Issac (1/20/16)- Fix bug of removing, new bug with it deleting before timer ends
-Issac (1/20/16)- Fix bugs of health pack and change its interaction with player to only heal if injured
-Jackie (1/20/16)- Start working on Shotgun class
-Jackie (1/20/16)- Change healthpack draw to cross and spawn to random
-Jackie (1/21/16)- Fix checkoverlap bug where wasnt checking player against all zombies
-Jackie (1/21/16)- Fix bug where zombies would push player around even when standing still
+Issac (1/20/16)- Make health packs that appear on a set interval
+*bug* - health packs not showing up *fixed*
+*bug* - health packs not disappearing *fixed*
+Jackie (1/20/16)- Start Shotgun, fix interaction between players and zombies, and change health pack shape
 Issac&Jackie(1/22/16)- Discuss how projectile enemy should work and start programming it
-Jackie (1/23/16) - Change all weapon return types to Arraylist of bullets
-Jackie (1/23/16) - Finish coding shotgun
-Jackie (1/23/16) - Finish coding rifle
-Jackie (1/23/16) - Add weapon selection feature
-Jackie (1/23/16) - Add image loading for player
-Jackie (1/23/16) - Implement sprites for all directions and adjust size
-Jackie (1/23/16) - Adjust bullet creation point to fit sprites
-Jackie (1/23/16) - Add image loading for zombies
-Jackie (1/23/16) - Implement sprite movement for zombies
-Jackie (1/23/16) - Implement colorchanging for zombies with sprite
+Jackie (1/23/16) - Create and finish shotgun and rifles, implement new pictures for player and zombies (including different pictures for different directions),
+weapons become switchable
+Issac(1/23/16)- make restart button and start devil (projectile enemy)
 *bug* - level sometimes starts at level 2
 *bug* - healthpacks stops spawning after a while
-Jackie (1/24/16) - Implement comparable for zombie class to sort YCoords so zombies are drawn non overlapping
-Jackie (1/24/16) - Add rocket
-Jackie (1/24/16) - Add fading expolosion sprites to rocket attacks
-Jackie (1/24/16) - Add milestone feature to unlocking weapons
+Jackie (1/24/16) - Implemetation of comparable for overlapping zombies, make rocket and include fading explosion, and weapons become unlockable after level
+Issac (1/24/16) - Make devil and make it shoot projectiles towards the player
 
 NextSteps:
 -direction of projectile based on differences of x and y coords between player/ devil and trig funcs
@@ -33,3 +38,13 @@ NextSteps:
 -add menu and milestones on pause menu
 -update graphics
 -menu (Title, play, key presses, gist of game)/ end game screen (have a restart button) Display stats
+-problems with devil:
+if you stand diagonally from it
+and wait for it to walk to you
+it wont shoot you
+also it has no unit collision with zombies
+or the player
+and it gets drawn below all zombies
+so if its clustered we dont see it at all
+and it doesnt turn when it shoots
+just stays in same direction

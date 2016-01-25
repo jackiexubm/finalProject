@@ -22,7 +22,7 @@ class Bullet {
       fill(0);
       ellipse(XCoord, YCoord, 5, 5);
     } else if (type == 1) {
-      fill(256, 200, 0);
+      fill(256, 100, 0);
       ellipse(XCoord, YCoord, 15, 15);
     } else if (type == 2) {
       fill(139, 0, 0);

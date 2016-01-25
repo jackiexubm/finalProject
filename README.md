@@ -14,7 +14,7 @@ launcher (shoots really slowly, with explosive bullets that will damage zombies 
 - The game itself used arrow buttons to move around
 If two directions are pressed (i.e UP and RIGHT- movement will be northeast)
 - Press "P" to pause/unpause
-- Press "R" to shoot
+- Press SPACE to shoot
 - Press "1-4" to rotate weapons
 
 4. Log
@@ -30,7 +30,7 @@ Issac(1/23/16)- make restart button and start devil (projectile enemy)
 *bug* - level sometimes starts at level 2
 *bug* - healthpacks stops spawning after a while
 Jackie (1/24/16) - Implemetation of comparable for overlapping zombies, make rocket and include fading explosion, and weapons become unlockable after level
-Issac (1/24/16) - Make devil and make it shoot projectiles towards the player
+Issac (1/24/16) - Make devil - zombie who shoot projectiles towards the player
 
 NextSteps:
 -direction of projectile based on differences of x and y coords between player/ devil and trig funcs
@@ -38,13 +38,12 @@ NextSteps:
 -add menu and milestones on pause menu
 -update graphics
 -menu (Title, play, key presses, gist of game)/ end game screen (have a restart button) Display stats
--problems with devil:
+-bugs to fix:
 if you stand diagonally from it
 and wait for it to walk to you
 it wont shoot you
-also it has no unit collision with zombies
+has no unit collision with zombies
 or the player
-and it gets drawn below all zombies
-so if its clustered we dont see it at all
-and it doesnt turn when it shoots
-just stays in same direction
+gets drawn below all other zombies
+doesnt turn when it shoots;just stays in same direction
+healthpack not spawning

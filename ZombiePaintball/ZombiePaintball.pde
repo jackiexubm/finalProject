@@ -28,6 +28,7 @@ DevilWave dWave = new DevilWave();
 
 void setup() {
   size(1000, 650);
+  noStroke();
   test = new Player(width/2, height/2, 100, 5);
   pause = false;
   game = true;
@@ -99,7 +100,15 @@ void draw() {
       dWave.move(test, wave);
       if (myScore.checkMilestone()) {
         milestone ++;
-        System.out.println("good job");
+        if (milestone == 1){
+          System.out.println("Shotgun obtained! Press 2 to equip");
+        }if (milestone == 2){
+          System.out.println("Rifle obtained! Press 3 to equip");
+        }if (milestone == 3){
+          System.out.println("Rocket obtained! Press 4 to equip");
+        }
+
+
         if (healthpacks.size() > 0) {
           healthpacks.remove(0);
         }
@@ -183,7 +192,7 @@ void keyPressed() {
               pause = false;
             }
           }
-  if (key == 'r') {
+  if (key == ' ') {
     isShooting = true;
   }
   if (key == '1') {
@@ -232,7 +241,7 @@ void keyReleased() {
         if (keyCode == LEFT) {
           test.velX = 0;
         }
-  if (key == 'r') {
+  if (key == ' ') {
     isShooting = false;
   }
 }

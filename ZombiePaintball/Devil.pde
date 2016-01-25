@@ -18,7 +18,7 @@ class Devil extends Zombie {
     canAttack = false;
     nextAttack = 0;
     dmg = attack;
-    bVel = 2;
+    bVel = 4;
     Projectiles = new ArrayList<Bullet>();
     d0 = loadImage("devil0.png");
     d1 = loadImage("devil1.png");
@@ -29,7 +29,6 @@ class Devil extends Zombie {
     d6 = loadImage("devil6.png");
     d7 = loadImage("devil7.png");
   }
-
 
   void drawDevils() {
     noTint();
@@ -102,27 +101,27 @@ class Devil extends Zombie {
     boolean faceDown= false;
     boolean faceLeft = false;
     boolean faceRight = false;
-    if (x.XCoord - XCoord <= 20 && XCoord - x.XCoord < 20) {
+    if (x.XCoord - XCoord <= 40 && XCoord - x.XCoord < 40) {
       faceRight = false;
       faceLeft = false;
     }
-    if (x.YCoord - YCoord <= 20 && YCoord - x.YCoord < 20) {
+    if (x.YCoord - YCoord <= 40 && YCoord - x.YCoord < 40) {
       faceUp = false;
       faceDown = false;
     }
-    if (x.XCoord - XCoord > 20) {  
+    if (x.XCoord - XCoord > 40) {  
       faceRight = true;
       faceLeft = false;
     }
-    if (XCoord - x.XCoord > 20) {
+    if (XCoord - x.XCoord > 40) {
       faceLeft = true;
       faceRight = false;
     }
-    if (YCoord - x.YCoord > 20) {
+    if (YCoord - x.YCoord > 40) {
       faceUp = true;
       faceDown = false;
     }
-    if (x.YCoord - YCoord > 20) {
+    if (x.YCoord - YCoord > 40) {
       faceDown = true;
       faceUp = false;
     }
@@ -147,7 +146,7 @@ class Devil extends Zombie {
 
   Bullet fireProjectile(Characters X) {
     float theta = atan2((X.YCoord - YCoord), (X.XCoord - XCoord));
-    Bullet temp = new Bullet(XCoord + 0., YCoord + 0., bVel * cos(theta), bVel * sin(theta), 20., 0., 2);
+    Bullet temp = new Bullet(XCoord, YCoord, bVel * cos(theta), bVel * sin(theta), 10., 0., 2);
     return temp;
   }
 

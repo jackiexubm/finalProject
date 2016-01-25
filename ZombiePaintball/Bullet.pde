@@ -24,14 +24,13 @@ class Bullet {
     } else if (type == 1) {
       fill(256, 200, 0);
       ellipse(XCoord, YCoord, 15, 15);
-    }
-    else if (type == 2){
-     fill(139,0,0);
-     ellipse(XCoord, YCoord, 15, 15);
+    } else if (type == 2) {
+      fill(139, 0, 0);
+      ellipse(XCoord, YCoord, 15, 15);
     }
   }
 
-  boolean damage(Wave enemy, Player me) {
+  boolean damage(Wave enemy, Player me, DevilWave dWave) {
     if (type == 0) {
       for (int i = 0; i < enemy.size; i++) {
         if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
@@ -40,7 +39,14 @@ class Bullet {
           return true;
         }
       }
-    } else if (type == 1) {
+      for (int i = 0; i < dWave.size; i ++){
+      if (dist(dWave.wave.get(i).XCoord, dWave.wave.get(i).YCoord, XCoord, YCoord) <= 15) {
+          knockback(dWave.wave.get(i), 8);
+          dWave.wave.get(i).takeDamage((int)dmg);   
+          return true;
+      }
+    }
+  } else if (type == 1) {
       for (int i = 0; i < enemy.size; i++) {
         if (dist(enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord, XCoord, YCoord) <= 22.5) {          
           for (int i2 = 0; i2 < enemy.size; i2++) {
@@ -54,11 +60,10 @@ class Bullet {
           return true;
         }
       }
-    }
-    else if (type == 2){
-      if(dist(me.XCoord, me.YCoord, XCoord, YCoord) <= 15){
+    } else if (type == 2) {
+      if (dist(me.XCoord, me.YCoord, XCoord, YCoord) <= 15) {
         me.takeDamage((int)dmg);
-        me.knockBack(this,20);
+        me.knockBack(this, 5);
         return true;
       }
     }

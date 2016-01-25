@@ -29,7 +29,7 @@ class DevilWave{
     if (i%2 == 0) {
       x = 0;
     }
-    temp = new Devil(x, height/2, 100, 5);
+    temp = new Devil(x, height/2, 500, 5);
     wave.add(temp);
     size = wave.size();
   }
@@ -45,7 +45,7 @@ class DevilWave{
       wave.get(i).findDirection(x);
       wave.get(i).move();
       wave.get(i).attack(x);
-      wave.get(i).drawBullets(enemy, x);
+      wave.get(i).drawBullets(enemy, x, this);
       if (wave.get(i).health <= 0) {
         wave.remove(i);
         i--;

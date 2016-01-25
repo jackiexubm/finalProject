@@ -23,7 +23,7 @@ int milestone = 0;
 boolean main;
 ArrayList<Bullet> devilProjectiles = new ArrayList<Bullet>();
 int devilAmount = 0;
-DevilWave DWave = new DevilWave();
+DevilWave dWave = new DevilWave();
 
 
 void setup() {
@@ -88,17 +88,17 @@ void draw() {
         nextSpawn += 900;
         wave.spawn(waveSize%2);
       }
-      if (wave.getSize() == 0 && DWave.size == 0) {
+      if (wave.getSize() == 0 && dWave.size == 0) {
        level ++;
        System.out.println("Current Level: " + level);
        System.out.println("Current Score: " + myScore.score);
        waveSize = 5 + level * 5;
        devilAmount = (int)(level/5 + 1);
-       DWave.spawnDevils(devilAmount);
-       System.out.println(DWave.size);
+       dWave.spawnDevils(devilAmount);
+       System.out.println(dWave.size);
        nextSpawn = millis() + 10;
       }
-      DWave.move(test, wave);
+      dWave.move(test, wave);
       if (myScore.checkMilestone()) {
         milestone ++;
         System.out.println("good job");
@@ -145,12 +145,12 @@ void draw() {
       for (int i = 0; i < bullets.size(); i ++) {
         bullets.get(i).drawBullet();
         bullets.get(i).move();
-        if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test)) {
+        if (bullets.get(i).type == 1 && bullets.get(i).damage(wave, test,dWave)) {
           boomX = bullets.get(i).XCoord;
           boomY = bullets.get(i).YCoord;
           explo = 2560;
           bullets.remove(i);
-        } else if (bullets.get(i).damage(wave, test)) {
+        } else if (bullets.get(i).damage(wave, test,dWave)) {
           bullets.remove(i);
         }
       }

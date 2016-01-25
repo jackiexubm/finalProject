@@ -62,37 +62,40 @@ class Devil extends Zombie {
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && !canAttack) {
       nextAttack = millis() + 500;
       canAttack = true;
-      velX = 0;
-      velY = 0;
     }
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && canAttack && millis() >= nextAttack) {
       Projectiles.add(fireProjectile(x));
       nextAttack = millis() + 300;
       System.out.println(x.health);
       System.out.println(1);
-    } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 200) {
+    } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 250) {
       canAttack = false;
     }
   }
 
   void findDirection(Characters x) {
-    if (x.XCoord - XCoord <= 200 && XCoord - x.XCoord < 20) {
+    if ( dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 ) {
       velX = 0;
-    }
-    if (x.YCoord - YCoord <= 200 && YCoord - x.YCoord < 20) {
       velY = 0;
-    }
-    if (x.XCoord - XCoord > 200) {  
-      velX = 1;
-    }
-    if (XCoord - x.XCoord > 200) {
-      velX = -1;
-    }
-    if (YCoord - x.YCoord > 200) {
-      velY = -1;
-    }
-    if (x.YCoord - YCoord > 200) {
-      velY = 1;
+    } else {
+      if (x.XCoord - XCoord <= 20 && XCoord - x.XCoord <= 20) {
+        velX = 0;
+      }
+      if (x.YCoord - YCoord <= 20 && YCoord - x.YCoord <= 20) {
+        velY = 0;
+      }
+      if (x.XCoord - XCoord > 20) {  
+        velX = 1;
+      }
+      if (XCoord - x.XCoord > 20) {
+        velX = -1;
+      }
+      if (YCoord - x.YCoord > 20) {
+        velY = -1;
+      }
+      if (x.YCoord - YCoord > 20) {
+        velY = 1;
+      }
     }
   }
 

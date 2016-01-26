@@ -38,7 +38,7 @@ void setup() {
   wave = new Wave();
   gameFunctions = new Game();
   boom = loadImage("explosion.png");
-  main = true;
+  main = false;
   chars = loadImage("Characters.jpg");
 }
 

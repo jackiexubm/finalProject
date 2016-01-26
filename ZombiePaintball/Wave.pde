@@ -73,6 +73,15 @@ class Wave {
         }
       }
     }
+    if (dWave.size() > 1) {
+      for (int i = 0; i < dWave.size() - 1; i++) {
+        for (int i2 = i + 1; i2 < dWave.size(); i2++) {
+          if (dist(dWave.get(i).XCoord, dWave.get(i).YCoord, dWave.get(i2).XCoord, dWave.get(i2).YCoord) <= 30) {
+            dWave.get(i).moveAwayFrom(dWave.get(i2), 1);
+          }
+        }
+      }
+    }
     if (wave.size() > 0) {
       if (dist(wave.get(wave.size() - 1).XCoord, wave.get(wave.size() - 1).YCoord, x.XCoord, x.YCoord) <= 30) {
         if (x.velX == 0 && x.velY == 0) {

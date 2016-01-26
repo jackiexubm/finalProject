@@ -27,7 +27,7 @@ class DevilWave {
       if (i%2 == 0) {
         x = 0;
       }
-      temp = new Devil(x, height/2, 500, 5);
+      temp = new Devil(x, height/2, 300, 5);
       wave.add(temp);
       size = wave.size();
     }

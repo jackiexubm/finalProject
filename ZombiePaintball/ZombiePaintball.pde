@@ -17,6 +17,7 @@ int lastHPPack = 0;
 Game gameFunctions;
 int explo;
 PImage boom;
+PImage chars;
 float boomX;
 float boomY;
 int milestone = 0;
@@ -38,10 +39,22 @@ void setup() {
   gameFunctions = new Game();
   boom = loadImage("explosion.png");
   main = true;
+  chars = loadImage("Characters.jpg");
 }
 
 void draw() {
-  if (!main) {
+  if (main) {
+    background(255,255,255);
+    pause = false;
+    game = false;
+    image(chars, 0, height/2, width, height/2);
+    fill(0);
+    textSize(100);
+    textAlign(CENTER,TOP);
+    text("ZOMBIE PAINTBALL", width/2,0);
+    textSize(70);
+    text("Play", width/2, 140);
+    text("Instructions", width/2, 220);
   } else {
     background(235, 220, 197);
     if (!game || pause) {
@@ -99,7 +112,7 @@ void draw() {
         nextSpawn += 900;
         wave.spawn(waveSize%2);
       }
-      dWave.move(test, wave);
+      myScore.addScore(dWave.move(test, wave)*5);
       if (myScore.checkMilestone()) {
         milestone ++;
         if (milestone == 1) {

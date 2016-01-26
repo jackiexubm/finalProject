@@ -192,6 +192,11 @@ void draw() {
         explo -= 32;
       }
 
+      if (!playerPresent) {
+        drawOrder.add(test);
+        playerPresent = true;
+      }
+      
       for (int i = 0; i < wave.size; i++) {
         boolean added = false;
         for (int i2 = 0; i2 < drawOrder.size(); i2++) {
@@ -201,11 +206,11 @@ void draw() {
             }
           }
         }
-        if(!added){
-        drawOrder.add(wave.wave.get(i));
+        if (!added) {
+          drawOrder.add(wave.wave.get(i));
         }
       }
-      
+
       for (int i = 0; i < dWave.size; i++) {
         boolean added = false;
         for (int i2 = 0; i2 < drawOrder.size(); i2++) {
@@ -215,26 +220,39 @@ void draw() {
             }
           }
         }
-        if(!added){
-        drawOrder.add(dWave.wave.get(i));
+        if (!added) {
+          drawOrder.add(dWave.wave.get(i));
         }
-      }
-      
-      if(!playerPresent){
-        drawOrder.add(test);
-        playerPresent = true;
       }
 
       Collections.sort(drawOrder);
       for (int i = 0; i < drawOrder.size(); i++) {
         drawOrder.get(i).drawCharacters();
       }
-      
-      
-      
+
+      for (int i = 0; i < drawOrder.size(); i++) {
+       boolean existent = false;
+       for (int i2 = 0; i2 < dWave.size; i2++) {
+         if (drawOrder.get(i) == dWave.wave.get(i2)) {
+           existent = true;
+         }
+       }
+       if (!existent && wave.size > 0) {
+         for (int i3 = 0; i3 < wave.size; i3++) {
+           if (drawOrder.get(i) == wave.wave.get(i3)) {
+             existent = true;
+           }
+         }
+       }
+
+       if (!existent && drawOrder.get(i) != test) {
+         drawOrder.remove(i);
+       }
+      }
     }
   }
 }
+
 
 void keyPressed() {
   if (keyCode == UP) {

@@ -52,17 +52,4 @@ class DevilWave {
     }
     return death;
   }
-
-  //void checkOverlap(Player x, ArrayList<Zombie> wave2) {
-  //  for (int i = 0; i < wave2.size(); i++) {
-  //    for (int i2 = 0; i2 < wave.size(); i2++) {
-  //      if (dist(wave2.get(i).XCoord, wave2.get(i).YCoord, wave.get(i2).XCoord, wave.get(i2).YCoord) <= 30) {
-  //        wave2.get(i).moveAwayFrom(wave.get(i2), 1);
-  //      }
-  //    }
-  //    if (dist(wave.get(i).XCoord, wave.get(i).YCoord, x.XCoord, x.YCoord) <= 30) {
-  //      wave.get(i).moveAwayFrom(x, 1);
-  //    }
-  //  }
-  //}
 }

@@ -33,6 +33,7 @@ int timeForWepMsg = 0;
 boolean msg = false;
 int devilKill;
 int zombieKill;
+boolean instructions = false;
 
 void setup() {
   size(1000, 650);
@@ -45,7 +46,7 @@ void setup() {
   wave = new Wave();
   gameFunctions = new Game();
   boom = loadImage("explosion.png");
-  main = false;
+  main = true;
   chars = loadImage("Characters.jpg");
   drawOrder = new ArrayList<Characters>();
   playerPresent = false;
@@ -56,44 +57,133 @@ void draw() {
     background(255, 255, 255);
     pause = false;
     game = false;
+    noTint();
     image(chars, 0, height/2, width, height/2);
     fill(0);
     textSize(100);
     textAlign(CENTER, TOP);
     text("ZOMBIE PAINTBALL", width/2, 0);
-    textSize(70);
-    text("Play", width/2, 140);
-    text("Instructions", width/2, 220);
-  } else {
-    background(235, 220, 197);
-    if (!game || pause) {
-      if (pause) {
-        
-        fill(0);
-        textSize(100);
-        text("Game Paused", width/5, height/2);
-        text("Restart", width/3, 3*height/4);
-        if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
+    if (mousePressed == true && mouseX <= 3*width/5 && mouseX >= 2*width/5 && mouseY >= 140 && mouseY <= 210) {
           gameFunctions.restart(myScore, wave, test, dWave);
-          playerPresent = false;
-          level = 0;
-          pause = false;
-        }
-      }
-      if (!game) {
-        textSize(100);
-        fill(0);
-        text("Game Over", width/4, height/2);
-        text("Restart", width/3, 3*height/4);
-        if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
-          gameFunctions.restart(myScore, wave, test, dWave);
+          devilKill = 0;
+          zombieKill = 0;
           playerPresent = false;
           level = 0;
           pause = false;
           game = true;
+          main = false;
+          instructions = false;
+        }
+     if (mousePressed == true && mouseX <= 2*width/3 && mouseX >= width/3 && mouseY >= 220 && mouseY <= 290) {
+          gameFunctions.restart(myScore, wave, test, dWave);
+          playerPresent = false;
+          devilKill = 0;
+          zombieKill = 0;
+          level = 0;
+          pause = false;
+          game = false;
+          main = false;
+          instructions = true;
+        }
+    textSize(70);
+    text("Play", width/2, 140);
+    text("Instructions", width/2, 220);
+  }
+    else if(instructions){
+     background(255,255,255);
+     pause = false;
+     game = false;
+     main = false;
+     textSize(70);
+     textAlign(CENTER, TOP);
+     text("Instructions",width/2,0);
+     textSize(50);
+     text("Keyboard Buttons:",width/2,90);
+     textSize(40);
+     text("Arrow Keys: Move Around", width/2, 160);
+     text("Spacebar: Shoot", width/2, 220);
+     text("1: Pick Pistol", width/2, 280);
+     text("2: Pick Shotgun", width/2, 340);
+     text("3: Pick Rifle", width/2, 400);
+     text("4: Pick Rocket Launcher", width/2, 460);
+     textAlign(CENTER, BOTTOM);
+     text("Exit to Main Menu",width/2,height);
+     if (mousePressed == true && mouseX <= 2*width/3 && mouseX >= width/3 && mouseY >= height - 40 && mouseY <= height) {
+          gameFunctions.restart(myScore, wave, test, dWave);
+          playerPresent = false;
+          devilKill = 0;
+          zombieKill = 0;
+          level = 0;
+          pause = false;
+          game = false;
+          main = true;
+          instructions = false;;
+        }
+    }
+   
+      else if (pause) {
+        background(255,255,255);
+        textAlign(CENTER,TOP);
+        textSize(100);
+        text("Game Paused", width/2, 0);
+        textSize(70);
+        text("Unlockable Weapons:", width/2, 120);
+        textSize(40);
+        text("Shotgun Unlocked at Level 2", width/2, 210);
+        text("Rifle Unlocked at Level 3", width/2, 270);
+        text("Rocket Launcher Unlocked at Level 4", width/2, 330);
+        textSize(70);
+        text("Restart", width/2, 420);
+        if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 420 && mouseY <= 490) {
+          gameFunctions.restart(myScore, wave, test, dWave);
+          playerPresent = false;
+          devilKill = 0;
+          zombieKill = 0;
+          level = 0;
+          pause = false;
+          game = true;
+        }
+        text("Main Menu", width/2, 510);
+        if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 510 && mouseY <= 580) {
+          game = false;
+          main = true;
+          pause = false;
+          instructions = false;
         }
       }
-    } else {
+      else if (!game) {
+        background(255,255,255);
+        textAlign(CENTER, TOP);
+        textSize(100);
+        text("Game Over", width/2, 0);
+        textSize(70);
+        text("Stats:", width/2, 120);
+        textSize(40);
+        text("Zombie Kills: "  + zombieKill, width/2, 210);
+        text("Devil Kills: "  + devilKill, width/2, 270);
+        text("Score: " + myScore.score, width/2, 330);
+        textSize(70);
+        text("Restart", width/2, 420);
+        if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 420 && mouseY <= 490) {
+          gameFunctions.restart(myScore, wave, test, dWave);
+          playerPresent = false;
+          devilKill = 0;
+          zombieKill = 0;
+          level = 0;
+          pause = false;
+          game = true;
+        }
+        text("Main Menu", width/2, 510);
+        if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 510 && mouseY <= 580) {
+          game = false;
+          main = true;
+          pause = false;
+          instructions = false;
+        }
+      }
+     
+    else{
+      background(235, 220, 197);
       String health = "HP: " + test.health;
       fill(0);
       textSize(20);
@@ -279,7 +369,7 @@ void draw() {
       }
     }
   }
-}
+
 
 
 void keyPressed() {

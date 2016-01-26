@@ -28,6 +28,9 @@ int devilAmount = 0;
 DevilWave dWave = new DevilWave();
 ArrayList<Characters> drawOrder;
 boolean playerPresent;
+String wep = "";
+int timeForWepMsg = 0;
+boolean msg = false;
 
 void setup() {
   size(1000, 650);
@@ -94,6 +97,7 @@ void draw() {
       String health = "HP: " + test.health;
       fill(0);
       textSize(20);
+      textAlign(LEFT, BOTTOM);
       text(health, 10, height - 10);
       text("Wave " + level, 10, 25);
       text("Zombie " + wave.getSize(), width-150, 25);
@@ -112,8 +116,31 @@ void draw() {
         dWave.spawnDevils(devilAmount);
         System.out.println(dWave.size);
         nextSpawn = millis();
+        msg = true;
       }
-
+      
+      if(level == 2 && msg){
+       wep = "Shotgun";
+       timeForWepMsg = millis() + 3000;
+       msg = false;
+      }
+      if(level == 3 && msg){
+       wep = "Shotgun";
+       timeForWepMsg = millis() + 3000;
+       msg = false;
+      }
+      if(level == 4 && msg){
+       wep = "Shotgun";
+       timeForWepMsg = millis() + 3000;
+       msg = false;
+      }
+      if(millis() < timeForWepMsg){
+       textSize(50);
+       textAlign(CENTER,CENTER);
+       String msg = "Press " + level + " To Use " + wep;
+       text(msg,width/2,height/2);
+      }
+      
       if (waveSize > 0 && millis() >= nextSpawn) {
         waveSize--;
         nextSpawn += 900;

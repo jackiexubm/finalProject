@@ -149,7 +149,7 @@ class Devil extends Zombie implements Comparable{
 
   Bullet fireProjectile(Characters X) {
     float theta = atan2((X.YCoord - YCoord), (X.XCoord - XCoord));
-    Bullet temp = new Bullet(XCoord, YCoord, bVel * cos(theta), bVel * sin(theta), 10., 0., 2);
+    Bullet temp = new Bullet(XCoord, YCoord, bVel * cos(theta), bVel * sin(theta), dmg + 0., 0., 2);
     return temp;
   }
 

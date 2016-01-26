@@ -39,7 +39,6 @@ class DevilWave {
     Collections.sort(wave);
     for (int i = 0; i < size; i++) {
       wave.get(i).faceDirection(x);
-      wave.get(i).drawDevils();
       wave.get(i).findDirection(x);
       wave.get(i).move();
       wave.get(i).attack(x);

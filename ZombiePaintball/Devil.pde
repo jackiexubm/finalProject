@@ -30,7 +30,7 @@ class Devil extends Zombie implements Comparable{
     d7 = loadImage("devil7.png");
   }
 
-  void drawDevils() {
+  void drawCharacters() {
     noTint();
     if (direction == 0) {
       image(d0, XCoord - 27, YCoord - 30, 55, 60);

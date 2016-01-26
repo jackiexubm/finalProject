@@ -38,7 +38,6 @@ class Wave {
     int death = 0;
     for (int i = 0; i < size; i++) {
       wave.get(i).changeDirection();
-      wave.get(i).drawCharacters();
       wave.get(i).findDirection(x);
       wave.get(i).move();
       wave.get(i).attack(x);

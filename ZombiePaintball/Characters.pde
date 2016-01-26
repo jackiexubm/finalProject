@@ -82,6 +82,8 @@ abstract class Characters implements Comparable{
     }
   }
   
+  abstract void drawCharacters();
+  
   void changeDirection() {
     if (velX > 0 && velY < 0) {
       direction = 1;

@@ -27,6 +27,7 @@ ArrayList<Bullet> devilProjectiles = new ArrayList<Bullet>();
 int devilAmount = 0;
 DevilWave dWave = new DevilWave();
 ArrayList<Characters> drawOrder;
+boolean playerPresent;
 
 void setup() {
   size(1000, 650);
@@ -42,18 +43,19 @@ void setup() {
   main = false;
   chars = loadImage("Characters.jpg");
   drawOrder = new ArrayList<Characters>();
+  playerPresent = false;
 }
 
 void draw() {
   if (main) {
-    background(255,255,255);
+    background(255, 255, 255);
     pause = false;
     game = false;
     image(chars, 0, height/2, width, height/2);
     fill(0);
     textSize(100);
-    textAlign(CENTER,TOP);
-    text("ZOMBIE PAINTBALL", width/2,0);
+    textAlign(CENTER, TOP);
+    text("ZOMBIE PAINTBALL", width/2, 0);
     textSize(70);
     text("Play", width/2, 140);
     text("Instructions", width/2, 220);
@@ -70,6 +72,7 @@ void draw() {
         text("Restart", width/3, 3*height/4);
         if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
           gameFunctions.restart(myScore, wave, test, dWave);
+          playerPresent = false;
           level = 0;
           pause = false;
         }
@@ -81,6 +84,7 @@ void draw() {
         text("Restart", width/3, 3*height/4);
         if (mousePressed == true && mouseX <= width/2 + 400 && mouseX >= width/2 - 400 && mouseY >= 3*height/4-125 && mouseY <= 3*height/4+75) {
           gameFunctions.restart(myScore, wave, test, dWave);
+          playerPresent = false;
           level = 0;
           pause = false;
           game = true;
@@ -95,6 +99,7 @@ void draw() {
       text("Zombie " + wave.getSize(), width-150, 25);
       text("Score: " + myScore.score, width-150, height - 10);    
       if (test.health <= 0) {
+        playerPresent = false;
         game = false;
       }
 
@@ -108,7 +113,7 @@ void draw() {
         System.out.println(dWave.size);
         nextSpawn = millis();
       }
-      
+
       if (waveSize > 0 && millis() >= nextSpawn) {
         waveSize--;
         nextSpawn += 900;
@@ -147,9 +152,8 @@ void draw() {
       }
 
       myScore.addScore(wave.move(test));
-      wave.checkOverlap(test,dWave.wave);
+      wave.checkOverlap(test, dWave.wave);
 
-      test.drawCharacters();
       test.move();
       test.changeDirection();
 
@@ -187,11 +191,46 @@ void draw() {
         image(boom, boomX - 90, boomY - 30, 180, 100);
         explo -= 32;
       }
+
+      for (int i = 0; i < wave.size; i++) {
+        boolean added = false;
+        for (int i2 = 0; i2 < drawOrder.size(); i2++) {
+          if (!added) {
+            if (wave.wave.get(i) == drawOrder.get(i2)) {
+              added = true;
+            }
+          }
+        }
+        if(!added){
+        drawOrder.add(wave.wave.get(i));
+        }
+      }
       
-      drawOrder.addAll(wave.wave);
-      drawOrder.addAll(dWave.wave);
-      drawOrder.add(test);
+      for (int i = 0; i < dWave.size; i++) {
+        boolean added = false;
+        for (int i2 = 0; i2 < drawOrder.size(); i2++) {
+          if (!added) {
+            if (dWave.wave.get(i) == drawOrder.get(i2)) {
+              added = true;
+            }
+          }
+        }
+        if(!added){
+        drawOrder.add(dWave.wave.get(i));
+        }
+      }
+      
+      if(!playerPresent){
+        drawOrder.add(test);
+        playerPresent = true;
+      }
+
       Collections.sort(drawOrder);
+      for (int i = 0; i < drawOrder.size(); i++) {
+        drawOrder.get(i).drawCharacters();
+      }
+      
+      
       
     }
   }

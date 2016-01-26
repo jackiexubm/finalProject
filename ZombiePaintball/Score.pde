@@ -7,8 +7,8 @@ class Score {
     lastMilestone = 0;
     calcNextMilestone();
   }
-  void addScore(int points) {
-    score += points;
+  void calcScore(int zKill, int dKill) {
+    score = zKill + dKill * 5;
   }
   void calcNextMilestone() {
     nextMilestone = lastMilestone + 20;

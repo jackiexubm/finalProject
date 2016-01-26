@@ -31,6 +31,8 @@ boolean playerPresent;
 String wep = "";
 int timeForWepMsg = 0;
 boolean msg = false;
+int devilKill;
+int zombieKill;
 
 void setup() {
   size(1000, 650);
@@ -66,9 +68,7 @@ void draw() {
     background(235, 220, 197);
     if (!game || pause) {
       if (pause) {
-        rectMode(CENTER);
-        fill(100);
-        rect(width/2, 3*height/4 - 25, 400, 100);
+        
         fill(0);
         textSize(100);
         text("Game Paused", width/5, height/2);
@@ -114,7 +114,6 @@ void draw() {
         waveSize = level * 5;
         devilAmount = (level + 1)/3 ;
         dWave.spawnDevils(devilAmount);
-        System.out.println(dWave.size);
         nextSpawn = millis();
         msg = true;
       }
@@ -146,7 +145,8 @@ void draw() {
         nextSpawn += 900;
         wave.spawn(waveSize%2);
       }
-      myScore.addScore(dWave.move(test, wave)*5);
+      devilKill += dWave.move(test, wave);
+      myScore.calcScore(zombieKill,devilKill);
       if (myScore.checkMilestone()) {
         milestone ++;
         if (milestone == 1) {
@@ -178,11 +178,13 @@ void draw() {
         healthpacks.remove(0);
       }
 
-      myScore.addScore(wave.move(test));
+      zombieKill += wave.move(test);
+      System.out.println(zombieKill);
       wave.checkOverlap(test, dWave.wave);
 
       test.move();
       test.changeDirection();
+      System.out.println(zombieKill);
 
 
 
@@ -213,7 +215,6 @@ void draw() {
       }
 
       if (explo > 0) {
-        System.out.println(explo);
         tint(255, explo/10);
         image(boom, boomX - 90, boomY - 30, 180, 100);
         explo -= 32;

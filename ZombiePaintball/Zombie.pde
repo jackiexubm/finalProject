@@ -1,4 +1,4 @@
-class Zombie extends Characters implements Comparable {
+class Zombie extends Characters{
   boolean canAttack;
   int nextAttack;
   PImage z0;
@@ -100,26 +100,6 @@ class Zombie extends Characters implements Comparable {
     }
     if (x.YCoord - YCoord >= 0) {
       YCoord -= units;
-    }
-  }
-
-  int compareTo(Object that) {
-    Characters other;
-    if (this == that) {
-      return 0;
-    }
-    if (that instanceof Zombie) {
-      other = (Zombie)that;
-    } else if (that instanceof Player) {
-      other = (Player)that;
-    } else {
-      other = (Devil)that;
-    }
-
-    if (other.YCoord <= YCoord) {
-      return 1;
-    } else {
-      return -1;
     }
   }
 

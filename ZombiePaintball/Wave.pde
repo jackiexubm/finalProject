@@ -1,4 +1,3 @@
-import java.util.Collections;
 class Wave {
   Zombie temp;
   int size;
@@ -37,7 +36,6 @@ class Wave {
 
   int move(Player x) {
     int death = 0;
-    Collections.sort(wave);
     for (int i = 0; i < size; i++) {
       wave.get(i).changeDirection();
       wave.get(i).drawCharacters();

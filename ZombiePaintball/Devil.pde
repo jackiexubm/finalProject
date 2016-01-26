@@ -1,4 +1,4 @@
-class Devil extends Zombie {
+class Devil extends Zombie implements Comparable{
   boolean canAttack;
   int nextAttack;
   int dmg;

@@ -91,9 +91,9 @@ class Player extends Characters implements Comparable {
       YCoord -= units;
     }
   }
-  
-  void knockBack(Bullet b, int units){
-        if (b.XCoord - XCoord >= 0) {
+
+  void knockBack(Bullet b, int units) {
+    if (b.XCoord - XCoord >= 0) {
       XCoord -= units;
     }
     if (XCoord - b.XCoord >= 0) {

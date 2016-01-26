@@ -1,3 +1,4 @@
+import java.util.Collections;
 Player test;
 Zombie zob;
 Pistol gun;
@@ -190,6 +191,7 @@ void draw() {
       drawOrder.addAll(wave.wave);
       drawOrder.addAll(dWave.wave);
       drawOrder.add(test);
+      Collections.sort(drawOrder);
       
     }
   }

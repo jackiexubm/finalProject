@@ -1,4 +1,4 @@
-abstract class Characters {
+abstract class Characters implements Comparable{
   //variables
   int XCoord;
   int YCoord;
@@ -70,6 +70,18 @@ abstract class Characters {
     health -= dmg;
   }
 
+    int compareTo(Object that) {
+    if (this == that) {
+      return 0;
+    }
+    Characters other = (Characters)that;
+    if (other.YCoord <= YCoord) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+  
   void changeDirection() {
     if (velX > 0 && velY < 0) {
       direction = 1;

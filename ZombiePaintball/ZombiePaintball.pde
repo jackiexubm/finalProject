@@ -86,8 +86,8 @@ void draw() {
           instructions = true;
         }
     textSize(70);
-    text("Play", width/2, 140);
-    text("Instructions", width/2, 220);
+    text(">Play<", width/2, 140);
+    text(">Instructions<", width/2, 220);
   }
     else if(instructions){
      background(255,255,255);
@@ -107,7 +107,7 @@ void draw() {
      text("3: Pick Rifle", width/2, 400);
      text("4: Pick Rocket Launcher", width/2, 460);
      textAlign(CENTER, BOTTOM);
-     text("Exit to Main Menu",width/2,height);
+     text(">Exit to Main Menu<",width/2,height);
      if (mousePressed == true && mouseX <= 2*width/3 && mouseX >= width/3 && mouseY >= height - 40 && mouseY <= height) {
           gameFunctions.restart(myScore, wave, test, dWave);
           playerPresent = false;
@@ -133,7 +133,7 @@ void draw() {
         text("Rifle Unlocked at Level 3", width/2, 270);
         text("Rocket Launcher Unlocked at Level 4", width/2, 330);
         textSize(70);
-        text("Restart", width/2, 420);
+        text(">Restart<", width/2, 420);
         if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 420 && mouseY <= 490) {
           gameFunctions.restart(myScore, wave, test, dWave);
           playerPresent = false;
@@ -143,7 +143,7 @@ void draw() {
           pause = false;
           game = true;
         }
-        text("Main Menu", width/2, 510);
+        text(">Main Menu<", width/2, 510);
         if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 510 && mouseY <= 580) {
           game = false;
           main = true;
@@ -163,7 +163,7 @@ void draw() {
         text("Devil Kills: "  + devilKill, width/2, 270);
         text("Score: " + myScore.score, width/2, 330);
         textSize(70);
-        text("Restart", width/2, 420);
+        text(">Restart<", width/2, 420);
         if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 420 && mouseY <= 490) {
           gameFunctions.restart(myScore, wave, test, dWave);
           playerPresent = false;
@@ -173,7 +173,7 @@ void draw() {
           pause = false;
           game = true;
         }
-        text("Main Menu", width/2, 510);
+        text(">Main Menu<", width/2, 510);
         if (mousePressed == true && mouseX <= 3*width/5&& mouseX >= 2*width/5 && mouseY >= 510 && mouseY <= 580) {
           game = false;
           main = true;
@@ -199,8 +199,6 @@ void draw() {
 
       if (wave.getSize() == 0 && dWave.size == 0) {
         level ++;
-        System.out.println("Current Level: " + level);
-        System.out.println("Current Score: " + myScore.score);
         waveSize = level * 5;
         devilAmount = (level + 1)/3 ;
         dWave.spawnDevils(devilAmount);
@@ -269,12 +267,12 @@ void draw() {
       }
 
       zombieKill += wave.move(test);
-      System.out.println(zombieKill);
+      
       wave.checkOverlap(test, dWave.wave);
 
       test.move();
       test.changeDirection();
-      System.out.println(zombieKill);
+      
 
 
 

@@ -10,7 +10,7 @@ launcher (shoots really slowly, with explosive bullets that will damage zombies 
 - It is in processing, so open ZombiePaintball directory and run the ZombiePaintball.pde file. No extra libraries are necesary.
 
 3. Directions to use
-- Any menu, pause, game end screens use mouse clicks
+- Any menu, pause, game end, and instruction screens use mouse clicks (Click the center of the words, word with > < around them)
 - The game itself used arrow buttons to move around
 If two directions are pressed (i.e UP and RIGHT- movement will be northeast)
 - Press "P" to pause/unpause
@@ -27,23 +27,11 @@ Issac&Jackie(1/22/16)- Discuss how projectile enemy should work and start progra
 Jackie (1/23/16) - Create and finish shotgun and rifles, implement new pictures for player and zombies (including different pictures for different directions),
 weapons become switchable
 Issac(1/23/16)- make restart button and start devil (projectile enemy)
-*bug* - level sometimes starts at level 2
-*bug* - healthpacks stops spawning after a while
+*bug* - level sometimes starts at level 2 *fixed*
+*bug* - healthpacks stops spawning after a while *fixed*
 Jackie (1/24/16) - Implemetation of comparable for overlapping zombies, make rocket and include fading explosion, and weapons become unlockable after level
 Issac (1/24/16) - Make devil - zombie who shoot projectiles towards the player
+Jackie (1/25/16) - Fix bugs and add collision between devils and zombies, devils projectiles will damage zombies in the way
+Issac (1/25/16) - Make main menu and instructions screen, fix and make game paused and game ended screens look better, ave functional buttons on all screens
 
-NextSteps:
--direction of projectile based on differences of x and y coords between player/ devil and trig funcs
--add shotgun and machine gun
--add menu and milestones on pause menu
--update graphics
--menu (Title, play, key presses, gist of game)/ end game screen (have a restart button) Display stats
--bugs to fix:
-if you stand diagonally from it
-and wait for it to walk to you
-it wont shoot you
-has no unit collision with zombies
-or the player
-gets drawn below all other zombies
-doesnt turn when it shoots;just stays in same direction
-healthpack not spawning
+

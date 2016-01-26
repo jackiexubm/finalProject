@@ -66,8 +66,7 @@ class Devil extends Zombie implements Comparable{
     if (dist(x.XCoord, x.YCoord, XCoord, YCoord) <= 250 && canAttack && millis() >= nextAttack) {
       Projectiles.add(fireProjectile(x));
       nextAttack = millis() + 300;
-      System.out.println(x.health);
-      System.out.println(1);
+     
     } else if (dist(x.XCoord, x.YCoord, XCoord, YCoord) > 250) {
       canAttack = false;
     }

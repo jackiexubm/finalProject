@@ -78,8 +78,14 @@ class Bullet {
     } else if (type == 2) {
       if (dist(me.XCoord, me.YCoord, XCoord, YCoord) <= 15) {
         me.takeDamage((int)dmg);
-        me.knockBack(this, 5);
+        me.knockBack(this, 10);
         return true;
+      }
+      for (int i = 0; i < enemy.size; i++){
+        if (dist(XCoord, YCoord, enemy.wave.get(i).XCoord, enemy.wave.get(i).YCoord) <= 15) {
+          enemy.wave.get(i).takeDamage((int)dmg);
+          return true;
+        }
       }
     }
     return false;

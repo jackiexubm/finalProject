@@ -1,4 +1,4 @@
-class Player extends Characters {
+class Player extends Characters implements Comparable {
   String weapon;
   boolean canShoot;
   int nextShot = 0;

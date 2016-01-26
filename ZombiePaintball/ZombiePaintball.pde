@@ -25,7 +25,7 @@ boolean main;
 ArrayList<Bullet> devilProjectiles = new ArrayList<Bullet>();
 int devilAmount = 0;
 DevilWave dWave = new DevilWave();
-
+ArrayList<Characters> drawOrder;
 
 void setup() {
   size(1000, 650);
@@ -40,6 +40,7 @@ void setup() {
   boom = loadImage("explosion.png");
   main = false;
   chars = loadImage("Characters.jpg");
+  drawOrder = new ArrayList<Characters>();
 }
 
 void draw() {
@@ -185,6 +186,11 @@ void draw() {
         image(boom, boomX - 90, boomY - 30, 180, 100);
         explo -= 32;
       }
+      
+      drawOrder.addAll(wave.wave);
+      drawOrder.addAll(dWave.wave);
+      drawOrder.add(test);
+      
     }
   }
 }

@@ -103,11 +103,19 @@ class Zombie extends Characters implements Comparable {
     }
   }
 
-  int compareTo(Object that) { 
+  int compareTo(Object that) {
+    Characters other;
     if (this == that) {
       return 0;
     }
-    Zombie other = (Zombie)that; 
+    if (that instanceof Zombie) {
+      other = (Zombie)that;
+    } else if (that instanceof Player) {
+      other = (Player)that;
+    } else {
+      other = (Devil)that;
+    }
+
     if (other.YCoord <= YCoord) {
       return 1;
     } else {
